@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Github, Twitter, Layers } from "lucide-react";
+import { Github, Layers } from "lucide-react";
+import { XIcon } from "@/components/icons/XIcon";
 import { NeuralButton } from "@/components/ui/core/NeuralButton";
 
 export const Navbar = () => {
@@ -56,8 +57,8 @@ export const Navbar = () => {
                         <Link href="https://github.com" target="_blank" className="p-2 hover:text-zinc-100 transition-colors">
                             <Github size={20} />
                         </Link>
-                        <Link href="https://twitter.com" target="_blank" className="p-2 hover:text-zinc-100 transition-colors">
-                            <Twitter size={20} />
+                        <Link href="https://x.com" target="_blank" className="p-2 hover:text-zinc-100 transition-colors">
+                            <XIcon size={18} />
                         </Link>
                     </div>
                     <div className="h-6 w-[1px] bg-zinc-800 mx-2 hidden sm:block"></div>

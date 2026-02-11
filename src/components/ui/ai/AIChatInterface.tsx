@@ -29,13 +29,28 @@ export const AIChatInterface = () => {
     const [isTyping, setIsTyping] = useState(false);
     const [selectedModel, setSelectedModel] = useState("gpt-4"); // Controlled state for NeuralSelect
 
-    const messagesEndRef = useRef<HTMLDivElement>(null);
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const isFirstMount = useRef(true);
 
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const scrollToBottom = (behavior: "auto" | "smooth" = "smooth") => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollTo({
+                top: scrollRef.current.scrollHeight,
+                behavior
+            });
+        }
     };
 
-    useEffect(scrollToBottom, [messages]);
+    useEffect(() => {
+        if (isFirstMount.current) {
+            // First mount: scroll immediately without animation to show latest, 
+            // but we use "auto" and it's localized to the container.
+            scrollToBottom("auto");
+            isFirstMount.current = false;
+            return;
+        }
+        scrollToBottom("smooth");
+    }, [messages]);
 
     const handleSend = async () => {
         if (!input.trim()) return;
@@ -106,7 +121,10 @@ export const AIChatInterface = () => {
             </div>
 
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-6 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent">
+            <div
+                ref={scrollRef}
+                className="flex-1 overflow-y-auto p-4 space-y-6"
+            >
                 <AnimatePresence mode="popLayout">
                     {messages.map((msg) => (
                         <motion.div
@@ -176,7 +194,6 @@ export const AIChatInterface = () => {
                         </div>
                     </motion.div>
                 )}
-                <div ref={messagesEndRef} />
             </div>
 
             {/* Input Area */}
@@ -196,7 +213,7 @@ export const AIChatInterface = () => {
                             }
                         }}
                         placeholder="Message Neural..."
-                        className="w-full bg-transparent text-zinc-200 placeholder:text-zinc-600 px-2 py-2.5 focus:outline-none resize-none min-h-[44px] max-h-[120px] scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-transparent text-sm font-sans"
+                        className="w-full bg-transparent text-zinc-200 placeholder:text-zinc-600 px-2 py-2.5 focus:outline-none resize-none min-h-[44px] max-h-[120px] text-sm font-sans"
                         rows={1}
                     />
 

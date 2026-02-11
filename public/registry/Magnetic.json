@@ -1,0 +1,16 @@
+{
+  "name": "Magnetic",
+  "type": "components:ui",
+  "dependencies": [
+    "react",
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ex/Magnetic.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { motion, useMotionTemplate, useMotionValue, useSpring } from \"framer-motion\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface MagneticProps {\r\n    children: React.ReactElement;\r\n    strength?: number; // How far it moves. Default 0.5\r\n}\r\n\r\nexport const Magnetic = ({ children, strength = 0.5 }: MagneticProps) => {\r\n    const ref = React.useRef<HTMLDivElement>(null);\r\n    const x = useMotionValue(0);\r\n    const y = useMotionValue(0);\r\n\r\n    const springConfig = { damping: 15, stiffness: 150, mass: 0.1 };\r\n    const springX = useSpring(x, springConfig);\r\n    const springY = useSpring(y, springConfig);\r\n\r\n    const handleMouseMove = (e: React.MouseEvent) => {\r\n        if (!ref.current) return;\r\n\r\n        const { clientX, clientY } = e;\r\n        const { height, width, left, top } = ref.current.getBoundingClientRect();\r\n\r\n        const xVal = clientX - (left + width / 2);\r\n        const yVal = clientY - (top + height / 2);\r\n\r\n        x.set(xVal * strength);\r\n        y.set(yVal * strength);\r\n    };\r\n\r\n    const handleMouseLeave = () => {\r\n        x.set(0);\r\n        y.set(0);\r\n    };\r\n\r\n    return (\r\n        <motion.div\r\n            ref={ref}\r\n            onMouseMove={handleMouseMove}\r\n            onMouseLeave={handleMouseLeave}\r\n            style={{ x: springX, y: springY }}\r\n            className=\"inline-block\"\r\n        >\r\n            {children}\r\n        </motion.div>\r\n    );\r\n};\r\n"
+    }
+  ],
+  "category": "ex"
+}

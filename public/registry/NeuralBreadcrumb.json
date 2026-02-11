@@ -1,0 +1,16 @@
+{
+  "name": "NeuralBreadcrumb",
+  "type": "components:ui",
+  "dependencies": [
+    "react",
+    "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "core/NeuralBreadcrumb.tsx",
+      "content": "\"use client\";\r\n\r\nimport React from \"react\";\r\nimport { ChevronRight, Home } from \"lucide-react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface NeuralBreadcrumbProps {\r\n    items: { label: string; href?: string }[];\r\n    className?: string;\r\n    separator?: React.ReactNode;\r\n}\r\n\r\nexport const NeuralBreadcrumb = ({ items, className, separator = <ChevronRight size={14} /> }: NeuralBreadcrumbProps) => {\r\n    return (\r\n        <nav aria-label=\"Breadcrumb\" className={cn(\"flex items-center space-x-2 text-sm text-zinc-500 font-sans\", className)}>\r\n            <a href=\"/\" className=\"hover:text-zinc-100 transition-colors flex items-center\">\r\n                <Home size={14} />\r\n            </a>\r\n            {items.map((item, index) => (\r\n                <div key={index} className=\"flex items-center space-x-2\">\r\n                    <span className=\"text-zinc-600 select-none\">{separator}</span>\r\n                    {item.href ? (\r\n                        <a\r\n                            href={item.href}\r\n                            className=\"hover:text-zinc-100 transition-colors bg-transparent px-1.5 py-0.5 rounded hover:bg-zinc-800/50\"\r\n                        >\r\n                            {item.label}\r\n                        </a>\r\n                    ) : (\r\n                        <span className=\"text-zinc-100 font-medium px-1.5 py-0.5\">{item.label}</span>\r\n                    )}\r\n                </div>\r\n            ))}\r\n        </nav>\r\n    );\r\n};\r\n"
+    }
+  ],
+  "category": "core"
+}

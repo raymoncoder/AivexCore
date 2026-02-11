@@ -1,0 +1,15 @@
+{
+  "name": "SpotlightCard",
+  "type": "components:ui",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "ex/SpotlightCard.tsx",
+      "content": "\"use client\";\r\n\r\nimport React, { useRef, useState, useEffect } from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface SpotlightCardProps {\r\n    children: React.ReactNode;\r\n    className?: string;\r\n    spotlightColor?: string;\r\n}\r\n\r\nexport const SpotlightCard = ({\r\n    children,\r\n    className,\r\n    spotlightColor = \"rgba(16, 185, 129, 0.15)\"\r\n}: SpotlightCardProps) => {\r\n    const divRef = useRef<HTMLDivElement>(null);\r\n    const [isFocused, setIsFocused] = useState(false);\r\n    const [position, setPosition] = useState({ x: 0, y: 0 });\r\n    const [opacity, setOpacity] = useState(0);\r\n\r\n    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {\r\n        if (!divRef.current || isFocused) return;\r\n\r\n        const div = divRef.current;\r\n        const rect = div.getBoundingClientRect();\r\n\r\n        setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });\r\n    };\r\n\r\n    const handleMouseEnter = () => {\r\n        setOpacity(1);\r\n    };\r\n\r\n    const handleMouseLeave = () => {\r\n        setOpacity(0);\r\n    };\r\n\r\n    return (\r\n        <div\r\n            ref={divRef}\r\n            onMouseMove={handleMouseMove}\r\n            onMouseEnter={handleMouseEnter}\r\n            onMouseLeave={handleMouseLeave}\r\n            className={cn(\r\n                \"relative flex h-full w-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/40 backdrop-blur-md transition-all duration-300 hover:border-white/20\",\r\n                className\r\n            )}\r\n        >\r\n            <div\r\n                className=\"pointer-events-none absolute -inset-px transition duration-300\"\r\n                style={{\r\n                    background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 40%)`,\r\n                    opacity\r\n                }}\r\n            />\r\n            <div className=\"relative z-10 flex h-full flex-col\">\r\n                {children}\r\n            </div>\r\n        </div>\r\n    );\r\n};\r\n"
+    }
+  ],
+  "category": "ex"
+}

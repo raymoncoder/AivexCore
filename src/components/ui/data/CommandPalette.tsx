@@ -109,7 +109,7 @@ export const CommandPalette = ({ isOpen, onClose }: { isOpen: boolean; onClose: 
                                     placeholder="Type a command or search..."
                                 />
                             </div>
-                            <div className="max-h-[300px] overflow-y-auto overflow-x-hidden p-2">
+                            <div className="max-h-[300px] overflow-y-auto overflow-x-hidden p-2 scrollbar-none">
                                 {Object.keys(grouped).length === 0 ? (
                                     <div className="py-6 text-center text-sm text-zinc-500">No results found.</div>
                                 ) : (

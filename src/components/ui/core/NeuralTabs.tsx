@@ -16,16 +16,25 @@ interface NeuralTabsProps {
     defaultTab?: string; // Uncontrolled
     className?: string;
     children?: React.ReactNode;
+    variant?: "segmented" | "pill" | "underline" | "glass";
 }
 
 // Simple internal hook for controlled/uncontrolled behavior
 function useControlled(controlled: any, defaultProp: any) {
     const [internal, setInternal] = useState(defaultProp);
     const isControlled = controlled !== undefined;
-    return [isControlled ? controlled : internal, isControlled ? () => { } : setInternal];
+    return [isControlled ? controlled : internal, isControlled ? (val: any) => { } : setInternal];
 }
 
-export function NeuralTabs({ tabs, activeTab: activeTabProp, onTabChange, defaultTab, className, children }: NeuralTabsProps) {
+export function NeuralTabs({
+    tabs,
+    activeTab: activeTabProp,
+    onTabChange,
+    defaultTab,
+    className,
+    children,
+    variant = "segmented"
+}: NeuralTabsProps) {
     const [internalActiveTab, setInternalActiveTab] = useControlled(activeTabProp, defaultTab || (tabs?.[0]?.id));
 
     const handleTabClick = (id: string) => {
@@ -35,39 +44,72 @@ export function NeuralTabs({ tabs, activeTab: activeTabProp, onTabChange, defaul
         onTabChange?.(id);
     };
 
-    // If children are passed (content), filter to show only active
-    // This is a simplified "Tabs" for demo. Usually huge libs separate List vs Content.
     const activeTabId = activeTabProp ?? internalActiveTab;
+
+    const variants = {
+        segmented: "flex space-x-1 rounded-xl bg-zinc-900/50 p-1 border border-zinc-800/50 backdrop-blur-sm w-fit",
+        pill: "flex space-x-1 w-fit",
+        underline: "flex space-x-6 border-b border-zinc-800 w-full",
+        glass: "flex space-x-1 rounded-full bg-white/5 p-1 border border-white/10 backdrop-blur-md w-fit"
+    };
 
     return (
         <div className={cn("space-y-4", className)}>
             {/* Tabs List */}
             {tabs && (
-                <div className="flex space-x-1 rounded-xl bg-zinc-900/50 p-1 border border-zinc-800/50 backdrop-blur-sm w-fit">
+                <div className={variants[variant]}>
                     {tabs.map((tab) => (
                         <button
                             key={tab.id}
                             onClick={() => handleTabClick(tab.id)}
                             className={cn(
-                                "relative rounded-lg px-3 py-1.5 text-sm font-medium outline-sky-400 transition focus-visible:outline-2",
+                                "relative transition-all duration-300 focus-visible:outline-none",
+                                variant === "segmented" && "rounded-lg px-3 py-1.5 text-sm font-medium",
+                                variant === "pill" && "rounded-full px-4 py-1.5 text-sm font-medium",
+                                variant === "underline" && "px-1 py-3 text-sm font-medium",
+                                variant === "glass" && "rounded-full px-4 py-2 text-sm font-medium",
                                 {
                                     "text-zinc-400 hover:text-zinc-200": activeTabId !== tab.id,
                                     "text-zinc-50": activeTabId === tab.id,
                                 }
                             )}
-                            style={{
-                                WebkitTapHighlightColor: "transparent",
-                            }}
+                            style={{ WebkitTapHighlightColor: "transparent" }}
                         >
-                            {activeTabId === tab.id && (
+                            {activeTabId === tab.id && (variant === "segmented" || variant === "glass") && (
                                 <motion.span
-                                    layoutId="bubble"
-                                    className="absolute inset-0 z-10 bg-zinc-800 shadow-sm border border-zinc-700 mixture-blend-overlay"
-                                    style={{ borderRadius: 8 }}
+                                    layoutId={`active-${variant}`}
+                                    className={cn(
+                                        "absolute inset-0 z-10",
+                                        variant === "segmented" ? "bg-zinc-800 border border-zinc-700 shadow-lg shadow-black/20" : "bg-white/10 border border-white/20 shadow-xl"
+                                    )}
+                                    style={{ borderRadius: variant === "segmented" ? 8 : 9999 }}
                                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                 />
                             )}
-                            <span className="relative z-20 font-sans">{tab.label}</span>
+
+                            {activeTabId === tab.id && variant === "pill" && (
+                                <motion.span
+                                    layoutId="active-pill"
+                                    className="absolute inset-0 z-10 bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.3)]"
+                                    style={{ borderRadius: 9999 }}
+                                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                />
+                            )}
+
+                            {activeTabId === tab.id && variant === "underline" && (
+                                <motion.span
+                                    layoutId="active-underline"
+                                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-500 z-10"
+                                    transition={{ type: "spring", bounce: 0, duration: 0.4 }}
+                                />
+                            )}
+
+                            <span className={cn(
+                                "relative z-20 font-sans transition-colors duration-300",
+                                activeTabId === tab.id && variant === "pill" && "text-black font-bold"
+                            )}>
+                                {tab.label}
+                            </span>
                         </button>
                     ))}
                 </div>

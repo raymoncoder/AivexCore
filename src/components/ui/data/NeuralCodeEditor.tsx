@@ -60,7 +60,7 @@ export const NeuralCodeEditor = ({
             </div>
 
             {/* Editor */}
-            <div className="relative flex-1 font-mono text-sm leading-relaxed overflow-auto max-h-[500px] scrollbar-thin scrollbar-thumb-zinc-800">
+            <div className="relative flex-1 font-mono text-sm leading-relaxed overflow-auto max-h-[500px]">
                 <Editor
                     value={code}
                     onValueChange={code => setCode(code)}

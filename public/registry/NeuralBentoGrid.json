@@ -1,0 +1,16 @@
+{
+  "name": "NeuralBentoGrid",
+  "type": "components:ui",
+  "dependencies": [
+    "react",
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "patterns/NeuralBentoGrid.tsx",
+      "content": "\"use client\";\r\n\r\nimport React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\nimport { motion } from \"framer-motion\";\r\n\r\ninterface BentoGridProps {\r\n    children: React.ReactNode;\r\n    className?: string;\r\n}\r\n\r\ninterface BentoCardProps {\r\n    children: React.ReactNode;\r\n    className?: string;\r\n    title?: string;\r\n    description?: string;\r\n    header?: React.ReactNode;\r\n    icon?: React.ReactNode;\r\n}\r\n\r\nexport const NeuralBentoGrid = ({ children, className }: BentoGridProps) => {\r\n    return (\r\n        <div className={cn(\r\n            \"grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto\",\r\n            className\r\n        )}>\r\n            {children}\r\n        </div>\r\n    );\r\n};\r\n\r\nexport const NeuralBentoCard = ({\r\n    children,\r\n    className,\r\n    title,\r\n    description,\r\n    header,\r\n    icon\r\n}: BentoCardProps) => {\r\n    return (\r\n        <motion.div\r\n            whileHover={{ y: -5 }}\r\n            transition={{ duration: 0.3 }}\r\n            className={cn(\r\n                \"group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-zinc-800/80 bg-zinc-950 p-6 shadow-2xl transition-all hover:border-zinc-700 hover:shadow-emerald-500/5\",\r\n                className\r\n            )}\r\n        >\r\n            <div className=\"absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity\" />\r\n\r\n            {header && (\r\n                <div className=\"mb-4 h-full min-h-[140px] flex items-center justify-center\">\r\n                    {header}\r\n                </div>\r\n            )}\r\n\r\n            <div className=\"z-10 mt-auto\">\r\n                <div className=\"flex items-center gap-2 mb-2\">\r\n                    {icon && <div className=\"text-emerald-500\">{icon}</div>}\r\n                    {title && <h3 className=\"text-sm font-bold text-white uppercase tracking-wider font-sans\">{title}</h3>}\r\n                </div>\r\n                {description && <p className=\"text-xs text-zinc-500 leading-relaxed max-w-[200px]\">{description}</p>}\r\n                <div className=\"mt-4\">\r\n                    {children}\r\n                </div>\r\n            </div>\r\n\r\n            {/* Decorative Corner */}\r\n            <div className=\"absolute top-0 right-0 w-8 h-8 pointer-events-none opacity-20\">\r\n                <div className=\"absolute top-4 right-4 w-[1px] h-4 bg-zinc-700\" />\r\n                <div className=\"absolute top-4 right-4 w-4 h-[1px] bg-zinc-700\" />\r\n            </div>\r\n        </motion.div>\r\n    );\r\n};\r\n"
+    }
+  ],
+  "category": "patterns"
+}

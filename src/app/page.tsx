@@ -6,7 +6,7 @@ import { NeuralButton } from "@/components/ui/core/NeuralButton";
 import { Navbar } from "@/components/layout/Navbar";
 import Link from "next/link";
 import { useRef } from "react";
-import { AnalyticsCard } from "@/components/ui/core/AnalyticsCard";
+import { AnalyticsCard } from "@/components/ui/patterns/AnalyticsCard";
 import { SwapCard } from "@/components/ui/crypto/SwapCard";
 import { AIChatInterface } from "@/components/ui/ai/AIChatInterface";
 import { NeuralBadge } from "@/components/ui/core/NeuralBadge";
@@ -65,49 +65,153 @@ const CodePreview = () => (
   </motion.div>
 );
 
-const WorkflowNode = ({ icon: Icon, title, description, status, delay = 0 }: any) => (
+const PipelineStep = ({ icon: Icon, title, description, tasks, status, index, delay = 0, isLast = false }: any) => (
   <motion.div
-    initial={{ opacity: 0, scale: 0.9 }}
-    whileInView={{ opacity: 1, scale: 1 }}
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    transition={{ duration: 0.5, delay }}
-    className="relative flex flex-col items-center group w-full"
+    transition={{ duration: 0.6, delay }}
+    className="relative flex flex-col items-center group flex-1 w-full lg:w-auto"
   >
-    <div className="w-20 h-20 rounded-3xl bg-zinc-900 border border-white/5 flex items-center justify-center relative z-10 group-hover:border-emerald-500/50 transition-all duration-500 shadow-2xl overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <Icon size={28} className="text-zinc-400 group-hover:text-emerald-400 transition-colors duration-500" />
-
-      {/* Animated Ring */}
-      {status === "active" && (
+    {/* Bridge connection to next step (Desktop) */}
+    {!isLast && (
+      <div className="hidden lg:block absolute top-10 left-[60%] right-[-40%] h-[1px] bg-gradient-to-r from-zinc-800 via-zinc-800 to-transparent z-0">
         <motion.div
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.1, 0.3] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute inset-0 rounded-3xl border-2 border-emerald-500/30"
+          animate={{ x: ["-100%", "200%"] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+          className="w-20 h-full bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent blur-[1px]"
         />
-      )}
+      </div>
+    )}
+
+    {/* Step Number Decorative */}
+    <div className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-[0.03] text-8xl font-black font-sans pointer-events-none group-hover:opacity-10 transition-opacity duration-700">
+      {index < 10 ? `0${index}` : index}
     </div>
 
-    <div className="mt-6 text-center">
-      <h4 className="text-sm font-bold text-white mb-1 tracking-tight font-sans uppercase">{title}</h4>
-      <p className="text-[11px] text-zinc-400 font-medium max-w-[120px] mx-auto leading-tight">{description}</p>
+    {/* The Node */}
+    <div className="relative z-10">
+      <div className="w-20 h-20 rounded-[2rem] bg-zinc-950 border border-zinc-800/80 flex items-center justify-center relative shadow-2xl group-hover:border-emerald-500/50 group-hover:shadow-[0_0_40px_rgba(16,185,129,0.1)] transition-all duration-700 overflow-hidden group-hover:-translate-y-1">
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+        {/* Pulsing Aura if Active */}
+        {status === "active" && (
+          <div className="absolute inset-[-20%] rounded-full bg-emerald-500/5 blur-2xl animate-pulse" />
+        )}
+
+        <Icon size={32} className="text-zinc-600 group-hover:text-emerald-400 transition-all duration-700 z-10 group-hover:scale-110" />
+      </div>
+
+      {/* Status Badge */}
+      <div className="absolute -top-2 -right-6 scale-90">
+        <div className={cn(
+          "px-2.5 py-1 rounded-full text-[9px] font-mono border backdrop-blur-xl flex items-center gap-2 shadow-2xl",
+          status === "active" ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400" : "bg-zinc-900/80 border-zinc-800 text-zinc-500"
+        )}>
+          {status === "active" && (
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+            </span>
+          )}
+          {status === "active" ? "ACTIVE" : "STANDBY"}
+        </div>
+      </div>
     </div>
 
-    <div className="absolute -top-2 -right-2 z-20">
-      <NeuralBadge status={status === "active" ? "success" : "default"} className="text-[9px] px-1.5 py-0">
-        {status === "active" ? "RUNNING" : "STANDBY"}
-      </NeuralBadge>
+    {/* Content */}
+    <div className="mt-8 text-center space-y-5">
+      <div className="space-y-2">
+        <h4 className="text-[13px] font-black text-white uppercase tracking-[0.25em] group-hover:text-emerald-400 transition-colors duration-500">{title}</h4>
+        <p className="text-[11px] text-zinc-500 font-medium leading-relaxed max-w-[160px] mx-auto group-hover:text-zinc-400 transition-colors duration-500">{description}</p>
+      </div>
+
+      {/* Interactive Task List */}
+      <div className="flex flex-col gap-1.5 items-center">
+        {tasks.map((task: string, i: number) => (
+          <div key={i} className="flex items-center gap-2 group/task opacity-40 group-hover:opacity-100 transition-all duration-500">
+            <div className="w-1 h-1 rounded-full bg-zinc-700 group-hover/task:bg-emerald-500 ring-4 ring-transparent group-hover/task:ring-emerald-500/10 transition-all" />
+            <span className="text-[9px] font-mono uppercase tracking-[0.1em] text-zinc-500 group-hover:text-zinc-300 transition-colors">{task}</span>
+          </div>
+        ))}
+      </div>
     </div>
   </motion.div>
 );
 
-const ConnectionLine = ({ delay = 0 }: { delay?: number }) => (
-  <div className="hidden lg:flex flex-1 h-[1px] bg-zinc-800 relative mx-4 top-10">
-    <motion.div
-      initial={{ left: "-10%" }}
-      animate={{ left: "110%" }}
-      transition={{ duration: 1.5, repeat: Infinity, delay }}
-      className="absolute top-[-1px] w-8 h-[3px] bg-gradient-to-r from-transparent via-emerald-500 to-transparent blur-sm"
-    />
+const CinematicDivider = () => (
+  <div className="relative w-full pt-4 pb-24 flex items-center justify-center overflow-hidden">
+    {/* Background Grid Accent */}
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#10b98105_0%,transparent_70%)] opacity-50" />
+
+    {/* Left Line with Pings */}
+    <div className="absolute left-0 right-[55%] h-[1px] bg-gradient-to-r from-transparent via-zinc-800 to-zinc-700 flex items-center justify-end">
+      <motion.div
+        animate={{ opacity: [0, 1, 0], x: [-10, -50] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+        className="w-1 h-1 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]"
+      />
+      <div className="w-1.5 h-1.5 rounded-full bg-zinc-800 border border-zinc-700 translate-x-1" />
+    </div>
+
+    {/* Right Line with Pings */}
+    <div className="absolute right-0 left-[55%] h-[1px] bg-gradient-to-l from-transparent via-zinc-800 to-zinc-700 flex items-center justify-start">
+      <div className="w-1.5 h-1.5 rounded-full bg-zinc-800 border border-zinc-700 -translate-x-1" />
+      <motion.div
+        animate={{ opacity: [0, 1, 0], x: [10, 50] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeOut", delay: 1 }}
+        className="w-1 h-1 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]"
+      />
+    </div>
+
+    {/* Center Tech Hub */}
+    <div className="relative z-10 flex flex-col items-center gap-3">
+      <div className="relative">
+        <div className="absolute inset-0 bg-emerald-500/20 blur-xl rounded-full scale-150 animate-pulse" />
+        <div className="w-12 h-12 rounded-xl bg-zinc-950 border border-zinc-800 flex items-center justify-center shadow-2xl relative">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+            className="text-emerald-500/50"
+          >
+            <Cpu size={24} />
+          </motion.div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-1 h-1 bg-emerald-400 rounded-full animate-ping" />
+          </div>
+        </div>
+      </div>
+
+      <div className="flex flex-col items-center">
+        <span className="text-[10px] font-mono text-emerald-400 font-bold tracking-[0.4em] uppercase">
+          UI Infrastructure
+        </span>
+        <div className="items-center gap-2 mt-1 hidden sm:flex">
+          <span className="w-8 h-[1px] bg-emerald-500/20" />
+          <span className="text-[8px] font-mono text-zinc-600 uppercase tracking-widest animate-pulse">
+            Deploying Component Registry...
+          </span>
+          <span className="w-8 h-[1px] bg-emerald-500/20" />
+        </div>
+      </div>
+    </div>
+
+    {/* Floating Data Bits */}
+    {[...Array(4)].map((_, i) => (
+      <motion.div
+        key={i}
+        initial={{ opacity: 0, y: 0 }}
+        animate={{
+          opacity: [0, 0.5, 0],
+          y: i % 2 === 0 ? [20, -20] : [-20, 20],
+          x: i % 2 === 0 ? [100, 120] : [-100, -120]
+        }}
+        transition={{ duration: 4, repeat: Infinity, delay: i * 0.5 }}
+        className="absolute text-[8px] font-mono text-emerald-500/30 select-none"
+      >
+        {["bc21", "ef8b", "a4d2", "19c3"][i]}
+      </motion.div>
+    ))}
   </div>
 );
 
@@ -177,7 +281,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row justify-center gap-5 items-center mb-20"
+            className="flex flex-col sm:flex-row justify-center gap-5 items-center mb-8"
           >
             <Link href="/docs">
               <NeuralButton size="lg" className="rounded-full px-10 py-7 text-lg bg-emerald-500 hover:bg-emerald-400 text-zinc-950 shadow-[0_0_50px_-10px_rgba(16,185,129,0.5)] hover:shadow-[0_0_80px_-20px_rgba(16,185,129,0.7)] transition-all font-bold tracking-tight group border-none">
@@ -195,6 +299,8 @@ export default function Home() {
           </motion.div>
         </div>
 
+        <CinematicDivider />
+
         {/* Developer Workflow Section */}
         <section className="relative w-full z-10 mb-40 max-w-[1400px]">
           <div className="text-center mb-24">
@@ -204,46 +310,49 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="relative flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-0 px-12">
+          <div className="relative flex flex-col lg:flex-row items-center justify-between gap-20 lg:gap-8 px-6 lg:px-12">
             {/* Background Connection Path (Mobile) */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-zinc-800 lg:hidden -translate-x-1/2" />
+            <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-zinc-800 to-transparent lg:hidden -translate-x-1/2" />
 
-            <WorkflowNode
+            <PipelineStep
+              index={1}
               icon={Layout}
               title="Primitives"
-              description="Atomic base with deep customization."
+              description="A library of reusable, low-level UI elements."
+              tasks={["Tokens", "Layout", "Typography"]}
               status="active"
               delay={0.1}
             />
 
-            <ConnectionLine delay={0} />
-
-            <WorkflowNode
+            <PipelineStep
+              index={2}
               icon={Box}
               title="Components"
-              description="Interactive blocks for data & AI."
+              description="Interactive blocks for data visualization & AI."
+              tasks={["Charts", "Chat UI", "Forms"]}
               status="active"
               delay={0.3}
             />
 
-            <ConnectionLine delay={0.5} />
-
-            <WorkflowNode
+            <PipelineStep
+              index={3}
               icon={Sparkles}
               title="Aesthetics"
-              description="Premium glows & glassmorphism."
+              description="High-end cinematic effects and glassmorphism."
+              tasks={["Glows", "Smooth Curves", "Glass"]}
               status="active"
               delay={0.5}
             />
 
-            <ConnectionLine delay={1} />
-
-            <WorkflowNode
+            <PipelineStep
+              index={4}
               icon={Rocket}
               title="Production"
-              description="Optimized for speed and accessibility."
+              description="Optimized for performance and accessibility."
+              tasks={["GPU Sync", "Edge Ready", "A11y"]}
               status="active"
               delay={0.7}
+              isLast={true}
             />
           </div>
 
@@ -391,8 +500,8 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="relative border-t border-white/5 bg-[#050505] pt-24 pb-12 px-6 z-10">
-        <div className="max-w-[1400px] mx-auto flex flex-col items-center">
+      <footer className="relative border-t border-white/5 bg-[#050505] pt-24 pb-12 z-10">
+        <div className="w-full max-w-[1400px] mx-auto px-6">
           <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-12 mb-20">
             <div className="col-span-2 md:col-span-1">
               <div className="flex items-center gap-3 mb-6">

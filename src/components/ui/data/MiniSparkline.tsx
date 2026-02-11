@@ -38,25 +38,39 @@ export const MiniSparkline = ({
         y: height - ((d.value - min) / range) * height
     }));
 
-    const pathData = `M ${points.map(p => `${p.x},${p.y}`).join(" L ")}`;
+    // Generate smoothed path helper
+    const stepX = width / (data.length - 1);
+    const generatePath = (isClosed = false) => {
+        let path = "";
+        points.forEach((p, i) => {
+            if (i === 0) {
+                path = `M ${p.x},${p.y}`;
+            } else {
+                const prev = points[i - 1];
+                const cp1x = prev.x + (p.x - prev.x) / 2;
+                path += ` C ${cp1x},${prev.y} ${cp1x},${p.y} ${p.x},${p.y}`;
+            }
+        });
+        if (isClosed) {
+            path += ` L ${width},${height} L 0,${height} Z`;
+        }
+        return path;
+    };
 
-    // Create an area path that goes to the bottom
-    const areaData = `${pathData} L ${width},${height} L 0,${height} Z`;
+    const linePath = generatePath();
+    const areaPath = generatePath(true);
 
     return (
-        <div className={cn("relative inline-block", className)} style={{ width, height }}>
-            <svg width={width} height={height} className="overflow-visible">
+        <div className={cn("relative inline-block group/spark", className)} style={{ width, height }}>
+            <svg width={width} height={height} className="overflow-visible" preserveAspectRatio="none">
                 <defs>
-                    <linearGradient id="sparkline-gradient" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor={color} stopOpacity="0.2" />
+                    <linearGradient id={`spark-grad-${color}`} x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor={color} stopOpacity="0.3" />
                         <stop offset="100%" stopColor={color} stopOpacity="0" />
                     </linearGradient>
-                    <filter id="glow">
-                        <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
-                        <feMerge>
-                            <feMergeNode in="coloredBlur" />
-                            <feMergeNode in="SourceGraphic" />
-                        </feMerge>
+                    <filter id={`spark-glow-${color}`} x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="1.5" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
                     </filter>
                 </defs>
 
@@ -64,35 +78,38 @@ export const MiniSparkline = ({
                 <motion.path
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 1 }}
-                    d={areaData}
-                    fill="url(#sparkline-gradient)"
+                    transition={{ duration: 0.8 }}
+                    d={areaPath}
+                    fill={`url(#spark-grad-${color})`}
                 />
 
-                {/* The line itself */}
+                {/* The line itself - Smoothed */}
                 <motion.path
                     initial={{ pathLength: 0, opacity: 0 }}
                     animate={{ pathLength: 1, opacity: 1 }}
-                    transition={{ duration: 1.5, ease: "easeOut" }}
-                    d={pathData}
+                    transition={{ duration: 1.2, ease: "easeInOut" }}
+                    d={linePath}
                     fill="transparent"
                     stroke={color}
-                    strokeWidth="2"
+                    strokeWidth="1.2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    style={{ filter: showGlow ? "url(#glow)" : "none" }}
+                    filter={showGlow ? `url(#spark-glow-${color})` : "none"}
+                    className="will-change-[pathLength]"
                 />
 
-                {/* Last point dot */}
+                {/* End point Highlight */}
                 <motion.circle
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    transition={{ delay: 1.2, duration: 0.3 }}
+                    transition={{ delay: 1, duration: 0.3 }}
                     cx={points[points.length - 1].x}
                     cy={points[points.length - 1].y}
-                    r="3"
-                    fill={color}
-                    className="shadow-sm"
+                    r="1.8"
+                    fill="#064e3b"
+                    stroke={color}
+                    strokeWidth="0.8"
+                    className="filter drop-shadow-[0_0_3px_rgba(0,0,0,0.5)]"
                 />
             </svg>
         </div>

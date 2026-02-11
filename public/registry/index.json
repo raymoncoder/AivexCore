@@ -1,0 +1,487 @@
+[
+  {
+    "name": "AgentThoughtFlow",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "ai"
+  },
+  {
+    "name": "AIChatInterface",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "NeuralButton",
+      "NeuralBadge",
+      "NeuralTextarea",
+      "NeuralSelect"
+    ],
+    "category": "ai"
+  },
+  {
+    "name": "ModelParameters",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "NeuralSlider",
+      "NeuralSwitch"
+    ],
+    "category": "ai"
+  },
+  {
+    "name": "StepProcess",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "ai"
+  },
+  {
+    "name": "StreamingText",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "ai"
+  },
+  {
+    "name": "CustomScrollBar",
+    "dependencies": [
+      "react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "DragDropCard",
+    "dependencies": [
+      "react",
+      "lucide-react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "FileUploadZone",
+    "dependencies": [
+      "react",
+      "lucide-react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralAccordion",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralAlert",
+    "dependencies": [
+      "react",
+      "lucide-react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralAvatar",
+    "dependencies": [
+      "react",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralBadge",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralBreadcrumb",
+    "dependencies": [
+      "react",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralButton",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralCard",
+    "dependencies": [
+      "react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralCheckbox",
+    "dependencies": [
+      "react",
+      "@radix-ui/react-checkbox",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralDatePicker",
+    "dependencies": [
+      "react",
+      "lucide-react",
+      "framer-motion",
+      "date-fns"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralDialog",
+    "dependencies": [
+      "react",
+      "@radix-ui/react-dialog",
+      "lucide-react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralInput",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralLoader",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralLoaderVariants",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralNumberInput",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralOTPInput",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralPasswordInput",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralProgress",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralSearchInput",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralSelect",
+    "dependencies": [
+      "react",
+      "lucide-react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralSkeleton",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralSlider",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralSwitch",
+    "dependencies": [
+      "react",
+      "@radix-ui/react-switch"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralTabs",
+    "dependencies": [
+      "framer-motion",
+      "react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralTextarea",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "NeuralTooltip",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AddressBadge",
+    "dependencies": [
+      "react",
+      "lucide-react",
+      "framer-motion"
+    ],
+    "registryDependencies": [
+      "NeuralButton"
+    ],
+    "category": "crypto"
+  },
+  {
+    "name": "PriceMetric",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "crypto"
+  },
+  {
+    "name": "SwapCard",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "NeuralButton"
+    ],
+    "category": "crypto"
+  },
+  {
+    "name": "WalletConnectModal",
+    "dependencies": [
+      "react",
+      "lucide-react",
+      "framer-motion"
+    ],
+    "registryDependencies": [
+      "NeuralButton",
+      "NeuralBadge",
+      "NeuralInput"
+    ],
+    "category": "crypto"
+  },
+  {
+    "name": "CommandPalette",
+    "dependencies": [
+      "react",
+      "lucide-react",
+      "framer-motion"
+    ],
+    "registryDependencies": [
+      "NeuralInput"
+    ],
+    "category": "data"
+  },
+  {
+    "name": "MiniSparkline",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "data"
+  },
+  {
+    "name": "NeuralCodeEditor",
+    "dependencies": [
+      "react",
+      "react-simple-code-editor",
+      "prismjs",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "data"
+  },
+  {
+    "name": "NeuralDataTable",
+    "dependencies": [
+      "react",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "NeuralButton",
+      "NeuralInput",
+      "NeuralBadge",
+      "NeuralCheckbox"
+    ],
+    "category": "data"
+  },
+  {
+    "name": "NeuralExportButton",
+    "dependencies": [
+      "react",
+      "lucide-react",
+      "framer-motion"
+    ],
+    "registryDependencies": [
+      "NeuralButton"
+    ],
+    "category": "data"
+  },
+  {
+    "name": "RadarChart",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "data"
+  },
+  {
+    "name": "Magnetic",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "ex"
+  },
+  {
+    "name": "NeuralCommandBar",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "ex"
+  },
+  {
+    "name": "SpotlightCard",
+    "dependencies": [
+      "react"
+    ],
+    "registryDependencies": [],
+    "category": "ex"
+  },
+  {
+    "name": "AnalyticsCard",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "NeuralCard",
+      "NeuralButton",
+      "NeuralBadge"
+    ],
+    "category": "patterns"
+  },
+  {
+    "name": "NeuralBentoGrid",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "patterns"
+  }
+]

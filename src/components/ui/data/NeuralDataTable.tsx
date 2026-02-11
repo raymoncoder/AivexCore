@@ -88,7 +88,7 @@ export const NeuralDataTable = <T extends { id: string | number }>({
             </div>
 
             {/* Table */}
-            <div className="border border-zinc-800 rounded-xl overflow-hidden bg-zinc-950/50 backdrop-blur-sm">
+            <div className="border border-zinc-800 rounded-xl overflow-x-auto bg-zinc-950/50 backdrop-blur-sm">
                 <table className="w-full text-sm text-left font-sans">
                     <thead className="bg-zinc-900/50 text-zinc-400 font-medium border-b border-zinc-800">
                         <tr>
@@ -144,7 +144,7 @@ export const NeuralDataTable = <T extends { id: string | number }>({
             {/* Pagination */}
             <div className="flex items-center justify-between text-xs text-zinc-500 font-sans">
                 <div>
-                    Showing {startIndex + 1} to {Math.min(endIndex, filteredData.length)} of {filteredData.length} entries
+                    Showing <span className="font-mono text-zinc-300">{startIndex + 1}</span> to <span className="font-mono text-zinc-300">{Math.min(endIndex, filteredData.length)}</span> of <span className="font-mono text-zinc-300">{filteredData.length}</span> entries
                 </div>
                 <div className="flex items-center gap-2">
                     <button
@@ -154,7 +154,7 @@ export const NeuralDataTable = <T extends { id: string | number }>({
                     >
                         <ChevronLeft size={16} />
                     </button>
-                    <span className="text-zinc-300">Page {currentPage} of {totalPages || 1}</span>
+                    <span className="text-zinc-300">Page <span className="font-mono text-white">{currentPage}</span> of <span className="font-mono text-white">{totalPages || 1}</span></span>
                     <button
                         disabled={currentPage === totalPages}
                         onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}

@@ -36,14 +36,14 @@ export const SwapCard = () => {
                 <div className="p-4 bg-zinc-900/50 rounded-xl border border-zinc-800 transition-colors hover:border-zinc-700 group focus-within:border-zinc-700 focus-within:ring-1 focus-within:ring-zinc-700/50">
                     <div className="flex justify-between text-xs text-zinc-500 mb-2 font-medium">
                         <span>Pay</span>
-                        <span className="flex items-center gap-1 text-zinc-400 hover:text-zinc-300 cursor-pointer transition-colors"><Wallet size={12} /> 2.45 ETH</span>
+                        <span className="flex items-center gap-1 text-zinc-400 hover:text-zinc-300 cursor-pointer transition-colors font-mono"><Wallet size={12} /> 2.45 ETH</span>
                     </div>
                     <div className="flex justify-between items-center gap-4">
                         <input
                             type="number"
                             value={amountIn}
                             onChange={(e) => setAmountIn(e.target.value)}
-                            className="w-full bg-transparent text-3xl font-mono font-semibold text-zinc-100 placeholder:text-zinc-700 focus:outline-none tracking-tight"
+                            className="w-full bg-transparent text-3xl font-mono font-semibold text-zinc-100 placeholder:text-zinc-700 focus:outline-none"
                             placeholder="0.0"
                         />
                         <button className="shrink-0 flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 px-3 py-1.5 rounded-full font-medium transition-colors border border-zinc-700 text-sm shadow-sm hover:shadow text-zinc-100">
@@ -73,10 +73,10 @@ export const SwapCard = () => {
                 <div className="p-4 bg-zinc-900/50 rounded-xl border border-zinc-800 transition-colors hover:border-zinc-700 group focus-within:border-zinc-700 focus-within:ring-1 focus-within:ring-zinc-700/50">
                     <div className="flex justify-between text-xs text-zinc-500 mb-2 font-medium">
                         <span>Receive</span>
-                        <span className="flex items-center gap-1 text-zinc-400 hover:text-zinc-300 cursor-pointer transition-colors"><Wallet size={12} /> 0.00 USDC</span>
+                        <span className="flex items-center gap-1 text-zinc-400 hover:text-zinc-300 cursor-pointer transition-colors font-mono"><Wallet size={12} /> 0.00 USDC</span>
                     </div>
                     <div className="flex justify-between items-center gap-4">
-                        <div className="w-full bg-transparent text-3xl font-mono font-semibold text-zinc-100 tracking-tight">
+                        <div className="w-full bg-transparent text-3xl font-mono font-semibold text-zinc-100 uppercase">
                             {(parseFloat(amountIn || "0") * exchangeRate).toLocaleString()}
                         </div>
                         <button className="shrink-0 flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 px-3 py-1.5 rounded-full font-medium transition-colors border border-zinc-700 text-sm shadow-sm hover:shadow text-zinc-100">
@@ -102,7 +102,7 @@ export const SwapCard = () => {
                         <Info size={12} />
                         <span>1 ETH = 3,500.25 USDC</span>
                     </button>
-                    <span className="flex items-center gap-1 text-zinc-500">
+                    <span className="flex items-center gap-1 text-zinc-500 font-mono">
                         <span className="w-1.5 h-1.5 bg-zinc-500 rounded-full"></span>
                         $4.25 network fee
                     </span>

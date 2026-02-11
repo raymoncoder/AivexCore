@@ -83,9 +83,11 @@ export const WalletConnectModal = ({ isOpen, onClose, onConnect }: WalletConnect
                                             >
                                                 <div className="flex items-center gap-4">
                                                     {wallet.icon}
-                                                    <span className="font-semibold text-zinc-300 group-hover:text-zinc-100 font-sans">{wallet.name}</span>
+                                                    <div className="flex items-center gap-2">
+                                                        <span className="font-semibold text-zinc-300 group-hover:text-zinc-100 font-sans">{wallet.name}</span>
+                                                        {wallet.id === "metamask" && <NeuralBadge status="warning" className="text-[10px] py-0.5 px-1.5 h-auto">Popular</NeuralBadge>}
+                                                    </div>
                                                 </div>
-                                                {wallet.id === "metamask" && <NeuralBadge status="warning" className="text-[10px]">Popular</NeuralBadge>}
                                                 <div className="text-zinc-600 group-hover:text-emerald-500 transition-colors">
                                                     <ChevronRight size={18} />
                                                 </div>

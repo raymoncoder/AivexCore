@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { inter } from "./fonts";
+import { inter, jetbrains } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${inter.className} ${inter.variable} font-sans antialiased`}
+        className={`${inter.className} ${inter.variable} ${jetbrains.variable} font-sans antialiased`}
       >
         {children}
       </body>

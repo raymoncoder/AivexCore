@@ -1,0 +1,15 @@
+{
+  "name": "NeuralCard",
+  "type": "components:ui",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "core/NeuralCard.tsx",
+      "content": "\"use client\";\r\n\r\nimport * as React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nconst NeuralCard = React.forwardRef<\r\n    HTMLDivElement,\r\n    React.HTMLAttributes<HTMLDivElement>\r\n>(({ className, ...props }, ref) => (\r\n    <div\r\n        ref={ref}\r\n        className={cn(\r\n            \"rounded-xl border border-zinc-800 bg-zinc-950/40 text-zinc-100 shadow-xl backdrop-blur-xl relative overflow-hidden\",\r\n            \"before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent before:pointer-events-none before:z-[-1]\",\r\n            className\r\n        )}\r\n        {...props}\r\n    />\r\n));\r\nNeuralCard.displayName = \"NeuralCard\";\r\n\r\nconst NeuralCardHeader = React.forwardRef<\r\n    HTMLDivElement,\r\n    React.HTMLAttributes<HTMLDivElement>\r\n>(({ className, ...props }, ref) => (\r\n    <div\r\n        ref={ref}\r\n        className={cn(\"flex flex-col space-y-1.5 p-6\", className)}\r\n        {...props}\r\n    />\r\n));\r\nNeuralCardHeader.displayName = \"NeuralCardHeader\";\r\n\r\nconst NeuralCardTitle = React.forwardRef<\r\n    HTMLParagraphElement,\r\n    React.HTMLAttributes<HTMLHeadingElement>\r\n>(({ className, ...props }, ref) => (\r\n    <h3\r\n        ref={ref}\r\n        className={cn(\r\n            \"text-lg font-semibold leading-none tracking-tight font-sans\",\r\n            className\r\n        )}\r\n        {...props}\r\n    />\r\n));\r\nNeuralCardTitle.displayName = \"NeuralCardTitle\";\r\n\r\nconst NeuralCardDescription = React.forwardRef<\r\n    HTMLParagraphElement,\r\n    React.HTMLAttributes<HTMLParagraphElement>\r\n>(({ className, ...props }, ref) => (\r\n    <p\r\n        ref={ref}\r\n        className={cn(\"text-sm text-zinc-400 font-sans\", className)}\r\n        {...props}\r\n    />\r\n));\r\nNeuralCardDescription.displayName = \"NeuralCardDescription\";\r\n\r\nconst NeuralCardContent = React.forwardRef<\r\n    HTMLDivElement,\r\n    React.HTMLAttributes<HTMLDivElement>\r\n>(({ className, ...props }, ref) => (\r\n    <div ref={ref} className={cn(\"p-6 pt-0\", className)} {...props} />\r\n));\r\nNeuralCardContent.displayName = \"NeuralCardContent\";\r\n\r\nconst NeuralCardFooter = React.forwardRef<\r\n    HTMLDivElement,\r\n    React.HTMLAttributes<HTMLDivElement>\r\n>(({ className, ...props }, ref) => (\r\n    <div\r\n        ref={ref}\r\n        className={cn(\"flex items-center p-6 pt-0\", className)}\r\n        {...props}\r\n    />\r\n));\r\nNeuralCardFooter.displayName = \"NeuralCardFooter\";\r\n\r\nexport { NeuralCard, NeuralCardHeader, NeuralCardTitle, NeuralCardDescription, NeuralCardContent, NeuralCardFooter };\r\n"
+    }
+  ],
+  "category": "core"
+}
