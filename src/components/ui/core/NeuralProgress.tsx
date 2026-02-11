@@ -72,7 +72,7 @@ export const NeuralProgress = ({
             </div>
             {showValue && (
                 <div className="flex justify-between items-center px-1">
-                    <span className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold font-onest">Status</span>
+                    <span className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold font-sans">Status</span>
                     <span className="text-[10px] font-mono text-zinc-300 bg-zinc-900 px-1.5 py-0.5 rounded border border-white/5 shadow-sm">
                         {Math.round(percentage)}%
                     </span>

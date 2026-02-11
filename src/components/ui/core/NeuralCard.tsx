@@ -38,7 +38,7 @@ const NeuralCardTitle = React.forwardRef<
     <h3
         ref={ref}
         className={cn(
-            "text-lg font-semibold leading-none tracking-tight font-onest",
+            "text-lg font-semibold leading-none tracking-tight font-sans",
             className
         )}
         {...props}
@@ -52,7 +52,7 @@ const NeuralCardDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
     <p
         ref={ref}
-        className={cn("text-sm text-zinc-400 font-onest", className)}
+        className={cn("text-sm text-zinc-400 font-sans", className)}
         {...props}
     />
 ));

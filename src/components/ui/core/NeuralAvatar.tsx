@@ -51,7 +51,7 @@ export const NeuralAvatar = ({
                         onError={() => setHasError(true)}
                     />
                 ) : (
-                    <div className="flex h-full w-full items-center justify-center rounded-full bg-zinc-800 text-zinc-400 font-medium font-onest">
+                    <div className="flex h-full w-full items-center justify-center rounded-full bg-zinc-800 text-zinc-400 font-medium font-sans">
                         {fallback ? fallback.slice(0, 2).toUpperCase() : <User size={16} />}
                     </div>
                 )}

@@ -50,7 +50,7 @@ export const NeuralSelect = ({ options, onValueChange, defaultValue, placeholder
                 onClick={() => !disabled && setIsOpen(!isOpen)}
                 disabled={disabled}
                 className={cn(
-                    "w-full flex items-center justify-between px-3 py-2 text-sm bg-zinc-900/50 border border-zinc-800/50 rounded-lg shadow-sm transition-all text-zinc-300 font-onest backdrop-blur-sm",
+                    "w-full flex items-center justify-between px-3 py-2 text-sm bg-zinc-900/50 border border-zinc-800/50 rounded-lg shadow-sm transition-all text-zinc-300 font-sans backdrop-blur-sm",
                     "hover:border-zinc-700/50 hover:bg-zinc-800/60",
                     "focus:outline-none focus:ring-2 focus:ring-zinc-700/30",
                     disabled && "opacity-50 cursor-not-allowed",
@@ -81,7 +81,7 @@ export const NeuralSelect = ({ options, onValueChange, defaultValue, placeholder
                                 key={option.value}
                                 onClick={() => handleSelect(option)}
                                 className={cn(
-                                    "flex items-center justify-between px-3 py-2 text-sm cursor-pointer transition-colors font-onest",
+                                    "flex items-center justify-between px-3 py-2 text-sm cursor-pointer transition-colors font-sans",
                                     "hover:bg-zinc-800 hover:text-zinc-100",
                                     selected?.value === option.value ? "bg-zinc-800/50 text-zinc-50 font-medium" : "text-zinc-400"
                                 )}

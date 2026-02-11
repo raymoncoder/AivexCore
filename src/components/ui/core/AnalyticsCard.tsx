@@ -42,7 +42,7 @@ export const AnalyticsCard = () => {
                     <button
                         onClick={() => setView("weekly")}
                         className={cn(
-                            "px-2 py-1 rounded-md text-xs font-medium transition-colors font-onest",
+                            "px-2 py-1 rounded-md text-xs font-medium transition-colors font-sans",
                             view === "weekly" ? "bg-zinc-800 text-zinc-100" : "text-zinc-500 hover:text-zinc-300"
                         )}
                     >
@@ -51,7 +51,7 @@ export const AnalyticsCard = () => {
                     <button
                         onClick={() => setView("monthly")}
                         className={cn(
-                            "px-2 py-1 rounded-md text-xs font-medium transition-colors font-onest",
+                            "px-2 py-1 rounded-md text-xs font-medium transition-colors font-sans",
                             view === "monthly" ? "bg-zinc-800 text-zinc-100" : "text-zinc-500 hover:text-zinc-300"
                         )}
                     >
@@ -112,7 +112,7 @@ export const AnalyticsCard = () => {
 
                 {/* Recent Transactions List */}
                 <div className="space-y-3 pt-2">
-                    <h4 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider font-onest">Recent Activity</h4>
+                    <h4 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider font-sans">Recent Activity</h4>
                     {[1, 2, 3].map((i) => (
                         <div key={i} className="flex items-center justify-between p-2 rounded-lg hover:bg-zinc-900/50 transition-colors group/item">
                             <div className="flex items-center gap-3">
@@ -123,7 +123,7 @@ export const AnalyticsCard = () => {
                                     {i === 2 ? <ArrowDownRight size={14} /> : <ArrowUpRight size={14} />}
                                 </div>
                                 <div>
-                                    <p className="text-sm font-medium text-zinc-200 font-onest">
+                                    <p className="text-sm font-medium text-zinc-200 font-sans">
                                         {i === 2 ? "AWS Infrastructure" : i === 1 ? "Stripe Settlement" : "Enterprise Plan"}
                                     </p>
                                     <p className="text-xs text-zinc-500 font-mono">Today, 2:34 PM</p>

@@ -133,7 +133,7 @@ export const AIChatInterface = () => {
                                 msg.role === "user" ? "items-end" : "items-start"
                             )}>
                                 <div className="flex items-center gap-2 px-1">
-                                    <span className="font-medium text-zinc-400 text-xs font-onest">
+                                    <span className="font-medium text-zinc-400 text-xs font-sans">
                                         {msg.role === "user" ? "You" : "Neural AI"}
                                     </span>
                                     <span className="text-[10px] text-zinc-600 font-mono">
@@ -142,7 +142,7 @@ export const AIChatInterface = () => {
                                 </div>
 
                                 <div className={cn(
-                                    "px-4 py-3 rounded-2xl shadow-sm border text-sm leading-relaxed font-onest break-words",
+                                    "px-4 py-3 rounded-2xl shadow-sm border text-sm leading-relaxed font-sans break-words",
                                     msg.role === "user"
                                         ? "bg-zinc-800 border-zinc-700 text-zinc-50 rounded-tr-sm"
                                         : "bg-zinc-900 border-zinc-800 text-zinc-300 rounded-tl-sm"
@@ -164,7 +164,7 @@ export const AIChatInterface = () => {
                             <Bot size={14} />
                         </div>
                         <div>
-                            <div className="flex items-center gap-1.5 font-medium text-xs mb-1 px-1 font-onest text-emerald-400/80 tracking-wide">
+                            <div className="flex items-center gap-1.5 font-medium text-xs mb-1 px-1 font-sans text-emerald-400/80 tracking-wide">
                                 <Sparkles size={10} />
                                 Thinking...
                             </div>
@@ -196,7 +196,7 @@ export const AIChatInterface = () => {
                             }
                         }}
                         placeholder="Message Neural..."
-                        className="w-full bg-transparent text-zinc-200 placeholder:text-zinc-600 px-2 py-2.5 focus:outline-none resize-none min-h-[44px] max-h-[120px] scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-transparent text-sm font-onest"
+                        className="w-full bg-transparent text-zinc-200 placeholder:text-zinc-600 px-2 py-2.5 focus:outline-none resize-none min-h-[44px] max-h-[120px] scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-transparent text-sm font-sans"
                         rows={1}
                     />
 
@@ -215,7 +215,7 @@ export const AIChatInterface = () => {
                     </NeuralButton>
                 </div>
                 <div className="text-center mt-3 flex justify-center items-center gap-2">
-                    <p className="text-[10px] text-zinc-600 font-medium tracking-wide font-onest">
+                    <p className="text-[10px] text-zinc-600 font-medium tracking-wide font-sans">
                         Powered by Neural v4 • AI can be inaccurate
                     </p>
                 </div>

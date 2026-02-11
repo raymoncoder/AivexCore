@@ -14,7 +14,7 @@ export const NeuralTextarea = React.forwardRef<HTMLTextAreaElement, NeuralTextar
         return (
             <div className={cn("relative group flex flex-col gap-1.5", wrapperClassName)}>
                 {label && (
-                    <label className="text-xs font-medium text-zinc-400 font-onest group-focus-within:text-zinc-50 transition-colors">
+                    <label className="text-xs font-medium text-zinc-400 font-sans group-focus-within:text-zinc-50 transition-colors">
                         {label}
                     </label>
                 )}
@@ -25,7 +25,7 @@ export const NeuralTextarea = React.forwardRef<HTMLTextAreaElement, NeuralTextar
                     <textarea
                         ref={ref}
                         className={cn(
-                            "w-full bg-transparent px-3 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 min-h-[80px] resize-none font-onest scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-transparent rounded-xl",
+                            "w-full bg-transparent px-3 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 min-h-[80px] resize-none font-sans scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-transparent rounded-xl",
                             className
                         )}
                         {...props}

@@ -37,12 +37,12 @@ const NeuralCheckbox = React.forwardRef<
         {(label || description) && (
             <div className="flex flex-col gap-0.5">
                 {label && (
-                    <span className="text-sm font-medium font-onest transition-colors text-zinc-400 group-hover:text-zinc-300 peer-data-[state=checked]:text-zinc-100">
+                    <span className="text-sm font-medium font-sans transition-colors text-zinc-400 group-hover:text-zinc-300 peer-data-[state=checked]:text-zinc-100">
                         {label}
                     </span>
                 )}
                 {description && (
-                    <span className="text-xs text-zinc-500 font-onest">{description}</span>
+                    <span className="text-xs text-zinc-500 font-sans">{description}</span>
                 )}
             </div>
         )}

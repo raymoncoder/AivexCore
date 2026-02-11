@@ -12,7 +12,7 @@ interface NeuralBreadcrumbProps {
 
 export const NeuralBreadcrumb = ({ items, className, separator = <ChevronRight size={14} /> }: NeuralBreadcrumbProps) => {
     return (
-        <nav aria-label="Breadcrumb" className={cn("flex items-center space-x-2 text-sm text-zinc-500 font-onest", className)}>
+        <nav aria-label="Breadcrumb" className={cn("flex items-center space-x-2 text-sm text-zinc-500 font-sans", className)}>
             <a href="/" className="hover:text-zinc-100 transition-colors flex items-center">
                 <Home size={14} />
             </a>

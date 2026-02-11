@@ -89,7 +89,7 @@ export const NeuralDataTable = <T extends { id: string | number }>({
 
             {/* Table */}
             <div className="border border-zinc-800 rounded-xl overflow-hidden bg-zinc-950/50 backdrop-blur-sm">
-                <table className="w-full text-sm text-left font-onest">
+                <table className="w-full text-sm text-left font-sans">
                     <thead className="bg-zinc-900/50 text-zinc-400 font-medium border-b border-zinc-800">
                         <tr>
                             {selectable && (
@@ -142,7 +142,7 @@ export const NeuralDataTable = <T extends { id: string | number }>({
             </div>
 
             {/* Pagination */}
-            <div className="flex items-center justify-between text-xs text-zinc-500 font-onest">
+            <div className="flex items-center justify-between text-xs text-zinc-500 font-sans">
                 <div>
                     Showing {startIndex + 1} to {Math.min(endIndex, filteredData.length)} of {filteredData.length} entries
                 </div>

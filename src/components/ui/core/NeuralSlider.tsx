@@ -38,7 +38,7 @@ export const NeuralSlider = React.forwardRef<HTMLInputElement, NeuralSliderProps
         return (
             <div className={cn("flex flex-col gap-2 w-full select-none group", className)}>
                 {label && (
-                    <div className="flex justify-between items-center text-xs text-zinc-400 font-medium font-onest">
+                    <div className="flex justify-between items-center text-xs text-zinc-400 font-medium font-sans">
                         <span>{label}</span>
                         <span className="font-mono text-zinc-100">{internalValue}</span>
                     </div>

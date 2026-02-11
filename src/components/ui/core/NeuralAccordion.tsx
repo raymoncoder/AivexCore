@@ -23,7 +23,7 @@ const NeuralAccordionItem = ({ value, title, children, isOpen, onClick }: Neural
                     isOpen ? "text-emerald-400" : "text-zinc-300 hover:text-zinc-100"
                 )}
             >
-                <span className="font-medium font-onest text-sm">{title}</span>
+                <span className="font-medium font-sans text-sm">{title}</span>
                 <ChevronDown
                     size={16}
                     className={cn(
@@ -40,7 +40,7 @@ const NeuralAccordionItem = ({ value, title, children, isOpen, onClick }: Neural
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
                     >
-                        <div className="pb-4 text-sm text-zinc-400 font-onest leading-relaxed">
+                        <div className="pb-4 text-sm text-zinc-400 font-sans leading-relaxed">
                             {children}
                         </div>
                     </motion.div>

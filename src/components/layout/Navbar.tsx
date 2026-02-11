@@ -25,7 +25,7 @@ export const Navbar = () => {
                     <Link
                         href="/docs"
                         className={cn(
-                            "text-sm font-medium transition-colors hover:text-emerald-400 font-onest",
+                            "text-sm font-medium transition-colors hover:text-emerald-400 font-sans",
                             pathname.startsWith("/docs") ? "text-emerald-500" : "text-zinc-400"
                         )}
                     >
@@ -34,7 +34,7 @@ export const Navbar = () => {
                     <Link
                         href="/templates"
                         className={cn(
-                            "text-sm font-medium transition-colors hover:text-emerald-400 font-onest",
+                            "text-sm font-medium transition-colors hover:text-emerald-400 font-sans",
                             pathname === "/templates" ? "text-emerald-500" : "text-zinc-400"
                         )}
                     >
@@ -43,7 +43,7 @@ export const Navbar = () => {
                     <Link
                         href="/showcase"
                         className={cn(
-                            "text-sm font-medium transition-colors hover:text-emerald-400 font-onest",
+                            "text-sm font-medium transition-colors hover:text-emerald-400 font-sans",
                             pathname === "/showcase" ? "text-emerald-500" : "text-zinc-400"
                         )}
                     >

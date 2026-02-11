@@ -66,7 +66,7 @@ export const WalletConnectModal = ({ isOpen, onClose, onConnect }: WalletConnect
                             className="w-full max-w-md bg-zinc-950 border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[80vh]"
                         >
                             <div className="flex items-center justify-between p-5 border-b border-zinc-900">
-                                <h2 className="text-lg font-bold text-zinc-100 font-onest">Connect Wallet</h2>
+                                <h2 className="text-lg font-bold text-zinc-100 font-sans">Connect Wallet</h2>
                                 <button onClick={onClose} className="p-1 rounded-full hover:bg-zinc-900 text-zinc-500 hover:text-zinc-300 transition-colors">
                                     <X size={20} />
                                 </button>
@@ -83,7 +83,7 @@ export const WalletConnectModal = ({ isOpen, onClose, onConnect }: WalletConnect
                                             >
                                                 <div className="flex items-center gap-4">
                                                     {wallet.icon}
-                                                    <span className="font-semibold text-zinc-300 group-hover:text-zinc-100 font-onest">{wallet.name}</span>
+                                                    <span className="font-semibold text-zinc-300 group-hover:text-zinc-100 font-sans">{wallet.name}</span>
                                                 </div>
                                                 {wallet.id === "metamask" && <NeuralBadge status="warning" className="text-[10px]">Popular</NeuralBadge>}
                                                 <div className="text-zinc-600 group-hover:text-emerald-500 transition-colors">

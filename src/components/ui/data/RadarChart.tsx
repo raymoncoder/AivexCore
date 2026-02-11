@@ -103,7 +103,7 @@ export const RadarChart = ({
                             y={y}
                             textAnchor="middle"
                             dominantBaseline="middle"
-                            className="text-[10px] font-bold fill-zinc-400 uppercase tracking-widest font-sans"
+                            className="text-[11px] font-semibold fill-zinc-400 uppercase tracking-[0.15em] font-sans"
                         >
                             {m.label}
                         </text>

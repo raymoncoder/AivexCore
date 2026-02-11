@@ -37,6 +37,8 @@ import { NeuralCodeEditor } from "@/components/ui/data/NeuralCodeEditor";
 import { RadarChart } from "@/components/ui/data/RadarChart";
 import { MiniSparkline } from "@/components/ui/data/MiniSparkline";
 import { NeuralExportButton } from "@/components/ui/data/NeuralExportButton";
+import { NeuralLoader as NeuralLoaderVariants } from "@/components/ui/core/NeuralLoaderVariants";
+import { CustomScrollBar } from "@/components/ui/core/CustomScrollBar";
 import Link from "next/link";
 
 // --- Types & Data ---
@@ -360,17 +362,50 @@ const categories: Category[] = [
             {
                 id: "loader",
                 title: "Loader",
-                description: "Versatile loading indicators for different contexts.",
+                description: "Versatile loading indicators for different contexts. From subtle line animations to complex orbital systems.",
                 component: (
-                    <div className="flex items-center gap-8">
-                        <NeuralLoader variant="spinner" size="md" />
-                        <NeuralLoader variant="dots" size="md" />
-                        <NeuralLoader variant="pulse" size="md" />
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+                        {[
+                            { v: "spinner", l: "Spinner" },
+                            { v: "dots", l: "Dots" },
+                            { v: "pulse", l: "Pulse" },
+                            { v: "bars", l: "Bars" },
+                            { v: "orbit", l: "Orbit" },
+                            { v: "wave", l: "Wave" }
+                        ].map(({ v, l }) => (
+                            <div key={v} className="flex flex-col items-center justify-center p-8 rounded-2xl bg-zinc-900/40 border border-white/5 backdrop-blur-sm group hover:border-emerald-500/20 transition-all duration-300">
+                                <NeuralLoaderVariants variant={v as any} size="md" />
+                                <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mt-6 group-hover:text-zinc-300 transition-colors">{l}</span>
+                            </div>
+                        ))}
                     </div>
                 ),
                 code: `<NeuralLoader variant="spinner" size="md" />
-<NeuralLoader variant="dots" size="md" />
-<NeuralLoader variant="pulse" size="md" />`
+<NeuralLoader variant="orbit" size="lg" color="blue-400" />`,
+                variants: [
+                    {
+                        id: "loader-sizes",
+                        title: "Responsive Sizes",
+                        description: "Three scaled sizes designed to fit everything from buttons to full-page overlays.",
+                        component: (
+                            <div className="flex items-center justify-around w-full p-8 rounded-2xl bg-zinc-900/20 border border-white/5">
+                                <div className="text-center space-y-4">
+                                    <NeuralLoaderVariants variant="spinner" size="sm" />
+                                    <div className="text-[10px] text-zinc-600 font-mono">SMALL</div>
+                                </div>
+                                <div className="text-center space-y-4">
+                                    <NeuralLoaderVariants variant="spinner" size="md" />
+                                    <div className="text-[10px] text-zinc-600 font-mono">MEDIUM</div>
+                                </div>
+                                <div className="text-center space-y-4">
+                                    <NeuralLoaderVariants variant="spinner" size="lg" />
+                                    <div className="text-[10px] text-zinc-600 font-mono">LARGE</div>
+                                </div>
+                            </div>
+                        ),
+                        code: `<NeuralLoader size="sm" />\n<NeuralLoader size="md" />\n<NeuralLoader size="lg" />`
+                    },
+                ]
             },
             {
                 id: "progress",
@@ -873,6 +908,56 @@ const categories: Category[] = [
     data={data} 
     filename="system-report" 
 />`
+            },
+            {
+                id: "scrollbar",
+                title: "Custom ScrollBar",
+                description: "Styled scrollbar replacement with smooth animations and auto-hide functionality.",
+                component: (
+                    <div className="w-full max-w-md">
+                        <CustomScrollBar maxHeight="300px" className="border border-zinc-800 rounded-xl">
+                            <div className="p-6 space-y-4">
+                                {Array.from({ length: 15 }).map((_, i) => (
+                                    <div key={i} className="p-4 bg-zinc-900/50 rounded-lg border border-zinc-800">
+                                        <div className="font-medium text-sm">Item {i + 1}</div>
+                                        <div className="text-xs text-zinc-500 mt-1">Scrollable content with custom scrollbar styling</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </CustomScrollBar>
+                    </div>
+                ),
+                code: `<CustomScrollBar maxHeight="300px">
+    <div className="p-6 space-y-4">
+        {/* Your scrollable content */}
+    </div>
+</CustomScrollBar>`,
+                variants: [
+                    {
+                        id: "horizontal-scrollbar",
+                        title: "Horizontal Orientation",
+                        description: "Full support for horizontal scrolling with matching track and thumb positioning.",
+                        component: (
+                            <div className="w-full">
+                                <CustomScrollBar orientation="horizontal" maxWidth="100%" className="border border-zinc-800 rounded-xl">
+                                    <div className="flex gap-4 p-6 w-max">
+                                        {Array.from({ length: 15 }).map((_, i) => (
+                                            <div key={i} className="w-[180px] flex-shrink-0 p-6 bg-zinc-900/50 rounded-lg border border-zinc-800 text-center">
+                                                <div className="font-bold text-lg mb-1 tracking-tight">{i + 1}</div>
+                                                <div className="text-[10px] text-zinc-500 uppercase font-bold tracking-widest">Neural Card</div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </CustomScrollBar>
+                            </div>
+                        ),
+                        code: `<CustomScrollBar orientation="horizontal" maxWidth="400px">
+    <div className="flex gap-4 w-[800px]">
+        {/* Horizontal items */}
+    </div>
+</CustomScrollBar>`
+                    }
+                ]
             }
         ]
     },
@@ -1013,7 +1098,19 @@ const SidebarItem = ({
     </button>
 );
 
-const StoryCanvas = ({ component, isGettingStarted = false }: { component: ComponentDoc, isGettingStarted?: boolean }) => {
+const StoryCanvas = ({
+    component,
+    isGettingStarted = false,
+    prevComponent,
+    nextComponent,
+    onNavigate
+}: {
+    component: ComponentDoc,
+    isGettingStarted?: boolean,
+    prevComponent?: { id: string, title: string },
+    nextComponent?: { id: string, title: string },
+    onNavigate: (id: string) => void
+}) => {
     const [view, setView] = useState<"preview" | "code" | "docs">("preview");
     const [copied, setCopied] = useState(false);
 
@@ -1084,118 +1181,145 @@ const StoryCanvas = ({ component, isGettingStarted = false }: { component: Compo
 
             {/* Main Content Area */}
             <div className="flex-1 overflow-auto">
-                <div className="max-w-5xl mx-auto p-8 space-y-12">
+                <div className="max-w-5xl mx-auto p-8 pb-32 space-y-12">
                     <AnimatePresence mode="wait">
-                        {view === "preview" && (
-                            <motion.div
-                                key="preview"
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: 10 }}
-                                className="space-y-8"
-                            >
-                                <div className="p-12 rounded-2xl border border-white/5 bg-zinc-900/10 bg-[url('/grid.svg')] bg-center flex flex-col items-center justify-center min-h-[300px] shadow-inner relative overflow-hidden group">
-                                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 pointer-events-none" />
-                                    <div className="relative z-10 w-full flex justify-center">
-                                        {component.component}
-                                    </div>
-                                </div>
-
-                                {/* Variants Section */}
-                                {component.variants && component.variants.length > 0 && (
-                                    <div className="space-y-6">
-                                        <h3 className="text-xl font-bold font-sans">Variants & States</h3>
-                                        <div className="grid gap-4">
-                                            {component.variants.map((variant) => (
-                                                <div key={variant.id} className="p-6 rounded-xl border border-zinc-800 bg-zinc-900/20 group hover:border-zinc-700 transition-all">
-                                                    <div className="flex justify-between items-start mb-4">
-                                                        <div>
-                                                            <h4 className="font-bold text-zinc-100 font-sans">{variant.title}</h4>
-                                                            <p className="text-sm text-zinc-500 font-sans mt-1">{variant.description}</p>
-                                                        </div>
-                                                        <button
-                                                            onClick={() => handleCopy(variant.code)}
-                                                            className="p-2 rounded-md bg-zinc-800 opacity-0 group-hover:opacity-100 transition-opacity"
-                                                        >
-                                                            <Copy size={14} className="text-zinc-400" />
-                                                        </button>
-                                                    </div>
-                                                    <div className="py-4 flex justify-center border-t border-zinc-800/50 mt-4">
-                                                        {variant.component}
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-                            </motion.div>
-                        )}
-
-                        {view === "code" && (
-                            <motion.div
-                                key="code"
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: 10 }}
-                                className="relative group"
-                            >
-                                <pre className="p-8 rounded-2xl bg-zinc-950 border border-zinc-900 text-sm font-mono text-zinc-300 overflow-x-auto leading-relaxed">
-                                    <code>{component.code}</code>
-                                </pre>
-                                <button
-                                    onClick={() => handleCopy(component.code)}
-                                    className="absolute top-4 right-4 p-2 rounded-md bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-zinc-100 border border-zinc-700 transition-all shadow-sm"
-                                >
-                                    {copied ? <Check size={16} className="text-emerald-500" /> : <Copy size={16} />}
-                                </button>
-                            </motion.div>
-                        )}
-
-                        {view === "docs" && (
-                            <motion.div
-                                key="docs"
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: 10 }}
-                                className="space-y-8"
-                            >
-                                <div className="space-y-4">
-                                    <h3 className="text-xl font-bold font-sans">Properties</h3>
-                                    <div className="overflow-hidden rounded-xl border border-zinc-800">
-                                        <table className="w-full text-left text-sm font-sans">
-                                            <thead className="bg-zinc-900 text-zinc-400 border-b border-zinc-800">
-                                                <tr>
-                                                    <th className="px-4 py-3 font-medium">Prop</th>
-                                                    <th className="px-4 py-3 font-medium">Type</th>
-                                                    <th className="px-4 py-3 font-medium">Default</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody className="divide-y divide-zinc-800">
-                                                <tr>
-                                                    <td className="px-4 py-3 font-mono text-emerald-500">className</td>
-                                                    <td className="px-4 py-3 text-zinc-500">string</td>
-                                                    <td className="px-4 py-3 text-zinc-500">-</td>
-                                                </tr>
-                                                <tr>
-                                                    <td className="px-4 py-3 font-mono text-emerald-500">variant</td>
-                                                    <td className="px-4 py-3 text-zinc-500">"primary" | "secondary" | "ghost"</td>
-                                                    <td className="px-4 py-3 text-zinc-500">"primary"</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <div className="p-6 rounded-2xl border border-blue-500/20 bg-blue-500/5 text-blue-400 text-sm font-sans flex gap-3">
-                                    <Info size={18} className="shrink-0" />
-                                    <p>All components support standard HTML attributes and are fully composable with Tailwind CSS classes.</p>
-                                </div>
-                            </motion.div>
-                        )}
+                        {/* ... (existing content) ... */}
                     </AnimatePresence>
+
+                    {/* Pagination Footer */}
+                    <div className="pt-12 mt-12 border-t border-zinc-900 flex justify-between items-center gap-4">
+                        {prevComponent ? (
+                            <button
+                                onClick={() => onNavigate(prevComponent.id)}
+                                className="group flex items-center gap-3 px-4 py-2.5 rounded-xl bg-zinc-900/50 border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-800 transition-all text-sm font-medium text-zinc-400 hover:text-white"
+                            >
+                                <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+                                {prevComponent.title}
+                            </button>
+                        ) : <div />}
+
+                        {nextComponent ? (
+                            <button
+                                onClick={() => onNavigate(nextComponent.id)}
+                                className="group flex items-center gap-3 px-4 py-2.5 rounded-xl bg-zinc-900/50 border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-800 transition-all text-sm font-medium text-zinc-400 hover:text-white"
+                            >
+                                {nextComponent.title}
+                                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                            </button>
+                        ) : <div />}
+                    </div>
                 </div>
             </div>
-        </div>
+            {view === "preview" && (
+                <motion.div
+                    key="preview"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 10 }}
+                    className="space-y-8"
+                >
+                    <div className="p-12 rounded-2xl border border-white/5 bg-zinc-900/10 bg-[url('/grid.svg')] bg-center flex flex-col items-center justify-center min-h-[300px] shadow-inner relative overflow-hidden group">
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 pointer-events-none" />
+                        <div className="relative z-10 w-full flex justify-center">
+                            {component.component}
+                        </div>
+                    </div>
+
+                    {/* Variants Section */}
+                    {component.variants && component.variants.length > 0 && (
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-bold font-sans">Variants & States</h3>
+                            <div className="grid gap-4">
+                                {component.variants.map((variant) => (
+                                    <div key={variant.id} className="p-6 rounded-xl border border-zinc-800 bg-zinc-900/20 group hover:border-zinc-700 transition-all">
+                                        <div className="flex justify-between items-start mb-4">
+                                            <div>
+                                                <h4 className="font-bold text-zinc-100 font-sans">{variant.title}</h4>
+                                                <p className="text-sm text-zinc-500 font-sans mt-1">{variant.description}</p>
+                                            </div>
+                                            <button
+                                                onClick={() => handleCopy(variant.code)}
+                                                className="p-2 rounded-md bg-zinc-800 opacity-0 group-hover:opacity-100 transition-opacity"
+                                            >
+                                                <Copy size={14} className="text-zinc-400" />
+                                            </button>
+                                        </div>
+                                        <div className="py-4 flex justify-center border-t border-zinc-800/50 mt-4">
+                                            {variant.component}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </motion.div>
+            )}
+
+            {view === "code" && (
+                <motion.div
+                    key="code"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 10 }}
+                    className="relative group"
+                >
+                    <pre className="p-8 rounded-2xl bg-zinc-950 border border-zinc-900 text-sm font-mono text-zinc-300 overflow-x-auto leading-relaxed">
+                        <code>{component.code}</code>
+                    </pre>
+                    <button
+                        onClick={() => handleCopy(component.code)}
+                        className="absolute top-4 right-4 p-2 rounded-md bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-zinc-100 border border-zinc-700 transition-all shadow-sm"
+                    >
+                        {copied ? <Check size={16} className="text-emerald-500" /> : <Copy size={16} />}
+                    </button>
+                </motion.div>
+            )}
+
+            {view === "docs" && (
+                <motion.div
+                    key="docs"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 10 }}
+                    className="space-y-8"
+                >
+                    <div className="space-y-4">
+                        <h3 className="text-xl font-bold font-sans">Properties</h3>
+                        <div className="overflow-hidden rounded-xl border border-zinc-800">
+                            <table className="w-full text-left text-sm font-sans">
+                                <thead className="bg-zinc-900 text-zinc-400 border-b border-zinc-800">
+                                    <tr>
+                                        <th className="px-4 py-3 font-medium">Prop</th>
+                                        <th className="px-4 py-3 font-medium">Type</th>
+                                        <th className="px-4 py-3 font-medium">Default</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-zinc-800">
+                                    <tr>
+                                        <td className="px-4 py-3 font-mono text-emerald-500">className</td>
+                                        <td className="px-4 py-3 text-zinc-500">string</td>
+                                        <td className="px-4 py-3 text-zinc-500">-</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="px-4 py-3 font-mono text-emerald-500">variant</td>
+                                        <td className="px-4 py-3 text-zinc-500">"primary" | "secondary" | "ghost"</td>
+                                        <td className="px-4 py-3 text-zinc-500">"primary"</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div className="p-6 rounded-2xl border border-blue-500/20 bg-blue-500/5 text-blue-400 text-sm font-sans flex gap-3">
+                        <Info size={18} className="shrink-0" />
+                        <p>All components support standard HTML attributes and are fully composable with Tailwind CSS classes.</p>
+                    </div>
+                </motion.div>
+            )}
+        </AnimatePresence>
+                </div >
+            </div >
+        </div >
     );
 };
 
@@ -1246,7 +1370,7 @@ export default function DocsPage() {
                         <div className="text-xs text-emerald-500 font-mono bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">v2.1.0</div>
                     </div>
 
-                    <div className="flex-1 overflow-y-auto p-3 space-y-6 scrollbar-thin scrollbar-thumb-zinc-800">
+                    <div className="flex-1 overflow-y-auto p-3 space-y-6 scrollbar-hide">
                         {categories.map((category) => (
                             <div key={category.id}>
                                 <div className="flex items-center gap-2 px-3 mb-2 text-zinc-100 font-medium text-sm font-sans">

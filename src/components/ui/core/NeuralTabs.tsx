@@ -67,7 +67,7 @@ export function NeuralTabs({ tabs, activeTab: activeTabProp, onTabChange, defaul
                                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                                 />
                             )}
-                            <span className="relative z-20 font-onest">{tab.label}</span>
+                            <span className="relative z-20 font-sans">{tab.label}</span>
                         </button>
                     ))}
                 </div>

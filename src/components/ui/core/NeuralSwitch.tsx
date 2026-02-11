@@ -30,7 +30,7 @@ const NeuralSwitch = React.forwardRef<
 
         {label && (
             <span
-                className="text-sm font-medium leading-none font-onest text-zinc-400 peer-data-[state=checked]:text-zinc-100 transition-colors cursor-pointer select-none"
+                className="text-sm font-medium leading-none font-sans text-zinc-400 peer-data-[state=checked]:text-zinc-100 transition-colors cursor-pointer select-none"
             >
                 {label}
             </span>
