@@ -3,6 +3,8 @@
 import { NeuralButton } from "@/components/ui/core/NeuralButton";
 import { NeuralInput } from "@/components/ui/core/NeuralInput";
 import { NeuralBadge } from "@/components/ui/core/NeuralBadge";
+import { NeuralMarquee } from "@/components/ui/core/NeuralMarquee";
+import { NeuralToastProvider, useNeuralToast } from "@/components/ui/core/NeuralToaster";
 import { NeuralSwitch } from "@/components/ui/core/NeuralSwitch";
 import { NeuralPasswordInput } from "@/components/ui/core/NeuralPasswordInput";
 import { NeuralOTPInput } from "@/components/ui/core/NeuralOTPInput";
@@ -13,7 +15,7 @@ import { AnalyticsCard } from "@/components/ui/patterns/AnalyticsCard";
 import { SwapCard } from "@/components/ui/crypto/SwapCard";
 import { AIChatInterface } from "@/components/ui/ai/AIChatInterface";
 import { NeuralSkeleton } from "@/components/ui/core/NeuralSkeleton";
-import { Box, PieChart, Sparkles, ToggleLeft, Copy, Check, Terminal, Layout, Layers, Menu, Grid, Magnet, Loader2, MousePointer2, Info, MoveHorizontal, Wallet, AlertCircle, ChevronRight, User, Search, Percent, Table as TableIcon, Github, ExternalLink, ArrowRight, ArrowLeft, Play, Eye, Code, Plus, Database, Cpu, Shield, Globe, Coins, Calendar, GripVertical, Zap } from "lucide-react";
+import { Box, PieChart, Sparkles, ToggleLeft, Copy, Check, Terminal, Layout, Layers, Menu, Grid, Magnet, Loader2, MousePointer2, Info, MoveHorizontal, Wallet, AlertCircle, ChevronRight, User, Search, Percent, Table as TableIcon, Github, ExternalLink, ArrowRight, ArrowLeft, Play, Eye, Code, Plus, Database, Cpu, Shield, Globe, Coins, Calendar, GripVertical, Zap, Brain } from "lucide-react";
 import { XIcon } from "@/components/icons/XIcon";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
@@ -50,6 +52,9 @@ import { CustomScrollBar } from "@/components/ui/core/CustomScrollBar";
 import { AgentThoughtFlow } from "@/components/ui/ai/AgentThoughtFlow";
 import { ModelParameters } from "@/components/ui/ai/ModelParameters";
 import { PriceMetric } from "@/components/ui/crypto/PriceMetric";
+import { TokenPerformance } from "@/components/ui/crypto/TokenPerformance";
+import { AgentActivityFeed } from "@/components/ui/ai/AgentActivityFeed";
+import { NeuralCarousel } from "@/components/ui/patterns/NeuralCarousel";
 import { NeuralBentoGrid, NeuralBentoCard } from "@/components/ui/patterns/NeuralBentoGrid";
 import Link from "next/link";
 
@@ -116,6 +121,20 @@ const CommandPalettePreview = () => {
             <CommandPalette isOpen={isOpen} onClose={() => setIsOpen(false)} />
         </>
     )
+};
+
+const NeuralToastDemo = () => {
+    const { toast } = useNeuralToast();
+    return (
+        <div className="flex flex-wrap gap-4">
+            <NeuralButton onClick={() => toast("Handshake Successful", { type: "success", description: "Agent node connected." })}>
+                Success
+            </NeuralButton>
+            <NeuralButton onClick={() => toast("Anomalous Activity", { type: "error", description: "Node rejected connection." })}>
+                Error
+            </NeuralButton>
+        </div>
+    );
 };
 
 const DialogPreview = () => {
@@ -324,7 +343,7 @@ const IntroductionSection = () => (
         </div>
 
         <div className="space-y-6">
-            <h2 className="text-2xl font-bold font-sans">Core Philisophy</h2>
+            <h2 className="text-2xl font-bold font-sans">Core Philosophy</h2>
             <div className="space-y-4 border-l border-zinc-800 pl-6 text-zinc-400 font-sans italic leading-relaxed">
                 "We believe that AI software shouldn't just be functional; it should feel alive.
                 Neural UI provides the building blocks for interfaces that respond to intelligence with fluid precision."
@@ -834,6 +853,53 @@ const categories: Category[] = [
                         code: `<NeuralTabs variant="glass" tabs={nodes} />`
                     }
                 ]
+            },
+            {
+                id: "marquee",
+                title: "Neural Marquee",
+                description: "GPU-accelerated scrolling ticker for text, images, or log data. Supports vertical and horizontal orientations.",
+                addedAt: "2026-02-27",
+                component: (
+                    <div className="w-full py-4 border-y border-zinc-900 bg-zinc-950/30">
+                        <NeuralMarquee speed={30}>
+                            {["BLOCKCHAIN", "NEURAL", "AGENTIC", "AUTONOMOUS", "CRYPTO"].map((s) => (
+                                <span key={s} className="text-xl font-bold font-mono text-zinc-600 px-4">{s}</span>
+                            ))}
+                        </NeuralMarquee>
+                    </div>
+                ),
+                code: `<NeuralMarquee speed={30}>\n  {items.map(i => <div key={i}>{i}</div>)}\n</NeuralMarquee>`,
+                variants: [
+                    {
+                        id: "vertical-marquee",
+                        title: "Vertical Orientation",
+                        description: "Scrolls vertically, useful for logs or sidebars.",
+                        component: (
+                            <div className="h-40 border border-zinc-800 rounded-xl overflow-hidden bg-zinc-950">
+                                <NeuralMarquee direction="up" speed={15} className="h-full">
+                                    {[1, 2, 3, 4, 5].map(i => (
+                                        <div key={i} className="text-[10px] font-mono text-emerald-500 py-1 px-3">
+                                            PROTOCOL_SYNC_NODE_{i}
+                                        </div>
+                                    ))}
+                                </NeuralMarquee>
+                            </div>
+                        ),
+                        code: `<NeuralMarquee direction="up" />`
+                    }
+                ]
+            },
+            {
+                id: "toast",
+                title: "Neural Toaster",
+                description: "Premium notification system with status-specific styling and smooth entry animations.",
+                addedAt: "2026-02-27",
+                component: (
+                    <div className="flex gap-4">
+                        <NeuralToastDemo />
+                    </div>
+                ),
+                code: `// Wrap app in <NeuralToastProvider />\nconst { toast } = useNeuralToast();\ntoast("System Online", { type: "success" });`
             },
             {
                 id: "dialog",
@@ -1693,6 +1759,46 @@ const categories: Category[] = [
                     </div>
                 ),
                 code: `<PriceMetric \n  label="ETH/USD" \n  value={3451.24} \n  change24h={5.8} \n/>`
+            },
+            {
+                id: "token-performance",
+                title: "Token Performance",
+                description: "Pro-level token tracking card with change metrics and volume visualization.",
+                addedAt: "2026-02-27",
+                component: (
+                    <TokenPerformance
+                        symbol="BTC"
+                        name="Bitcoin"
+                        price={62450.21}
+                        change24h={2.45}
+                        volume24h="34.2B"
+                        marketCap="1.2T"
+                        className="w-full max-w-sm"
+                    />
+                ),
+                code: `<TokenPerformance \n  symbol="BTC" \n  name="Bitcoin" \n  price={62450} \n  change24h={2.45} \n/>`
+            },
+            {
+                id: "carousel",
+                title: "Neural Carousel",
+                description: "High-performance slider with Draggable support and spotlight effects.",
+                addedAt: "2026-02-27",
+                component: (
+                    <NeuralCarousel
+                        className="w-full max-w-lg"
+                        items={[
+                            <div key="1" className="p-8 text-center space-y-4">
+                                <Brain className="mx-auto text-emerald-500" size={32} />
+                                <p className="text-zinc-400 italic">"Autonomous precision redefined."</p>
+                            </div>,
+                            <div key="2" className="p-8 text-center space-y-4">
+                                <Shield className="mx-auto text-blue-500" size={32} />
+                                <p className="text-zinc-400 italic">"The gold standard for security."</p>
+                            </div>
+                        ]}
+                    />
+                ),
+                code: `<NeuralCarousel items={[<Item1 />, <Item2 />]} />`
             }
         ]
     },
@@ -1781,6 +1887,23 @@ const categories: Category[] = [
                     </div>
                 ),
                 code: `<ModelParameters />`
+            },
+            {
+                id: "activity-feed",
+                title: "Agent Activity Feed",
+                description: "Scrolling protocol feed for AI agent thoughts and operations.",
+                addedAt: "2026-02-27",
+                component: (
+                    <AgentActivityFeed
+                        className="w-full max-w-md"
+                        activities={[
+                            { id: "1", type: "thought", message: "Analyzing shard...", timestamp: "12:00:01" },
+                            { id: "2", type: "action", message: "Syncing node...", timestamp: "12:00:05" },
+                            { id: "3", type: "success", message: "Protocol active.", timestamp: "12:00:10" }
+                        ]}
+                    />
+                ),
+                code: `<AgentActivityFeed activities={data} />`
             }
         ]
     }
@@ -2191,7 +2314,7 @@ export default function DocsPage() {
                     {/* Padding top is handled by the main layout pt-14, but sidebar needs to scroll independently */}
                     <div className="p-4 border-b border-zinc-900 flex items-center justify-between">
                         <span className="text-xs font-bold text-zinc-500 uppercase tracking-wider font-sans">Library</span>
-                        <div className="text-xs text-emerald-500 font-mono bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">v2.1.0</div>
+                        <div className="text-xs text-emerald-500 font-mono bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">v1.0.0-BETA</div>
                     </div>
 
                     <div className="flex-1 overflow-y-auto p-3 pb-24 space-y-6 scrollbar-hide">

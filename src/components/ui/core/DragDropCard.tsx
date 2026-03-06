@@ -29,38 +29,41 @@ export const DragDropCard = ({ item, onRemove, className }: DragDropCardProps) =
             id={item.id}
             dragListener={false}
             dragControls={controls}
+            as="div"
+            layout
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95 }}
             whileDrag={{
                 scale: 1.02,
                 boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
-                borderColor: "rgba(16,185,129,0.3)"
+                borderColor: "rgba(16,185,129,0.3)",
+                zIndex: 50
             }}
             className={cn(
-                "relative flex items-center gap-4 p-4 rounded-2xl bg-zinc-950 border border-zinc-900 group transition-all duration-300 select-none",
+                "relative flex items-center gap-4 p-4 rounded-2xl bg-zinc-950 border border-zinc-900 group transition-colors duration-300 select-none",
                 className
             )}
         >
             {/* Background Glow on Hover */}
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
-            {/* Drag Handle */}
+            {/* Drag Handle - Increased touch target */}
             <div
                 onPointerDown={(e) => controls.start(e)}
                 style={{ touchAction: "none" }}
-                className="cursor-grab active:cursor-grabbing p-1 text-zinc-700 hover:text-zinc-500 transition-colors"
+                className="cursor-grab active:cursor-grabbing p-2 -ml-2 text-zinc-700 hover:text-zinc-500 transition-colors"
             >
                 <GripVertical size={18} />
             </div>
 
             {/* Icon Node */}
-            <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 group-hover:text-emerald-400 group-hover:border-emerald-500/30 transition-all">
+            <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 group-hover:text-emerald-400 group-hover:border-emerald-500/30 transition-all pointer-events-none">
                 <Icon size={20} />
             </div>
 
             {/* Content */}
-            <div className="flex-1 min-w-0">
+            <div className="flex-1 min-w-0 pointer-events-none">
                 <h4 className="text-sm font-bold text-white truncate font-sans tracking-tight uppercase">{item.title}</h4>
                 <div className="flex items-center gap-2 mt-1">
                     <div className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-zinc-900 text-[11px] font-mono text-zinc-500 uppercase">
@@ -100,11 +103,9 @@ export const DragDropList = ({
     onReorder?: (items: DragItem[]) => void,
     className?: string
 }) => {
+    // We use local state to manage the list order immediately for UI responsiveness
+    // Initialized only once from props to avoid resets during parent re-renders
     const [items, setItems] = useState(initialItems);
-
-    React.useEffect(() => {
-        setItems(initialItems);
-    }, [initialItems]);
 
     const handleReorder = (newOrder: DragItem[]) => {
         setItems(newOrder);
@@ -118,11 +119,12 @@ export const DragDropList = ({
     return (
         <Reorder.Group
             axis="y"
+            as="div"
             values={items}
             onReorder={handleReorder}
-            className={cn("space-y-3", className)}
+            className={cn("space-y-3 relative", className)}
         >
-            <AnimatePresence>
+            <AnimatePresence initial={false}>
                 {items.map((item) => (
                     <DragDropCard key={item.id} item={item} onRemove={handleRemove} />
                 ))}

@@ -40,6 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-#rules
+# cli package dependencies
+/cli/node_modules
+
+# rules (local dev only)
 .agent
 .rules

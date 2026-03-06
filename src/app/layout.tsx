@@ -7,17 +7,21 @@ export const metadata: Metadata = {
   description: "High-end Crypto & AI component library",
 };
 
+import { NeuralToastProvider } from "@/components/ui/core/NeuralToaster";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body
         className={`${inter.className} ${inter.variable} ${jetbrains.variable} font-sans antialiased`}
       >
-        {children}
+        <NeuralToastProvider>
+          {children}
+        </NeuralToastProvider>
       </body>
     </html>
   );

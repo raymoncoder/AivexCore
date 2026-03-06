@@ -53,6 +53,7 @@ const config: Config = {
                 "shimmer": "shimmer 2s linear infinite",
                 "fade-in": "fade-in 0.5s ease-out",
                 "slide-in": "slide-in 0.3s ease-out",
+                "noise": "noise 0.2s steps(10) infinite",
             },
             keyframes: {
                 "accordion-down": {
@@ -74,7 +75,19 @@ const config: Config = {
                 "slide-in": {
                     from: { transform: "translateX(-10px)", opacity: "0" },
                     to: { transform: "translateX(0)", opacity: "1" },
-                }
+                },
+                noise: {
+                    "0%, 100%": { backgroundPosition: "0 0" },
+                    "10%": { backgroundPosition: "-5% -10%" },
+                    "20%": { backgroundPosition: "-15% 5%" },
+                    "30%": { backgroundPosition: "7% -25%" },
+                    "40%": { backgroundPosition: "20% 25%" },
+                    "50%": { backgroundPosition: "-25% 10%" },
+                    "60%": { backgroundPosition: "15% 5%" },
+                    "70%": { backgroundPosition: "0% 15%" },
+                    "80%": { backgroundPosition: "25% 35%" },
+                    "90%": { backgroundPosition: "-10% 10%" },
+                },
             },
         },
     },

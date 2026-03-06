@@ -26,6 +26,12 @@ export const StreamingText = ({
     const [started, setStarted] = useState(false);
 
     useEffect(() => {
+        setDisplayedText("");
+        setStarted(false);
+        setIsTyping(false);
+    }, [children]);
+
+    useEffect(() => {
         let timeout: NodeJS.Timeout;
 
         if (!started) {

@@ -1,7 +1,30 @@
 {
-    "name": "create-neural-ui",
-    "version": "1.0.0",
-    "description": "CLI for adding Neural UI components",
+    "name": "neuralui",
+    "version": "0.1.0",
+    "description": "CLI for adding NeuralUI components — the UI library for Agentic AI and Crypto applications",
+    "homepage": "https://neuralui.vercel.app",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/yourusername/neuralui"
+    },
+    "bugs": {
+        "url": "https://github.com/yourusername/neuralui/issues"
+    },
+    "keywords": [
+        "ui",
+        "react",
+        "nextjs",
+        "tailwind",
+        "components",
+        "ai",
+        "crypto",
+        "design-system",
+        "framer-motion",
+        "shadcn",
+        "component-library",
+        "typescript"
+    ],
+    "license": "MIT",
     "bin": {
         "neuralui": "./bin/index.js"
     },
@@ -15,6 +38,9 @@
         "prompts": "^2.4.2",
         "fs-extra": "^11.2.0",
         "node-fetch": "^3.3.2"
+    },
+    "engines": {
+        "node": ">=18.0.0"
     },
     "type": "module"
 }

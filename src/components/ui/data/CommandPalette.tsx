@@ -45,7 +45,7 @@ export const CommandPalette = ({ isOpen, onClose }: { isOpen: boolean; onClose: 
                 if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
                     e.preventDefault();
                     // In a real app, this would toggle open. 
-                    // Here we rely on the parent to pass isOpen, but for the showcase we might need a trigger.
+                    // Here we rely on the parent to pass isOpen.
                 }
                 return;
             }

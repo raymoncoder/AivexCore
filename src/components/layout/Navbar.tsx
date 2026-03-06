@@ -12,8 +12,8 @@ export const Navbar = () => {
 
     return (
         <header className="fixed top-0 left-0 right-0 z-50 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-md">
-            <div className="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
-                <Link href="/" className="flex items-center gap-2 group">
+            <div className="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between relative">
+                <Link href="/" className="flex items-center gap-2 group shrink-0">
                     <div className="w-8 h-8 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:border-emerald-500/50 transition-colors">
                         <Layers size={18} className="text-zinc-100" />
                     </div>
@@ -22,11 +22,11 @@ export const Navbar = () => {
                     </span>
                 </Link>
 
-                <nav className="hidden md:flex items-center gap-6">
+                <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
                     <Link
                         href="/docs"
                         className={cn(
-                            "text-sm font-medium transition-colors hover:text-emerald-400 font-sans",
+                            "text-sm font-medium transition-colors hover:text-emerald-400 font-sans tracking-wide",
                             pathname.startsWith("/docs") ? "text-emerald-500" : "text-zinc-400"
                         )}
                     >
@@ -35,24 +35,15 @@ export const Navbar = () => {
                     <Link
                         href="/templates"
                         className={cn(
-                            "text-sm font-medium transition-colors hover:text-emerald-400 font-sans",
+                            "text-sm font-medium transition-colors hover:text-emerald-400 font-sans tracking-wide",
                             pathname === "/templates" ? "text-emerald-500" : "text-zinc-400"
                         )}
                     >
                         Templates
                     </Link>
-                    <Link
-                        href="/showcase"
-                        className={cn(
-                            "text-sm font-medium transition-colors hover:text-emerald-400 font-sans",
-                            pathname === "/showcase" ? "text-emerald-500" : "text-zinc-400"
-                        )}
-                    >
-                        Showcase
-                    </Link>
                 </nav>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 shrink-0">
                     <div className="flex items-center gap-2 text-zinc-400">
                         <Link href="https://github.com" target="_blank" className="p-2 hover:text-zinc-100 transition-colors">
                             <Github size={20} />
