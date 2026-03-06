@@ -1989,7 +1989,7 @@ const StoryCanvas = ({
 
     if (isGettingStarted) {
         return (
-            <div className="flex-1 overflow-auto bg-zinc-950">
+            <div className="flex-1 overflow-auto bg-zinc-950 scrollbar-none">
                 <div className="max-w-5xl mx-auto p-8 md:p-12 lg:p-16 pb-32 space-y-12">
                     <motion.div
                         key={component.id}
@@ -2078,7 +2078,7 @@ const StoryCanvas = ({
             </div>
 
             {/* Main Content Area */}
-            <div ref={contentRef} className="flex-1 overflow-auto">
+            <div ref={contentRef} className="flex-1 overflow-auto scrollbar-none">
                 <div className="max-w-5xl mx-auto p-8 pb-32 space-y-12">
                     <AnimatePresence mode="wait">
                         {view === "preview" && (
@@ -2134,7 +2134,7 @@ const StoryCanvas = ({
                                 exit={{ opacity: 0, x: 10 }}
                                 className="relative group"
                             >
-                                <pre className="p-8 rounded-2xl bg-zinc-950 border border-zinc-900 text-sm font-mono text-zinc-300 overflow-x-auto leading-relaxed">
+                                <pre className="p-8 rounded-2xl bg-zinc-950 border border-zinc-900 text-sm font-mono text-zinc-300 overflow-x-auto leading-relaxed scrollbar-none">
                                     <code>{component.code}</code>
                                 </pre>
                                 <button
@@ -2274,7 +2274,7 @@ export default function DocsPage() {
                         <div className="text-xs text-emerald-500 font-mono bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">v1.0.0-BETA</div>
                     </div>
 
-                    <div className="flex-1 overflow-y-auto p-3 pb-24 space-y-6 scrollbar-hide">
+                    <div className="flex-1 overflow-y-auto p-3 pb-24 space-y-6 scrollbar-none">
                         {categories.map((category) => (
                             <div key={category.id}>
                                 <div className="flex items-center gap-2 px-3 mb-2 text-zinc-100 font-medium text-sm font-sans">
