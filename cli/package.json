@@ -1,6 +1,6 @@
 {
     "name": "aivexcore",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "CLI for adding AivexCore components — the UI library for Agentic AI and Crypto applications",
     "homepage": "https://aivexcore.vercel.app",
     "repository": {
