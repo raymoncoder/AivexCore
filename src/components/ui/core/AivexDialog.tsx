@@ -28,7 +28,7 @@ const AivexDialogOverlay = React.forwardRef<
                 "fixed inset-0 z-50 bg-black/60 backdrop-blur-sm",
                 className
             )}
-            {...props}
+            {...(props as any)}
         />
     </DialogPrimitive.Overlay>
 ));
@@ -73,7 +73,7 @@ const AivexDialogContent = React.forwardRef<
                     glow && "shadow-[0_0_50px_-12px_rgba(16,185,129,0.15)]",
                     className
                 )}
-                {...props}
+                {...(props as any)}
             >
                 {children}
                 <DialogPrimitive.Close asChild>
