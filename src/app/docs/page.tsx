@@ -68,6 +68,13 @@ interface ComponentVariant {
     code: string;
 }
 
+interface PropDoc {
+    prop: string;
+    type: string;
+    default: string;
+    description?: string;
+}
+
 interface ComponentDoc {
     id: string;
     title: string;
@@ -75,6 +82,7 @@ interface ComponentDoc {
     component: React.ReactNode;
     code: string;
     variants?: ComponentVariant[];
+    props?: PropDoc[];
     addedAt?: string; // ISO string for tracking freshness
 }
 
@@ -482,6 +490,13 @@ const categories: Category[] = [
                 description: "Interactive button with multiple variants, sizes and loading states. Built on top of Radix UI Slot for seamless composition.",
                 component: <AivexButton>Primary Action</AivexButton>,
                 code: `<AivexButton>Primary Action</AivexButton>`,
+                props: [
+                    { prop: "variant", type: '"primary" | "secondary" | "ghost" | "destructive"', default: '"primary"', description: "The visual style of the button." },
+                    { prop: "size", type: '"sm" | "md" | "lg" | "icon"', default: '"md"', description: "The vertical height and padding." },
+                    { prop: "isLoading", type: "boolean", default: "false", description: "Shows a spinner and disables interactions." },
+                    { prop: "icon", type: "ReactNode", default: "-", description: "Leading icon element." },
+                    { prop: "asChild", type: "boolean", default: "false", description: "Use Radix Slot to merge props onto a child element (e.g. Link)." },
+                ],
                 variants: [
                     {
                         id: "secondary",
@@ -519,6 +534,11 @@ const categories: Category[] = [
                 description: "Compact status indicators using system tints and micro-animations.",
                 component: <AivexBadge>Default Badge</AivexBadge>,
                 code: `<AivexBadge>Default Badge</AivexBadge>`,
+                props: [
+                    { prop: "status", type: '"default" | "success" | "warning" | "error" | "info"', default: '"default"', description: "Semantic color state." },
+                    { prop: "variant", type: '"solid" | "outline" | "soft"', default: '"soft"', description: "Visual density of the badge." },
+                    { prop: "dot", type: "boolean", default: "false", description: "Shows an animated presence dot." },
+                ],
                 variants: [
                     {
                         id: "success",
@@ -554,8 +574,14 @@ const categories: Category[] = [
                         <AivexAvatar fallback="??" size="sm" status="offline" />
                     </div>
                 ),
-                code: `<AivexAvatar src="https://api.dicebear.com/7.x/bottts/svg?seed=Aivex" size="lg" status="online" />
-<AivexAvatar fallback="JD" size="md" status="busy" />`
+                code: `<AivexAvatar src="..." size="lg" status="online" />`,
+                props: [
+                    { prop: "src", type: "string", default: "-", description: "URL for the avatar image." },
+                    { prop: "fallback", type: "string", default: "-", description: "Initials or text shown when image fails." },
+                    { prop: "size", type: '"sm" | "md" | "lg" | "xl"', default: '"md"', description: "Avatar dimensions." },
+                    { prop: "status", type: '"online" | "busy" | "offline" | "away"', default: "-", description: "Presence dot state." },
+                    { prop: "showStatus", type: "boolean", default: "true", description: "Visibility of the status indicator." },
+                ],
             },
             {
                 id: "loader",
@@ -578,8 +604,12 @@ const categories: Category[] = [
                         ))}
                     </div>
                 ),
-                code: `<AivexLoader variant="spinner" size="md" />
-<AivexLoader variant="orbit" size="lg" color="blue-400" />`,
+                code: `<AivexLoader variant="spinner" size="md" />`,
+                props: [
+                    { prop: "variant", type: '"spinner" | "dots" | "pulse" | "bars" | "orbit" | "wave"', default: '"spinner"', description: "Animation style." },
+                    { prop: "size", type: '"sm" | "md" | "lg" | "xl"', default: '"md"', description: "Visual scale." },
+                    { prop: "color", type: "string", default: '"emerald-500"', description: "Tailwind color class or CSS value." },
+                ],
                 variants: [
                     {
                         id: "loader-sizes",
@@ -616,8 +646,14 @@ const categories: Category[] = [
                         <AivexProgress value={85} color="purple" variant="gradient" showValue />
                     </div>
                 ),
-                code: `<AivexProgress value={33} color="emerald" showValue />
-<AivexProgress value={65} color="blue" variant="gradient" showValue />`,
+                code: `<AivexProgress value={33} showValue />`,
+                props: [
+                    { prop: "value", type: "number", default: "0", description: "Current progress value." },
+                    { prop: "max", type: "number", default: "100", description: "Maximum possible value." },
+                    { prop: "showValue", type: "boolean", default: "false", description: "Displays percentage text." },
+                    { prop: "color", type: '"emerald" | "blue" | "purple" | "amber" | "rose"', default: '"emerald"', description: "Semantic color tint." },
+                    { prop: "variant", type: '"default" | "gradient" | "glass"', default: '"default"', description: "Visual animation style." },
+                ],
                 variants: [
                     {
                         id: "gradient-variant",
@@ -656,9 +692,12 @@ const categories: Category[] = [
                         </AivexTooltip>
                     </div>
                 ),
-                code: `<AivexTooltip content="This is a helpful tip" position="top">
-    <AivexButton>Hover Me</AivexButton>
-</AivexTooltip>`
+                code: `<AivexTooltip content="Tip..." position="top">...</AivexTooltip>`,
+                props: [
+                    { prop: "content", type: "ReactNode", default: "-", description: "The message shown in the tooltip." },
+                    { prop: "position", type: '"top" | "bottom" | "left" | "right"', default: '"top"', description: "Anchor position." },
+                    { prop: "delay", type: "number", default: "0.5", description: "Appearance delay in seconds." },
+                ],
             },
             {
                 id: "alert",
@@ -671,8 +710,15 @@ const categories: Category[] = [
                         <AivexAlert variant="success" title="Success" description="Your changes have been saved successfully." />
                     </div>
                 ),
-                code: `<AivexAlert title="Heads up!" description="Info message." />
-<AivexAlert variant="destructive" title="Error" description="Something went wrong." />`
+                code: `<AivexAlert title="Heads up!" description="..." />`,
+                props: [
+                    { prop: "variant", type: '"default" | "destructive" | "warning" | "success"', default: '"default"', description: "Semantic alert state." },
+                    { prop: "title", type: "string", default: "-", description: "Leading header text." },
+                    { prop: "description", type: "string", default: "-", description: "Detailed message body." },
+                    { prop: "icon", type: "ReactNode", default: "-", description: "Custom leading icon." },
+                    { prop: "dismissible", type: "boolean", default: "false", description: "Shows a close button." },
+                    { prop: "onDismiss", type: "() => void", default: "-", description: "Dismissal callback." },
+                ],
             },
             {
                 id: "tabs",
@@ -696,13 +742,14 @@ const categories: Category[] = [
                         </div>
                     </div>
                 ),
-                code: `<AivexTabs
-    tabs={[
-        { id: "account", label: "Account" },
-        { id: "security", label: "Security" },
-        { id: "billing", label: "Billing" },
-    ]}
-/>`,
+                code: `<AivexTabs tabs={items} defaultTab="1" />`,
+                props: [
+                    { prop: "tabs", type: "Tab[]", default: "[]", description: "Array of { id, label } objects." },
+                    { prop: "activeTab", type: "string", default: "-", description: "Controlled active tab ID." },
+                    { prop: "onTabChange", type: "(id: string) => void", default: "-", description: "Triggered on selection." },
+                    { prop: "defaultTab", type: "string", default: "-", description: "Initial active tab ID." },
+                    { prop: "variant", type: '"segmented" | "pill" | "underline" | "glass"', default: '"segmented"', description: "Visual transition style." },
+                ],
                 variants: [
                     {
                         id: "pill-tabs",
@@ -825,7 +872,13 @@ const categories: Category[] = [
                         </AivexMarquee>
                     </div>
                 ),
-                code: `<AivexMarquee speed={30}>\n  {items.map(i => <div key={i}>{i}</div>)}\n</AivexMarquee>`,
+                code: `<AivexMarquee speed={30}>...</AivexMarquee>`,
+                props: [
+                    { prop: "speed", type: "number", default: "50", description: "Scrolling speed in pixels per second." },
+                    { prop: "direction", type: '"left" | "right" | "up" | "down"', default: '"left"', description: "The motion vector for the content." },
+                    { prop: "pauseOnHover", type: "boolean", default: "false", description: "Stops movement when the cursor is over the marquee." },
+                    { prop: "gap", type: "number", default: "20", description: "Space between repeated items in pixels." },
+                ],
                 variants: [
                     {
                         id: "vertical-marquee",
@@ -856,7 +909,13 @@ const categories: Category[] = [
                         <AivexToastDemo />
                     </div>
                 ),
-                code: `// Wrap app in <AivexToastProvider />\nconst { toast } = useAivexToast();\ntoast("System Online", { type: "success" });`
+                code: `// Use within <AivexToastProvider />\nconst { toast } = useAivexToast();\ntoast("System Online", { type: "success" });`,
+                props: [
+                    { prop: "message", type: "string", default: "-", description: "Main notification header." },
+                    { prop: "description", type: "string", default: "-", description: "Secondary info text." },
+                    { prop: "type", type: '"Aivex" | "success" | "warning" | "error" | "info"', default: '"Aivex"', description: "Status-based color styling." },
+                    { prop: "duration", type: "number", default: "5000", description: "Visibility time in ms." },
+                ],
             },
             {
                 id: "dialog",
@@ -867,15 +926,13 @@ const categories: Category[] = [
                         <DialogPreview />
                     </div>
                 ),
-                code: `<AivexDialog>
-  <AivexDialogTrigger>Open</AivexDialogTrigger>
-  <AivexDialogContent>
-    <AivexDialogHeader>
-      <AivexDialogTitle>Title</AivexDialogTitle>
-    </AivexDialogHeader>
-    {/* Content */}
-  </AivexDialogContent>
-</AivexDialog>`
+                code: `<AivexDialog>...</AivexDialog>`,
+                props: [
+                    { prop: "isOpen", type: "boolean", default: "false", description: "Controlled visibility state." },
+                    { prop: "onClose", type: "() => void", default: "-", description: "Callback triggered on dismissal." },
+                    { prop: "glass", type: "boolean", default: "false", description: "Enables background blur and high-gloss aesthetics." },
+                    { prop: "glow", type: "boolean", default: "false", description: "Adds a subtle radial glow behind the dialog." },
+                ],
             }
         ]
     },
@@ -911,10 +968,14 @@ const categories: Category[] = [
                         </div>
                     </div>
                 ),
-                code: `<AivexInput 
-  icon={<Search size={14} />} 
-  placeholder="Search..." 
-/>`,
+                code: `<AivexInput icon={<Search size={14} />} placeholder="Search..." />`,
+                props: [
+                    { prop: "variant", type: '"default" | "underlined" | "glass"', default: '"default"', description: "Visual style variant." },
+                    { prop: "label", type: "string", default: "-", description: "Floating label text." },
+                    { prop: "icon", type: "ReactNode", default: "-", description: "Leading icon." },
+                    { prop: "wrapperClassName", type: "string", default: "-", description: "ClassName for the outer container." },
+                    { prop: "showStrengthIndicator", type: "boolean", default: "false", description: "Specialized for PasswordInput." },
+                ],
                 variants: [
                     {
                         id: "input-variants",
@@ -992,8 +1053,14 @@ const categories: Category[] = [
                         <AivexCheckbox label="Disabled Option" disabled />
                     </div>
                 ),
-                code: `<AivexCheckbox label="Accept Terms" defaultChecked />
-<AivexCheckbox label="Subscribe" />`
+                code: `<AivexCheckbox label="Terms" defaultChecked />`,
+                props: [
+                    { prop: "label", type: "string", default: "-", description: "Text label for the checkbox." },
+                    { prop: "description", type: "string", default: "-", description: "Sub-text description." },
+                    { prop: "checked", type: "boolean", default: "false", description: "Controlled checked state." },
+                    { prop: "onCheckedChange", type: "(v: boolean) => void", default: "-", description: "Change callback." },
+                    { prop: "disabled", type: "boolean", default: "false", description: "Disables interaction." },
+                ],
             },
             {
                 id: "slider",
@@ -1005,7 +1072,14 @@ const categories: Category[] = [
                         <AivexSlider min={10} max={200} step={10} defaultValue={120} label="Capacity" />
                     </div>
                 ),
-                code: `<AivexSlider min={0} max={100} defaultValue={50} label="Volume" />`
+                code: `<AivexSlider min={0} max={100} label="Volume" />`,
+                props: [
+                    { prop: "label", type: "string", default: "-", description: "Display name for the slider." },
+                    { prop: "min", type: "number", default: "0", description: "Minimum range value." },
+                    { prop: "max", type: "number", default: "100", description: "Maximum range value." },
+                    { prop: "step", type: "number", default: "1", description: "Value increment." },
+                    { prop: "value", type: "number[]", default: "-", description: "Controlled value array." },
+                ],
             },
             {
                 id: "select",
@@ -1029,14 +1103,14 @@ const categories: Category[] = [
                         />
                     </div>
                 ),
-                code: `<AivexSelect
-    label="Architecture"
-    variant="neon"
-    options={[
-        { value: "gpt-4", label: "GPT-4 Turbo", icon: <Cpu />, description: "Advanced reasoning" },
-        // ...
-    ]}
-/>`,
+                code: `<AivexSelect label="Neural Mode" variant="neon" options={options} />`,
+                props: [
+                    { prop: "options", type: "Option[]", default: "[]", description: "Array of { label, value, icon, description } objects." },
+                    { prop: "variant", type: '"default" | "neon" | "glass" | "ghost"', default: '"default"', description: "Visual presentation style." },
+                    { prop: "label", type: "string", default: "-", description: "Field label." },
+                    { prop: "helpText", type: "string", default: "-", description: "Secondary text below the select." },
+                    { prop: "onValueChange", type: "(v: string) => void", default: "-", description: "Selection change handler." },
+                ],
                 variants: [
                     {
                         id: "select-variants",
@@ -1108,7 +1182,13 @@ const categories: Category[] = [
                         <AivexSwitch label="Disabled" disabled />
                     </div>
                 ),
-                code: `<AivexSwitch label="Airplane Mode" checked />\n<AivexSwitch label="Do Not Disturb" />\n<AivexSwitch label="Disabled" disabled />`
+                code: `<AivexSwitch label="Airplane Mode" />`,
+                props: [
+                    { prop: "label", type: "string", default: "-", description: "Toggle label." },
+                    { prop: "checked", type: "boolean", default: "false", description: "Controlled switch state." },
+                    { prop: "onCheckedChange", type: "(v: boolean) => void", default: "-", description: "Status change callback." },
+                    { prop: "disabled", type: "boolean", default: "false", description: "Disables switch interaction." },
+                ],
             },
             {
                 id: "date-picker",
@@ -1121,6 +1201,12 @@ const categories: Category[] = [
                     </div>
                 ),
                 code: `<AivexDatePicker label="Schedule" variant="neon" />`,
+                props: [
+                    { prop: "selected", type: "Date", default: "new Date()", description: "Controlled selection." },
+                    { prop: "onSelect", type: "(d: Date) => void", default: "-", description: "Selection callback." },
+                    { prop: "label", type: "string", default: "-", description: "Input label." },
+                    { prop: "variant", type: '"default" | "glass" | "neon"', default: '"default"', description: "Visual style." },
+                ],
                 variants: [
                     {
                         id: "date-glass",
@@ -1141,7 +1227,12 @@ const categories: Category[] = [
                         <FileUploadZone />
                     </div>
                 ),
-                code: `<FileUploadZone maxFiles={5} />`
+                code: `<FileUploadZone maxFiles={5} />`,
+                props: [
+                    { prop: "maxFiles", type: "number", default: "5", description: "Upload limit." },
+                    { prop: "accept", type: "string", default: '"*"', description: "File type filter." },
+                    { prop: "onFilesSelected", type: "(f: File[]) => void", default: "-", description: "Selection callback." },
+                ],
             },
             {
                 id: "drag-drop",
@@ -1159,7 +1250,11 @@ const categories: Category[] = [
                         />
                     </div>
                 ),
-                code: `<DragDropList items={clusterNodes} />`
+                code: `<DragDropList items={clusterNodes} />`,
+                props: [
+                    { prop: "items", type: "DragItem[]", default: "[]", description: "Array of { id, title, type, status, icon }." },
+                    { prop: "onReorder", type: "(newItems: DragItem[]) => void", default: "-", description: "Order change callback." },
+                ],
             }
         ]
     },
@@ -1185,7 +1280,11 @@ const categories: Category[] = [
                         </Magnetic>
                     </div>
                 ),
-                code: `<Magnetic strength={0.3}>\n  <AivexButton>Magnetic</AivexButton>\n</Magnetic>`,
+                code: `<Magnetic strength={0.3}>...</Magnetic>`,
+                props: [
+                    { prop: "strength", type: "number", default: "0.5", description: "Attraction force (0-1)." },
+                    { prop: "children", type: "ReactNode", default: "-", description: "The element to attract." },
+                ],
                 variants: [
                     {
                         id: "magnetic-dock",
@@ -1247,9 +1346,11 @@ const categories: Category[] = [
                         </SpotlightCard>
                     </div>
                 ),
-                code: `<SpotlightCard>
-  {/* Content */}
-</SpotlightCard>`
+                code: `<SpotlightCard>...</SpotlightCard>`,
+                props: [
+                    { prop: "spotlightColor", type: "string", default: '"#10b98126"', description: "Custom radial glow color/opacity." },
+                    { prop: "className", type: "string", default: "-", description: "Container overrides." },
+                ],
             },
             {
                 id: "command-bar",
@@ -1263,7 +1364,8 @@ const categories: Category[] = [
                         </AivexButton>
                     </div>
                 ),
-                code: `<AivexCommandBar />`
+                code: `<AivexCommandBar />`,
+                props: [],
             },
             {
                 id: "skeleton",
@@ -1299,7 +1401,11 @@ const categories: Category[] = [
                         </div>
                     </div>
                 ),
-                code: `<AivexSkeleton className="w-full h-24" />\n<AivexSkeleton variant="pulse" className="w-full h-24" />`,
+                code: `<AivexSkeleton className="w-full h-8" />`,
+                props: [
+                    { prop: "variant", type: '"default" | "pulse"', default: '"default"', description: "Animation style." },
+                    { prop: "className", type: "string", default: "-", description: "Container dimensions/style." },
+                ],
                 variants: [
                     {
                         id: "skeleton-interactive",
@@ -1342,15 +1448,8 @@ const categories: Category[] = [
                         </AivexCardContent>
                     </AivexCard>
                 ),
-                code: `<AivexCard>
-  <AivexCardHeader>
-    <AivexCardTitle>Project Settings</AivexCardTitle>
-    <AivexCardDescription>Manage keys.</AivexCardDescription>
-  </AivexCardHeader>
-  <AivexCardContent>
-    {/* Content */}
-  </AivexCardContent>
-</AivexCard>`
+                code: `<AivexCard>...</AivexCard>`,
+                props: [],
             },
             {
                 id: "accordion",
@@ -1367,12 +1466,12 @@ const categories: Category[] = [
                         />
                     </div>
                 ),
-                code: `<AivexAccordion 
-    items={[
-        { value: "item-1", title: "Question?", content: "Answer." },
-        { value: "item-2", title: "Another?", content: "Yes." },
-    ]}
-/>`
+                code: `<AivexAccordion items={items} type="single" />`,
+                props: [
+                    { prop: "items", type: "AccordionItem[]", default: "[]", description: "Array of { value, title, content } objects." },
+                    { prop: "type", type: '"single" | "multiple"', default: '"single"', description: "Allow multiple items to be open." },
+                    { prop: "defaultValue", type: "string | string[]", default: "-", description: "Initial open items." },
+                ],
             },
             {
                 id: "breadcrumb",
@@ -1389,13 +1488,11 @@ const categories: Category[] = [
                         />
                     </div>
                 ),
-                code: `<AivexBreadcrumb 
-    items={[
-        { label: "Dashboard", href: "/dashboard" },
-        { label: "Components", href: "/docs" },
-        { label: "Breadcrumb" }
-    ]}
-/>`
+                code: `<AivexBreadcrumb items={items} />`,
+                props: [
+                    { prop: "items", type: "BreadcrumbItem[]", default: "[]", description: "Array of { label, href } objects." },
+                    { prop: "separator", type: "ReactNode", default: "<ChevronRight />", description: "Custom separator icon." },
+                ],
             },
             {
                 id: "command",
@@ -1406,7 +1503,11 @@ const categories: Category[] = [
                         <CommandPalettePreview />
                     </div>
                 ),
-                code: `<CommandPalette isOpen={isOpen} onClose={() => setIsOpen(false)} />`
+                code: `<CommandPalette isOpen={isOpen} onClose={close} />`,
+                props: [
+                    { prop: "isOpen", type: "boolean", default: "false", description: "Controlled visibility." },
+                    { prop: "onClose", type: "() => void", default: "-", description: "Dismissal callback." },
+                ],
             },
             {
                 id: "table",
@@ -1417,11 +1518,12 @@ const categories: Category[] = [
                         <TablePreview />
                     </div>
                 ),
-                code: `<AivexDataTable 
-    data={users} 
-    columns={columns} 
-    pageSize={5} 
-/>`
+                code: `<AivexDataTable data={data} columns={columns} />`,
+                props: [
+                    { prop: "data", type: "any[]", default: "[]", description: "The data to visualize." },
+                    { prop: "columns", type: "Column[]", default: "[]", description: "Table configuration." },
+                    { prop: "pageSize", type: "number", default: "10", description: "Rows per page." },
+                ],
             },
             {
                 id: "analytics",
@@ -1432,14 +1534,28 @@ const categories: Category[] = [
                         <AnalyticsCard />
                     </div>
                 ),
-                code: `<AnalyticsCard />`
+                code: `<AnalyticsCard title="..." value="..." />`,
+                props: [
+                    { prop: "title", type: "string", default: "-", description: "Main card header." },
+                    { prop: "value", type: "string", default: "-", description: "Primary metric display." },
+                    { prop: "change", type: "string", default: "-", description: "Percentage or delta text." },
+                    { prop: "metrics", type: "Metric[]", default: "[]", description: "Array of { label, value } bottom stats." },
+                ],
             },
             {
                 id: "swap",
                 title: "Swap Interface",
                 description: "High-density crypto trading interface example.",
-                component: <SwapCard />,
-                code: `<SwapCard />`
+                component: (
+                    <div className="w-full max-w-sm">
+                        <SwapCard />
+                    </div>
+                ),
+                code: `<SwapCard />`,
+                props: [
+                    { prop: "onSwap", type: "(v: any) => void", default: "-", description: "Execution callback." },
+                    { prop: "className", type: "string", default: "-", description: "Styling overrides." },
+                ],
             },
             {
                 id: "wallet-modal",
@@ -1451,11 +1567,12 @@ const categories: Category[] = [
                         <WalletConnectPreview />
                     </div>
                 ),
-                code: `<WalletConnectModal 
-    isOpen={isOpen} 
-    onClose={() => setIsOpen(false)} 
-    onConnect={(id) => console.log(id)} 
-/>`
+                code: `<WalletConnectModal isOpen={isOpen} onClose={close} />`,
+                props: [
+                    { prop: "isOpen", type: "boolean", default: "false", description: "Controlled visibility." },
+                    { prop: "onClose", type: "() => void", default: "-", description: "Dismissal callback." },
+                    { prop: "onConnect", type: "(id: string) => void", default: "-", description: "Success callback." },
+                ],
             },
             {
                 id: "code-editor",
@@ -1469,7 +1586,12 @@ const categories: Category[] = [
                         />
                     </div>
                 ),
-                code: `<AivexCodeEditor \n  initialCode={code} \n  language="tsx" \n/>`
+                code: `<AivexCodeEditor initialCode={code} language="tsx" />`,
+                props: [
+                    { prop: "initialCode", type: "string", default: '""', description: "Original editor content." },
+                    { prop: "language", type: "string", default: '"javascript"', description: "Syntax highlighting mode." },
+                    { prop: "readOnly", type: "boolean", default: "false", description: "Disables interaction." },
+                ],
             },
             {
                 id: "radar-chart",
@@ -1489,7 +1611,11 @@ const categories: Category[] = [
                         />
                     </div>
                 ),
-                code: `<RadarChart \n  metrics={[\n    { label: "Speed", value: 85, max: 100 },\n    // ...\n  ]} \n/>`
+                code: `<RadarChart metrics={metrics} />`,
+                props: [
+                    { prop: "metrics", type: "Metric[]", default: "[]", description: "Array of { label, value, max } objects." },
+                    { prop: "size", type: "number", default: "300", description: "Base visual scale." },
+                ],
             },
             {
                 id: "sparkline",
@@ -1518,7 +1644,11 @@ const categories: Category[] = [
                         </div>
                     </div>
                 ),
-                code: `<MiniSparkline data={data} color="#10b981" />`
+                code: `<MiniSparkline data={data} />`,
+                props: [
+                    { prop: "data", type: "Point[]", default: "[]", description: "Array of { label, value } objects." },
+                    { prop: "color", type: "string", default: '"#10b981"', description: "Hex value or CSS color." },
+                ],
             },
             {
                 id: "address-badge",
@@ -1530,7 +1660,12 @@ const categories: Category[] = [
                         <AddressBadge address="0xAbCd...EfGh" showAvatar={false} className="bg-emerald-500/10 border-emerald-500/50 text-emerald-400" />
                     </div>
                 ),
-                code: `<AddressBadge address="0x71C...976F" />`
+                code: `<AddressBadge address="0x..." />`,
+                props: [
+                    { prop: "address", type: "string", default: "-", description: "Full or truncated crypto address." },
+                    { prop: "showAvatar", type: "boolean", default: "true", description: "Enables leading identity icon." },
+                    { prop: "className", type: "string", default: "-", description: "Styling overrides." },
+                ],
             },
             {
                 id: "export-button",
@@ -1546,10 +1681,13 @@ const categories: Category[] = [
                         filename="Aivex-system-export"
                     />
                 ),
-                code: `<AivexExportButton 
-    data={data} 
-    filename="system-report" 
-/>`
+                code: `<AivexExportButton data={data} filename="system-report" />`,
+                props: [
+                    { prop: "data", type: "any[]", default: "[]", description: "Array of objects to export." },
+                    { prop: "filename", type: "string", default: '"export"', description: "Base file name." },
+                    { prop: "format", type: '"csv" | "json"', default: '"csv"', description: "Target file type." },
+                    { prop: "variant", type: "string", default: '"default"', description: "Button style variant." },
+                ],
             },
             {
                 id: "scrollbar",
@@ -1592,13 +1730,14 @@ const categories: Category[] = [
                         </CustomScrollBar>
                     </div>
                 ),
-                code: `<CustomScrollBar maxHeight="320px">
-    <div className="p-4">
-        {logs.map((log) => (
-            <LogItem key={log.id} data={log} />
-        ))}
-    </div>
-</CustomScrollBar>`,
+                code: `<CustomScrollBar maxHeight="400px">...</CustomScrollBar>`,
+                props: [
+                    { prop: "maxHeight", type: "string", default: '"100vh"', description: "Vertical constraint." },
+                    { prop: "maxWidth", type: "string", default: '"100%"', description: "Horizontal constraint." },
+                    { prop: "thumbColor", type: "string", default: '"bg-zinc-700"', description: "Tailwind class or CSS color." },
+                    { prop: "orientation", type: '"vertical" | "horizontal"', default: '"vertical"', description: "Scroll axis." },
+                    { prop: "children", type: "ReactNode", default: "-", description: "The scrollable content." },
+                ],
                 variants: [
                     {
                         id: "horizontal-scrollbar",
@@ -1692,7 +1831,13 @@ const categories: Category[] = [
                         </AivexBentoGrid>
                     </div>
                 ),
-                code: `<AivexBentoGrid>\n  <AivexBentoCard title="Core" icon={<Cpu />}>\n    {/* Content */}\n  </AivexBentoCard>\n</AivexBentoGrid>`
+                code: `<AivexBentoGrid>...</AivexBentoGrid>`,
+                props: [
+                    { prop: "title", type: "string", default: "-", description: "Header text (Card)." },
+                    { prop: "description", type: "string", default: "-", description: "Sub-info text (Card)." },
+                    { prop: "icon", type: "ReactNode", default: "-", description: "Leading icon (Card)." },
+                    { prop: "className", type: "string", default: "-", description: "Container spans." },
+                ],
             },
             {
                 id: "price-metric",
@@ -1715,7 +1860,13 @@ const categories: Category[] = [
                         />
                     </div>
                 ),
-                code: `<PriceMetric \n  label="ETH/USD" \n  value={3451.24} \n  change24h={5.8} \n/>`
+                code: `<PriceMetric label="ETH/USD" value={3451.24} />`,
+                props: [
+                    { prop: "label", type: "string", default: "-", description: "Pair display name." },
+                    { prop: "symbol", type: "string", default: "-", description: "Currency ticker." },
+                    { prop: "value", type: "number", default: "-", description: "Current market price." },
+                    { prop: "change24h", type: "number", default: "-", description: "Delta percentage." },
+                ],
             },
             {
                 id: "token-performance",
@@ -1733,7 +1884,14 @@ const categories: Category[] = [
                         className="w-full max-w-sm"
                     />
                 ),
-                code: `<TokenPerformance \n  symbol="BTC" \n  name="Bitcoin" \n  price={62450} \n  change24h={2.45} \n/>`
+                code: `<TokenPerformance symbol="BTC" price={62450} />`,
+                props: [
+                    { prop: "symbol", type: "string", default: "-", description: "Asset ticker." },
+                    { prop: "name", type: "string", default: "-", description: "Asset full name." },
+                    { prop: "price", type: "number", default: "-", description: "Current value." },
+                    { prop: "change24h", type: "number", default: "-", description: "Growth %." },
+                    { prop: "volume24h", type: "string", default: "-", description: "Trading volume." },
+                ],
             },
             {
                 id: "carousel",
@@ -1755,7 +1913,11 @@ const categories: Category[] = [
                         ]}
                     />
                 ),
-                code: `<AivexCarousel items={[<Item1 />, <Item2 />]} />`
+                code: `<AivexCarousel items={nodes} />`,
+                props: [
+                    { prop: "items", type: "ReactNode[]", default: "[]", description: "Array of slider content." },
+                    { prop: "className", type: "string", default: "-", description: "Container overrides." },
+                ],
             }
         ]
     },
@@ -1775,7 +1937,8 @@ const categories: Category[] = [
                         </div>
                     </div>
                 ),
-                code: `<AIChatInterface />`
+                code: `<AIChatInterface />`,
+                props: []
             },
             {
                 id: "streaming-text",
@@ -1788,9 +1951,12 @@ const categories: Category[] = [
                         </StreamingText>
                     </div>
                 ),
-                code: `<StreamingText>
-    Analysis complete. The market sentiment is currently bullish...
-</StreamingText>`
+                code: `<StreamingText speed={40}>...</StreamingText>`,
+                props: [
+                    { prop: "children", type: "string", default: "-", description: "Text to stream." },
+                    { prop: "speed", type: "number", default: "30", description: "Ms per character." },
+                    { prop: "cursor", type: "boolean", default: "true", description: "Show typing indicator." },
+                ],
             },
             {
                 id: "step-process",
@@ -1807,12 +1973,10 @@ const categories: Category[] = [
                         />
                     </div>
                 ),
-                code: `<StepProcess 
-    steps={[
-        { id: "1", title: "Init", status: "completed" },
-        { id: "2", title: "Processing", status: "running" }
-    ]} 
-/>`
+                code: `<StepProcess steps={steps} />`,
+                props: [
+                    { prop: "steps", type: "Step[]", default: "[]", description: "Array of { id, title, status }." },
+                ],
             },
             {
                 id: "thought-flow",
@@ -1831,7 +1995,10 @@ const categories: Category[] = [
                         />
                     </div>
                 ),
-                code: `<AgentThoughtFlow \n  steps={[ \n    { id: "1", label: "Analysis", status: "complete", type: "analyze" }, \n    // ... \n  ]} \n/>`
+                code: `<AgentThoughtFlow steps={steps} />`,
+                props: [
+                    { prop: "steps", type: "Thought[]", default: "[]", description: "Array of { id, label, type, status }." },
+                ],
             },
             {
                 id: "model-params",
@@ -1843,7 +2010,11 @@ const categories: Category[] = [
                         <ModelParameters />
                     </div>
                 ),
-                code: `<ModelParameters />`
+                code: `<ModelParameters />`,
+                props: [
+                    { prop: "onConfigChange", type: "(config: any) => void", default: "-", description: "Settings update callback." },
+                    { prop: "className", type: "string", default: "-", description: "Container styling." },
+                ],
             },
             {
                 id: "activity-feed",
@@ -1860,7 +2031,12 @@ const categories: Category[] = [
                         ]}
                     />
                 ),
-                code: `<AgentActivityFeed activities={data} />`
+                code: `<AgentActivityFeed activities={data} />`,
+                props: [
+                    { prop: "activities", type: "ActivityItem[]", default: "[]", description: "Array of feed log objects." },
+                    { prop: "title", type: "string", default: '"Agent Protocol Feed"', description: "Header caption." },
+                    { prop: "maxHeight", type: "string", default: '"400px"', description: "Vertical constraint." },
+                ],
             }
         ]
     }
@@ -2166,16 +2342,23 @@ const StoryCanvas = ({
                                                 </tr>
                                             </thead>
                                             <tbody className="divide-y divide-zinc-800">
-                                                <tr>
-                                                    <td className="px-4 py-3 font-mono text-emerald-500">className</td>
-                                                    <td className="px-4 py-3 text-zinc-500">string</td>
-                                                    <td className="px-4 py-3 text-zinc-500">-</td>
-                                                </tr>
-                                                <tr>
-                                                    <td className="px-4 py-3 font-mono text-emerald-500">variant</td>
-                                                    <td className="px-4 py-3 text-zinc-500">"primary" | "secondary" | "ghost"</td>
-                                                    <td className="px-4 py-3 text-zinc-500">"primary"</td>
-                                                </tr>
+                                                {(component.props || [
+                                                    { prop: "className", type: "string", default: "-" },
+                                                    { prop: "children", type: "ReactNode", default: "-" },
+                                                ]).map((p, i) => (
+                                                    <tr key={i} className="group hover:bg-zinc-900/30 transition-colors">
+                                                        <td className="px-4 py-4 font-mono text-emerald-500 text-xs">
+                                                            {p.prop}
+                                                            {p.description && (
+                                                                <span className="block text-[10px] text-zinc-500 font-sans mt-0.5 normal-case font-normal">
+                                                                    {p.description}
+                                                                </span>
+                                                            )}
+                                                        </td>
+                                                        <td className="px-4 py-4 text-zinc-400 text-xs font-mono">{p.type}</td>
+                                                        <td className="px-4 py-4 text-zinc-500 text-xs font-mono">{p.default}</td>
+                                                    </tr>
+                                                ))}
                                             </tbody>
                                         </table>
                                     </div>
@@ -2183,7 +2366,7 @@ const StoryCanvas = ({
 
                                 <div className="p-6 rounded-2xl border border-blue-500/20 bg-blue-500/5 text-blue-400 text-sm font-sans flex gap-3">
                                     <Info size={18} className="shrink-0" />
-                                    <p>All components support standard HTML attributes and are fully composable with Tailwind CSS classes.</p>
+                                    <p>All AivexCore components support standard HTML attributes and are fully composable with Tailwind CSS utility classes.</p>
                                 </div>
                             </motion.div>
                         )}
@@ -2245,7 +2428,7 @@ export default function DocsPage() {
     const nextComponent = currentIndex < allComponents.length - 1 ? allComponents[currentIndex + 1] : undefined;
 
     return (
-        <div className="flex flex-col h-screen bg-zinc-950 text-zinc-100 font-sans selection:bg-zinc-800 selection:text-zinc-50 overflow-hidden" style={{ fontFamily: 'var(--font-sans), sans-serif' }}>
+        <div className="flex flex-col h-screen bg-zinc-950 text-zinc-100 font-sans selection:bg-zinc-800 selection:text-zinc-50 overflow-hidden scrollbar-none" style={{ fontFamily: 'var(--font-sans), sans-serif' }}>
             <AivexCommandBar />
             <DocsNavbar toggleSidebar={() => setSidebarOpen(!isSidebarOpen)} />
 
