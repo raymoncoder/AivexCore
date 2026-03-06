@@ -2085,9 +2085,6 @@ const DocsNavbar = ({ toggleSidebar }: { toggleSidebar?: () => void }) => {
                         <Link href="https://github.com" className="p-2 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900 rounded-md transition-colors">
                             <Github size={16} />
                         </Link>
-                        <Link href="https://x.com" className="p-2 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900 rounded-md transition-colors">
-                            <XIcon size={14} />
-                        </Link>
                     </div>
                 </div>
             </div>

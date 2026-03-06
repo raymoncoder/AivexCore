@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Github } from "lucide-react";
-import { XIcon } from "@/components/icons/XIcon";
 import { AivexButton } from "@/components/ui/core/AivexButton";
 import { AivexLogo } from "@/components/icons/AivexLogo";
 
@@ -48,9 +47,6 @@ export const Navbar = () => {
                     <div className="flex items-center gap-2 text-zinc-400">
                         <Link href="https://github.com/raymoncoder/AivexCore" target="_blank" className="p-2 hover:text-zinc-100 transition-colors">
                             <Github size={20} />
-                        </Link>
-                        <Link href="https://x.com" target="_blank" className="p-2 hover:text-zinc-100 transition-colors">
-                            <XIcon size={18} />
                         </Link>
                     </div>
                     <div className="h-6 w-[1px] bg-zinc-800 mx-2 hidden sm:block"></div>
