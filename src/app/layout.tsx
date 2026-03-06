@@ -3,11 +3,11 @@ import { inter, jetbrains } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Neural-UI",
+  title: "Aivex-UI",
   description: "High-end Crypto & AI component library",
 };
 
-import { NeuralToastProvider } from "@/components/ui/core/NeuralToaster";
+import { AivexToastProvider } from "@/components/ui/core/AivexToaster";
 
 export default function RootLayout({
   children,
@@ -16,12 +16,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
+      <head>
+        <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
+      </head>
       <body
         className={`${inter.className} ${inter.variable} ${jetbrains.variable} font-sans antialiased`}
       >
-        <NeuralToastProvider>
+        <AivexToastProvider>
           {children}
-        </NeuralToastProvider>
+        </AivexToastProvider>
       </body>
     </html>
   );

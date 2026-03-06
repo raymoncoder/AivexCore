@@ -3,9 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Github, Layers } from "lucide-react";
+import { Github } from "lucide-react";
 import { XIcon } from "@/components/icons/XIcon";
-import { NeuralButton } from "@/components/ui/core/NeuralButton";
+import { AivexButton } from "@/components/ui/core/AivexButton";
+import { AivexLogo } from "@/components/icons/AivexLogo";
 
 export const Navbar = () => {
     const pathname = usePathname();
@@ -14,11 +15,11 @@ export const Navbar = () => {
         <header className="fixed top-0 left-0 right-0 z-50 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-md">
             <div className="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between relative">
                 <Link href="/" className="flex items-center gap-2 group shrink-0">
-                    <div className="w-8 h-8 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:border-emerald-500/50 transition-colors">
-                        <Layers size={18} className="text-zinc-100" />
+                    <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover:border-emerald-500/50 transition-colors overflow-hidden">
+                        <AivexLogo size={24} className="text-zinc-100" />
                     </div>
                     <span className="text-lg font-bold tracking-tight text-zinc-100 font-sans">
-                        Neural<span className="text-zinc-400">UI</span>
+                        Aivex<span className="text-zinc-400">Core</span>
                     </span>
                 </Link>
 
@@ -45,7 +46,7 @@ export const Navbar = () => {
 
                 <div className="flex items-center gap-4 shrink-0">
                     <div className="flex items-center gap-2 text-zinc-400">
-                        <Link href="https://github.com" target="_blank" className="p-2 hover:text-zinc-100 transition-colors">
+                        <Link href="https://github.com/raymoncoder/AivexCore" target="_blank" className="p-2 hover:text-zinc-100 transition-colors">
                             <Github size={20} />
                         </Link>
                         <Link href="https://x.com" target="_blank" className="p-2 hover:text-zinc-100 transition-colors">
@@ -54,9 +55,9 @@ export const Navbar = () => {
                     </div>
                     <div className="h-6 w-[1px] bg-zinc-800 mx-2 hidden sm:block"></div>
                     <Link href="/docs">
-                        <NeuralButton size="sm" className="hidden sm:inline-flex">
+                        <AivexButton size="sm" className="hidden sm:inline-flex">
                             Get Started
-                        </NeuralButton>
+                        </AivexButton>
                     </Link>
                 </div>
             </div>

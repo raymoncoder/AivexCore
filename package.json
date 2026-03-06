@@ -1,11 +1,11 @@
 {
-  "name": "neuralui",
+  "name": "aivexcore",
   "version": "0.1.0",
-  "description": "The UI library for Agentic AI and Crypto applications",
-  "homepage": "https://neuralui.vercel.app",
+  "description": "The cinematic UI library for Agentic AI and Crypto applications",
+  "homepage": "https://aivexcore.vercel.app",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/neuralui"
+    "url": "https://github.com/raymoncoder/AivexCore"
   },
   "license": "MIT",
   "scripts": {
@@ -20,6 +20,7 @@
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-switch": "^1.2.6",
     "@types/prismjs": "^1.26.5",
+    "@web3icons/react": "^4.1.17",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.34.0",

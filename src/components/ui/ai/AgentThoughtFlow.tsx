@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, Circle, Loader2, BrainCircuit, Sparkles, MessageSquare, Database, Search, Code, Globe } from "lucide-react";
+import { CheckCircle2, Circle, Loader2, BrainCircuit, Sparkles, Database, Search, Code } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface ThoughtStep {

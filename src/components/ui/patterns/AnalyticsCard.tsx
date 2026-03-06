@@ -2,10 +2,8 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ArrowDownRight, MoreHorizontal, Calendar, Activity } from "lucide-react";
-import { NeuralCard, NeuralCardHeader, NeuralCardTitle, NeuralCardContent } from "@/components/ui/core/NeuralCard";
-import { NeuralButton } from "@/components/ui/core/NeuralButton";
-import { NeuralBadge } from "@/components/ui/core/NeuralBadge";
+import { AivexCard, AivexCardHeader, AivexCardTitle, AivexCardContent } from "@/components/ui/core/AivexCard";
+import { AivexBadge } from "@/components/ui/core/AivexBadge";
 import { cn } from "@/lib/utils";
 
 const dataPoints = [30, 45, 35, 55, 45, 70, 60, 75, 50, 90, 80, 100]; // Mock data 0-100
@@ -29,13 +27,13 @@ export const AnalyticsCard = () => {
     };
 
     return (
-        <NeuralCard className="w-full max-w-lg bg-zinc-950/80 border-zinc-800/50 backdrop-blur-xl ring-1 ring-white/5 relative overflow-hidden group">
+        <AivexCard className="w-full max-w-lg bg-zinc-950/80 border-zinc-800/50 backdrop-blur-xl ring-1 ring-white/5 relative overflow-hidden group">
             {/* Top Glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent opacity-50" />
 
-            <NeuralCardHeader className="flex flex-row items-center justify-between pb-2">
+            <AivexCardHeader className="flex flex-row items-center justify-between pb-2">
                 <div>
-                    <NeuralCardTitle className="text-zinc-100 font-medium tracking-tight">Revenue</NeuralCardTitle>
+                    <AivexCardTitle className="text-zinc-100 font-medium tracking-tight">Revenue</AivexCardTitle>
                     <p className="text-xs text-zinc-500 font-mono mt-1">Real-time overview</p>
                 </div>
                 <div className="flex gap-2">
@@ -58,17 +56,17 @@ export const AnalyticsCard = () => {
                         Monthly
                     </button>
                 </div>
-            </NeuralCardHeader>
+            </AivexCardHeader>
 
-            <NeuralCardContent className="space-y-6">
+            <AivexCardContent className="space-y-6">
                 {/* Big Number */}
                 <div className="flex items-end gap-3">
                     <h2 className="text-4xl font-bold text-zinc-50 font-mono">
                         $45,231.89
                     </h2>
-                    <NeuralBadge status="success" variant="soft" dot className="mb-1.5 font-mono">
+                    <AivexBadge status="success" variant="soft" dot className="mb-1.5 font-mono">
                         +12.5%
-                    </NeuralBadge>
+                    </AivexBadge>
                 </div>
 
                 {/* Chart Area */}
@@ -234,7 +232,7 @@ export const AnalyticsCard = () => {
                                     "w-8 h-8 rounded-full flex items-center justify-center border",
                                     i === 2 ? "bg-rose-500/10 border-rose-500/20 text-rose-500" : "bg-emerald-500/10 border-emerald-500/20 text-emerald-500"
                                 )}>
-                                    {i === 2 ? <ArrowDownRight size={14} /> : <ArrowUpRight size={14} />}
+                                    {i === 2 ? <i className="hgi-stroke hgi-arrow-down-right-01 text-[14px]" /> : <i className="hgi-stroke hgi-arrow-up-right-01 text-[14px]" />}
                                 </div>
                                 <div>
                                     <p className="text-sm font-medium text-zinc-200 font-sans">
@@ -248,13 +246,13 @@ export const AnalyticsCard = () => {
                                     {i === 2 ? "-$240.00" : "+$1,250.00"}
                                 </p>
                                 <div className="opacity-0 group-hover/item:opacity-100 transition-opacity">
-                                    <MoreHorizontal size={14} className="text-zinc-600 ml-auto cursor-pointer hover:text-zinc-300" />
+                                    <i className="hgi-stroke hgi-more-horizontal text-[14px] text-zinc-600 ml-auto cursor-pointer hover:text-zinc-300" />
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
-            </NeuralCardContent>
-        </NeuralCard>
+            </AivexCardContent>
+        </AivexCard>
     );
 };

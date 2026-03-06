@@ -1,11 +1,11 @@
 <div align="center">
-  <img src="public/logo.svg" alt="NeuralUI Logo" width="64" height="64" />
-  <h1>NeuralUI</h1>
+  <img src="public/logo.svg" alt="AivexCore Logo" width="64" height="64" />
+  <h1>AivexCore</h1>
   <p><strong>The UI library for Agentic AI and Crypto applications.</strong></p>
   <p>
-    <a href="https://npmjs.org/package/neuralui"><img src="https://img.shields.io/npm/v/neuralui?style=flat-square&color=10b981" alt="npm version" /></a>
-    <a href="https://npmjs.org/package/neuralui"><img src="https://img.shields.io/npm/dm/neuralui?style=flat-square&color=10b981" alt="downloads" /></a>
-    <a href="LICENSE"><img src="https://img.shields.io/github/license/yourusername/neuralui?style=flat-square&color=10b981" alt="license" /></a>
+    <a href="https://npmjs.org/package/AivexCore"><img src="https://img.shields.io/npm/v/AivexCore?style=flat-square&color=10b981" alt="npm version" /></a>
+    <a href="https://npmjs.org/package/AivexCore"><img src="https://img.shields.io/npm/dm/AivexCore?style=flat-square&color=10b981" alt="downloads" /></a>
+    <a href="LICENSE"><img src="https://img.shields.io/github/license/yourusername/AivexCore?style=flat-square&color=10b981" alt="license" /></a>
     <img src="https://img.shields.io/badge/React-19-blue?style=flat-square" alt="React 19" />
     <img src="https://img.shields.io/badge/Next.js-15-black?style=flat-square" alt="Next.js" />
     <img src="https://img.shields.io/badge/Tailwind-v4-38bdf8?style=flat-square" alt="Tailwind v4" />
@@ -16,27 +16,27 @@
 
 ---
 
-NeuralUI is a collection of **54+ open-source, copy-paste UI components** built specifically for AI dashboards and cryptocurrency applications. Designed with a cinematic dark aesthetic, 60fps Framer Motion animations, and accessibility via Radix UI primitives.
+AivexCore is a collection of **54+ open-source, copy-paste UI components** built specifically for AI dashboards and cryptocurrency applications. Designed with a cinematic dark aesthetic, 60fps Framer Motion animations, and accessibility via Radix UI primitives.
 
-## ✨ Why NeuralUI?
+## ✨ Why AivexCore?
 
-Unlike general-purpose libraries (shadcn, Material UI), NeuralUI is purpose-built for the **next generation of AI and crypto applications**:
+Unlike general-purpose libraries (shadcn, Material UI), AivexCore is purpose-built for the **next generation of AI and crypto applications**:
 
 - 🤖 **AI-native components** — `AIChatInterface`, `StreamingText`, `AgentThoughtFlow`, `AgentActivityFeed`, `ModelParameters`, `StepProcess`
 - 🪙 **Crypto-native components** — `SwapCard`, `WalletConnectModal`, `PriceMetric`, `TokenPerformance`, `AddressBadge`
-- 📊 **Data visualization** — `RadarChart`, `MiniSparkline`, `AnalyticsCard`, `NeuralDataTable`
+- 📊 **Data visualization** — `RadarChart`, `MiniSparkline`, `AnalyticsCard`, `AivexDataTable`
 - 🎬 **Cinematic aesthetics** — Glassmorphism, GPU-accelerated animations, premium dark mode
 
 ## 🚀 Quick Start
 
-NeuralUI uses a **copy-paste model** (like shadcn/ui) — components are added directly to your codebase, giving you full ownership.
+AivexCore uses a **copy-paste model** (like shadcn/ui) — components are added directly to your codebase, giving you full ownership.
 
 ```bash
 # Add a component to your project
-npx neuralui@latest add neural-button
+npx AivexCore@latest add Aivex-button
 
 # Add multiple components at once
-npx neuralui@latest add neural-input neural-badge neural-card
+npx AivexCore@latest add Aivex-input Aivex-badge Aivex-card
 ```
 
 ## 📦 Installation
@@ -70,19 +70,19 @@ export function cn(...inputs: ClassValue[]) {
 ### 3. Add a component
 
 ```bash
-npx neuralui@latest add neural-button
+npx AivexCore@latest add Aivex-button
 ```
 
 ### 4. Use it
 
 ```tsx
-import { NeuralButton } from "@/components/ui/core/NeuralButton";
+import { AivexButton } from "@/components/ui/core/AivexButton";
 
 export default function Page() {
   return (
-    <NeuralButton variant="neon" size="lg">
+    <AivexButton variant="neon" size="lg">
       Initialize Core
-    </NeuralButton>
+    </AivexButton>
   );
 }
 ```
@@ -90,7 +90,7 @@ export default function Page() {
 ## 🧩 Component Categories
 
 ### Core Primitives
-`NeuralButton` · `NeuralInput` · `NeuralCard` · `NeuralBadge` · `NeuralSelect` · `NeuralTabs` · `NeuralDialog` · `NeuralToaster` · `NeuralSwitch` · `NeuralCheckbox` · `NeuralSlider` · `NeuralProgress` · `NeuralTooltip` · `NeuralAlert` · `NeuralAvatar` · `NeuralAccordion` · `NeuralBreadcrumb` · `NeuralSkeleton` · `NeuralLoader` · `NeuralMarquee` · `NeuralOTPInput` · `NeuralPasswordInput` · `NeuralDatePicker` · `FileUploadZone` · `DragDropList` · `CustomScrollBar`
+`AivexButton` · `AivexInput` · `AivexCard` · `AivexBadge` · `AivexSelect` · `AivexTabs` · `AivexDialog` · `AivexToaster` · `AivexSwitch` · `AivexCheckbox` · `AivexSlider` · `AivexProgress` · `AivexTooltip` · `AivexAlert` · `AivexAvatar` · `AivexAccordion` · `AivexBreadcrumb` · `AivexSkeleton` · `AivexLoader` · `AivexMarquee` · `AivexOTPInput` · `AivexPasswordInput` · `AivexDatePicker` · `FileUploadZone` · `DragDropList` · `CustomScrollBar`
 
 ### AI Components
 `AIChatInterface` · `StreamingText` · `AgentThoughtFlow` · `AgentActivityFeed` · `ModelParameters` · `StepProcess`
@@ -99,27 +99,27 @@ export default function Page() {
 `SwapCard` · `WalletConnectModal` · `PriceMetric` · `TokenPerformance` · `AddressBadge`
 
 ### Data & Visualization
-`RadarChart` · `MiniSparkline` · `AnalyticsCard` · `NeuralDataTable` · `CommandPalette` · `NeuralCodeEditor` · `NeuralExportButton`
+`RadarChart` · `MiniSparkline` · `AnalyticsCard` · `AivexDataTable` · `CommandPalette` · `AivexCodeEditor` · `AivexExportButton`
 
 ### Effects & Patterns
-`SpotlightCard` · `Magnetic` · `NeuralCommandBar` · `NeuralBentoGrid` · `NeuralCarousel`
+`SpotlightCard` · `Magnetic` · `AivexCommandBar` · `AivexBentoGrid` · `AivexCarousel`
 
 ## 🛠️ CLI Reference
 
 ```bash
 # Add a specific component
-npx neuralui@latest add <component-name>
+npx AivexCore@latest add <component-name>
 
 # Examples
-npx neuralui@latest add ai-chat-interface
-npx neuralui@latest add swap-card
-npx neuralui@latest add radar-chart
-npx neuralui@latest add spotlight-card
+npx AivexCore@latest add ai-chat-interface
+npx AivexCore@latest add swap-card
+npx AivexCore@latest add radar-chart
+npx AivexCore@latest add spotlight-card
 ```
 
 ## 🎨 Design System
 
-NeuralUI is built on a consistent design language:
+AivexCore is built on a consistent design language:
 
 | Token | Value |
 |-------|-------|
@@ -131,9 +131,19 @@ NeuralUI is built on a consistent design language:
 
 All numerical values, currency, and timestamps automatically use `font-mono` with `tabular-nums`.
 
-## 📄 License
+## Support & Donations
 
-MIT © [Neural Inc.](LICENSE)
+If you find AivexCore useful and would like to support its development, you can donate to the following addresses:
+
+- **USDT (TRC20):** `TVgHuxxjb3BVzJsh2PqQL1p5jwgSbMG5wa`
+- **ETH (ERC20):** `0xcd0b27dc16110eef3670b25620ed80c701a40b48`
+- **BTC (Native SegWit):** `bc1pqwve2d2xr5vx79uqrld3nzar660y9qnez27wwdasax5c5evwktrsdde6q4`
+
+Your support helps maintain the infrastructure and keep the high-end component registry free for everyone.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 

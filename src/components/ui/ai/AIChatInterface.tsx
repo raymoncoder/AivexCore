@@ -3,10 +3,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Bot, User, Sparkles, ChevronDown, Cpu, Plus, Paperclip, MoreHorizontal, Settings, Trash2 } from "lucide-react";
-import { NeuralButton } from "@/components/ui/core/NeuralButton";
-import { NeuralBadge } from "@/components/ui/core/NeuralBadge";
-import { NeuralTextarea } from "@/components/ui/core/NeuralTextarea";
-import { NeuralSelect } from "@/components/ui/core/NeuralSelect";
+import { AivexButton } from "@/components/ui/core/AivexButton";
+import { AivexBadge } from "@/components/ui/core/AivexBadge";
+import { AivexTextarea } from "@/components/ui/core/AivexTextarea";
+import { AivexSelect } from "@/components/ui/core/AivexSelect";
 import { cn } from "@/lib/utils";
 
 interface Message {
@@ -21,13 +21,13 @@ export const AIChatInterface = () => {
         {
             id: "1",
             role: "assistant",
-            content: "Hello! I'm NeuralAI v4. How can I assist you with your code today?",
+            content: "Hello! I'm AivexAI v4. How can I assist you with your code today?",
             timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         }
     ]);
     const [input, setInput] = useState("");
     const [isTyping, setIsTyping] = useState(false);
-    const [selectedModel, setSelectedModel] = useState("gpt-4"); // Controlled state for NeuralSelect
+    const [selectedModel, setSelectedModel] = useState("gpt-4"); // Controlled state for AivexSelect
 
     const scrollRef = useRef<HTMLDivElement>(null);
     const isFirstMount = useRef(true);
@@ -79,10 +79,10 @@ export const AIChatInterface = () => {
         }, 1500);
     };
 
-    // Auto-resize textarea logic could go here, but NeuralTextarea handles basic sizing.
+    // Auto-resize textarea logic could go here, but AivexTextarea handles basic sizing.
     // For a chat input specifically, we often want auto-growing height.
     // We can achieve this by using a hidden div or just raw TextareaAutosize library.
-    // For this demo, let's keep it simple with NeuralTextarea fixed min-height but allow scroll.
+    // For this demo, let's keep it simple with AivexTextarea fixed min-height but allow scroll.
 
     return (
         <div className="flex flex-col h-full w-full max-w-2xl mx-auto rounded-xl bg-[#09090b] border border-zinc-800/50 overflow-hidden shadow-2xl relative ring-1 ring-white/5">
@@ -90,14 +90,14 @@ export const AIChatInterface = () => {
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-zinc-900 bg-zinc-950/80 backdrop-blur-md z-10 sticky top-0 shrink-0">
                 <div className="flex items-center gap-3">
-                    <NeuralButton variant="ghost" size="icon" className="h-8 w-8 text-zinc-500 hover:text-zinc-100">
+                    <AivexButton variant="ghost" size="icon" className="h-8 w-8 text-zinc-500 hover:text-zinc-100">
                         <Plus size={18} />
-                    </NeuralButton>
+                    </AivexButton>
 
                     <div className="h-4 w-[1px] bg-zinc-800 mx-1 hidden sm:block"></div>
 
                     <div className="w-[140px]">
-                        <NeuralSelect
+                        <AivexSelect
                             options={[
                                 { value: "gpt-4", label: "GPT-4 Turbo" },
                                 { value: "claude-3", label: "Claude 3 Opus" },
@@ -111,12 +111,12 @@ export const AIChatInterface = () => {
                 </div>
 
                 <div className="flex items-center gap-2">
-                    <NeuralBadge status="success" dot className="font-mono">
+                    <AivexBadge status="success" dot className="font-mono">
                         Online
-                    </NeuralBadge>
-                    <NeuralButton variant="ghost" size="icon" className="h-8 w-8 text-zinc-500 hover:text-zinc-100">
+                    </AivexBadge>
+                    <AivexButton variant="ghost" size="icon" className="h-8 w-8 text-zinc-500 hover:text-zinc-100">
                         <MoreHorizontal size={18} />
-                    </NeuralButton>
+                    </AivexButton>
                 </div>
             </div>
 
@@ -152,7 +152,7 @@ export const AIChatInterface = () => {
                             )}>
                                 <div className="flex items-center gap-2 px-1">
                                     <span className="font-medium text-zinc-400 text-xs font-sans">
-                                        {msg.role === "user" ? "You" : "Neural AI"}
+                                        {msg.role === "user" ? "You" : "Aivex AI"}
                                     </span>
                                     <span className="text-[10px] text-zinc-600 font-mono">
                                         {msg.timestamp}
@@ -198,10 +198,10 @@ export const AIChatInterface = () => {
 
             {/* Input Area */}
             <div className="p-4 bg-zinc-950 border-t border-zinc-900 shrink-0">
-                <div className="relative flex items-end gap-2 bg-zinc-900 p-2 rounded-xl border border-zinc-800 focus-within:border-zinc-700 focus-within:ring-1 focus-within:ring-zinc-700/50 transition-all shadow-sm">
-                    <NeuralButton variant="ghost" size="icon" className="h-9 w-9 text-zinc-500 hover:text-zinc-300 rounded-lg shrink-0 mb-0.5">
-                        <Paperclip size={18} />
-                    </NeuralButton>
+                <div className="relative flex items-end gap-2 bg-zinc-900/50 p-2 rounded-2xl border border-zinc-800 focus-within:border-zinc-700 hover:border-zinc-700/80 focus-within:ring-4 focus-within:ring-emerald-500/10 transition-all shadow-sm">
+                    <AivexButton variant="ghost" size="icon" className="h-[44px] w-[44px] text-zinc-500 hover:text-zinc-300 rounded-xl shrink-0">
+                        <Paperclip size={20} />
+                    </AivexButton>
 
                     <textarea
                         value={input}
@@ -212,28 +212,26 @@ export const AIChatInterface = () => {
                                 handleSend();
                             }
                         }}
-                        placeholder="Message Neural..."
-                        className="w-full bg-transparent text-zinc-200 placeholder:text-zinc-600 px-2 py-2.5 focus:outline-none resize-none min-h-[44px] max-h-[120px] text-sm font-sans"
+                        placeholder="Message Aivex..."
+                        className="flex-1 bg-transparent text-zinc-200 placeholder:text-zinc-600 px-2 py-[10px] focus:outline-none resize-none min-h-[44px] max-h-[120px] text-base font-sans"
                         rows={1}
                     />
 
-                    <NeuralButton
+                    <AivexButton
                         onClick={handleSend}
                         disabled={!input.trim()}
                         size="icon"
                         className={cn(
-                            "h-9 w-9 rounded-lg shrink-0 mb-0.5 transition-all",
-                            input.trim() ? "bg-zinc-100 text-zinc-950 hover:bg-zinc-200" : "bg-zinc-800 text-zinc-500 hover:bg-zinc-800 cursor-not-allowed opacity-50"
+                            "h-[44px] w-[44px] rounded-xl shrink-0 transition-all shadow-none",
+                            input.trim() ? "bg-emerald-500 text-emerald-950 hover:bg-emerald-400" : "bg-zinc-800 text-zinc-500 hover:bg-zinc-800 cursor-not-allowed"
                         )}
                     >
-                        <div className={cn(!input.trim() && "opacity-50")}>
-                            <Send size={16} className={cn(input.trim() && "ml-0.5")} />
-                        </div>
-                    </NeuralButton>
+                        <Send size={18} className={cn("transition-transform", input.trim() && "ml-0.5")} />
+                    </AivexButton>
                 </div>
                 <div className="text-center mt-3 flex justify-center items-center gap-2">
                     <p className="text-[10px] text-zinc-600 font-medium tracking-wide font-sans">
-                        Powered by Neural v4 • AI can be inaccurate
+                        Powered by Aivex v4 • AI can be inaccurate
                     </p>
                 </div>
             </div>

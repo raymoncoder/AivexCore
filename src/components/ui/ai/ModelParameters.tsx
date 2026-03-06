@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Sliders, Zap, Sparkles, Cpu, Shield, ZapOff } from "lucide-react";
-import { NeuralSlider } from "@/components/ui/core/NeuralSlider";
-import { NeuralSwitch } from "@/components/ui/core/NeuralSwitch";
+import { Sliders, Zap, Sparkles, Cpu, Shield } from "lucide-react";
+import { AivexSlider } from "@/components/ui/core/AivexSlider";
+import { AivexSwitch } from "@/components/ui/core/AivexSwitch";
 import { cn } from "@/lib/utils";
 
 interface ModelParametersProps {
@@ -47,7 +47,7 @@ export const ModelParameters = ({ className, onConfigChange }: ModelParametersPr
                         <Sparkles size={14} className="text-emerald-400" />
                         <span className="text-[11px] font-mono text-zinc-400 uppercase tracking-widest">Temperature</span>
                     </div>
-                    <NeuralSlider
+                    <AivexSlider
                         min={0}
                         max={2}
                         step={0.1}
@@ -66,7 +66,7 @@ export const ModelParameters = ({ className, onConfigChange }: ModelParametersPr
                         <Zap size={14} className="text-zinc-400" />
                         <span className="text-[11px] font-mono text-zinc-400 uppercase tracking-widest">Nucleus Sampling</span>
                     </div>
-                    <NeuralSlider
+                    <AivexSlider
                         min={0}
                         max={1}
                         step={0.05}
@@ -82,7 +82,7 @@ export const ModelParameters = ({ className, onConfigChange }: ModelParametersPr
                         <Cpu size={14} className="text-zinc-400" />
                         <span className="text-[11px] font-mono text-zinc-400 uppercase tracking-widest">Token Quota</span>
                     </div>
-                    <NeuralSlider
+                    <AivexSlider
                         min={256}
                         max={4096}
                         step={128}
@@ -98,7 +98,7 @@ export const ModelParameters = ({ className, onConfigChange }: ModelParametersPr
                 <div className="flex flex-col gap-3 p-3 rounded-2xl bg-white/[0.02] border border-white/[0.03]">
                     <div className="flex items-center justify-between">
                         <Zap size={14} className={cn("transition-colors", streaming ? "text-emerald-400" : "text-zinc-600")} />
-                        <NeuralSwitch checked={streaming} onCheckedChange={setStreaming} />
+                        <AivexSwitch checked={streaming} onCheckedChange={setStreaming} />
                     </div>
                     <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Streaming</span>
                 </div>
@@ -106,7 +106,7 @@ export const ModelParameters = ({ className, onConfigChange }: ModelParametersPr
                 <div className="flex flex-col gap-3 p-3 rounded-2xl bg-white/[0.02] border border-white/[0.03]">
                     <div className="flex items-center justify-between">
                         <Shield size={14} className={cn("transition-colors", securityFilter ? "text-emerald-400" : "text-zinc-600")} />
-                        <NeuralSwitch checked={securityFilter} onCheckedChange={setSecurityFilter} />
+                        <AivexSwitch checked={securityFilter} onCheckedChange={setSecurityFilter} />
                     </div>
                     <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Safeguards</span>
                 </div>

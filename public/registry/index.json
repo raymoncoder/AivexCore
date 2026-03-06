@@ -1,5 +1,15 @@
 [
   {
+    "name": "AgentActivityFeed",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "ai"
+  },
+  {
     "name": "AgentThoughtFlow",
     "dependencies": [
       "react",
@@ -17,10 +27,10 @@
       "lucide-react"
     ],
     "registryDependencies": [
-      "NeuralButton",
-      "NeuralBadge",
-      "NeuralTextarea",
-      "NeuralSelect"
+      "AivexButton",
+      "AivexBadge",
+      "AivexTextarea",
+      "AivexSelect"
     ],
     "category": "ai"
   },
@@ -32,8 +42,8 @@
       "lucide-react"
     ],
     "registryDependencies": [
-      "NeuralSlider",
-      "NeuralSwitch"
+      "AivexSlider",
+      "AivexSwitch"
     ],
     "category": "ai"
   },
@@ -55,6 +65,269 @@
     ],
     "registryDependencies": [],
     "category": "ai"
+  },
+  {
+    "name": "AivexAccordion",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexAlert",
+    "dependencies": [
+      "react",
+      "lucide-react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexAvatar",
+    "dependencies": [
+      "react",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexBadge",
+    "dependencies": [
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexBreadcrumb",
+    "dependencies": [
+      "react",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexButton",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexCard",
+    "dependencies": [
+      "react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexCheckbox",
+    "dependencies": [
+      "react",
+      "@radix-ui/react-checkbox",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexDatePicker",
+    "dependencies": [
+      "react",
+      "lucide-react",
+      "framer-motion",
+      "date-fns"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexDialog",
+    "dependencies": [
+      "react",
+      "@radix-ui/react-dialog",
+      "lucide-react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexInput",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexLoader",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexLoaderVariants",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexMarquee",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexNumberInput",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexOTPInput",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexPasswordInput",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexProgress",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexSearchInput",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexSelect",
+    "dependencies": [
+      "react",
+      "lucide-react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexSkeleton",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexSlider",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexSwitch",
+    "dependencies": [
+      "react",
+      "@radix-ui/react-switch"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexTabs",
+    "dependencies": [
+      "framer-motion",
+      "react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexTextarea",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexToaster",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "AivexTooltip",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "core"
+  },
+  {
+    "name": "BootLoader",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [],
+    "category": "core"
   },
   {
     "name": "CustomScrollBar",
@@ -85,236 +358,9 @@
     "category": "core"
   },
   {
-    "name": "NeuralAccordion",
-    "dependencies": [
-      "react",
-      "framer-motion",
-      "lucide-react"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralAlert",
-    "dependencies": [
-      "react",
-      "lucide-react",
-      "framer-motion"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralAvatar",
-    "dependencies": [
-      "react",
-      "lucide-react"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralBadge",
-    "dependencies": [
-      "framer-motion"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralBreadcrumb",
-    "dependencies": [
-      "react",
-      "lucide-react"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralButton",
-    "dependencies": [
-      "react",
-      "framer-motion"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralCard",
+    "name": "HugeIcon",
     "dependencies": [
       "react"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralCheckbox",
-    "dependencies": [
-      "react",
-      "@radix-ui/react-checkbox",
-      "lucide-react"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralDatePicker",
-    "dependencies": [
-      "react",
-      "lucide-react",
-      "framer-motion",
-      "date-fns"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralDialog",
-    "dependencies": [
-      "react",
-      "@radix-ui/react-dialog",
-      "lucide-react",
-      "framer-motion"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralInput",
-    "dependencies": [
-      "react",
-      "framer-motion"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralLoader",
-    "dependencies": [
-      "react",
-      "framer-motion"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralLoaderVariants",
-    "dependencies": [
-      "react",
-      "framer-motion"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralNumberInput",
-    "dependencies": [
-      "react",
-      "framer-motion",
-      "lucide-react"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralOTPInput",
-    "dependencies": [
-      "react",
-      "framer-motion"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralPasswordInput",
-    "dependencies": [
-      "react",
-      "framer-motion",
-      "lucide-react"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralProgress",
-    "dependencies": [
-      "react",
-      "framer-motion"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralSearchInput",
-    "dependencies": [
-      "react",
-      "framer-motion",
-      "lucide-react"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralSelect",
-    "dependencies": [
-      "react",
-      "lucide-react",
-      "framer-motion"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralSkeleton",
-    "dependencies": [
-      "react",
-      "framer-motion"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralSlider",
-    "dependencies": [
-      "react",
-      "framer-motion"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralSwitch",
-    "dependencies": [
-      "react",
-      "@radix-ui/react-switch"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralTabs",
-    "dependencies": [
-      "framer-motion",
-      "react"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralTextarea",
-    "dependencies": [
-      "react",
-      "framer-motion"
-    ],
-    "registryDependencies": [],
-    "category": "core"
-  },
-  {
-    "name": "NeuralTooltip",
-    "dependencies": [
-      "react",
-      "framer-motion",
-      "lucide-react"
     ],
     "registryDependencies": [],
     "category": "core"
@@ -327,7 +373,7 @@
       "framer-motion"
     ],
     "registryDependencies": [
-      "NeuralButton"
+      "AivexButton"
     ],
     "category": "crypto"
   },
@@ -346,11 +392,22 @@
     "dependencies": [
       "react",
       "framer-motion",
-      "lucide-react"
+      "lucide-react",
+      "@web3icons/react"
     ],
     "registryDependencies": [
-      "NeuralButton"
+      "AivexButton"
     ],
+    "category": "crypto"
+  },
+  {
+    "name": "TokenPerformance",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
     "category": "crypto"
   },
   {
@@ -361,11 +418,46 @@
       "framer-motion"
     ],
     "registryDependencies": [
-      "NeuralButton",
-      "NeuralBadge",
-      "NeuralInput"
+      "AivexButton",
+      "AivexBadge"
     ],
     "category": "crypto"
+  },
+  {
+    "name": "AivexCodeEditor",
+    "dependencies": [
+      "react",
+      "react-simple-code-editor",
+      "prismjs",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "data"
+  },
+  {
+    "name": "AivexDataTable",
+    "dependencies": [
+      "react",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "AivexButton",
+      "AivexInput",
+      "AivexCheckbox"
+    ],
+    "category": "data"
+  },
+  {
+    "name": "AivexExportButton",
+    "dependencies": [
+      "react",
+      "lucide-react",
+      "framer-motion"
+    ],
+    "registryDependencies": [
+      "AivexButton"
+    ],
+    "category": "data"
   },
   {
     "name": "CommandPalette",
@@ -374,9 +466,7 @@
       "lucide-react",
       "framer-motion"
     ],
-    "registryDependencies": [
-      "NeuralInput"
-    ],
+    "registryDependencies": [],
     "category": "data"
   },
   {
@@ -389,43 +479,6 @@
     "category": "data"
   },
   {
-    "name": "NeuralCodeEditor",
-    "dependencies": [
-      "react",
-      "react-simple-code-editor",
-      "prismjs",
-      "lucide-react"
-    ],
-    "registryDependencies": [],
-    "category": "data"
-  },
-  {
-    "name": "NeuralDataTable",
-    "dependencies": [
-      "react",
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "NeuralButton",
-      "NeuralInput",
-      "NeuralBadge",
-      "NeuralCheckbox"
-    ],
-    "category": "data"
-  },
-  {
-    "name": "NeuralExportButton",
-    "dependencies": [
-      "react",
-      "lucide-react",
-      "framer-motion"
-    ],
-    "registryDependencies": [
-      "NeuralButton"
-    ],
-    "category": "data"
-  },
-  {
     "name": "RadarChart",
     "dependencies": [
       "react",
@@ -435,20 +488,20 @@
     "category": "data"
   },
   {
-    "name": "Magnetic",
+    "name": "AivexCommandBar",
     "dependencies": [
       "react",
-      "framer-motion"
+      "framer-motion",
+      "lucide-react"
     ],
     "registryDependencies": [],
     "category": "ex"
   },
   {
-    "name": "NeuralCommandBar",
+    "name": "Magnetic",
     "dependencies": [
       "react",
-      "framer-motion",
-      "lucide-react"
+      "framer-motion"
     ],
     "registryDependencies": [],
     "category": "ex"
@@ -462,26 +515,34 @@
     "category": "ex"
   },
   {
-    "name": "AnalyticsCard",
-    "dependencies": [
-      "react",
-      "framer-motion",
-      "lucide-react"
-    ],
-    "registryDependencies": [
-      "NeuralCard",
-      "NeuralButton",
-      "NeuralBadge"
-    ],
-    "category": "patterns"
-  },
-  {
-    "name": "NeuralBentoGrid",
+    "name": "AivexBentoGrid",
     "dependencies": [
       "react",
       "framer-motion"
     ],
     "registryDependencies": [],
+    "category": "patterns"
+  },
+  {
+    "name": "AivexCarousel",
+    "dependencies": [
+      "react",
+      "framer-motion",
+      "lucide-react"
+    ],
+    "registryDependencies": [],
+    "category": "patterns"
+  },
+  {
+    "name": "AnalyticsCard",
+    "dependencies": [
+      "react",
+      "framer-motion"
+    ],
+    "registryDependencies": [
+      "AivexCard",
+      "AivexBadge"
+    ],
     "category": "patterns"
   }
 ]

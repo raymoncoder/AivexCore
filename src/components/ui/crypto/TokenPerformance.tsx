@@ -12,6 +12,7 @@ interface TokenPerformanceProps {
     change24h: number;
     volume24h: string;
     marketCap: string;
+    iconComponent?: React.ElementType;
     className?: string;
 }
 
@@ -22,6 +23,7 @@ export const TokenPerformance = ({
     change24h,
     volume24h,
     marketCap,
+    iconComponent: IconComponent,
     className
 }: TokenPerformanceProps) => {
     const isPositive = change24h > 0;
@@ -34,15 +36,15 @@ export const TokenPerformance = ({
             {/* Background Accent */}
             <div className={cn(
                 "absolute -right-8 -top-8 w-32 h-32 blur-[80px] opacity-20 transition-opacity duration-500 group-hover:opacity-30",
-                isPositive ? "bg-emerald-500" : "bg-rose-500"
+                isPositive ? "bg-emerald-500" : "bg-rose-500" // Use full CSS class names instead of hex
             )} />
 
             <div className="relative z-10 flex flex-col gap-6">
                 {/* Header: Identity */}
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-zinc-700 flex items-center justify-center font-bold text-white shadow-lg">
-                            {symbol[0]}
+                        <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-zinc-800 to-zinc-900 border border-zinc-700 flex items-center justify-center font-bold text-white shadow-lg overflow-hidden">
+                            {IconComponent ? <IconComponent className="w-6 h-6 rounded-full" /> : symbol[0]}
                         </div>
                         <div className="flex flex-col">
                             <h3 className="text-sm font-bold text-white uppercase tracking-wider">{name}</h3>

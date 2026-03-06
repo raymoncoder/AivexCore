@@ -39,7 +39,6 @@ export const MiniSparkline = ({
     }));
 
     // Generate smoothed path helper
-    const stepX = width / (data.length - 1);
     const generatePath = (isClosed = false) => {
         let path = "";
         points.forEach((p, i) => {

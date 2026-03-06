@@ -4,7 +4,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Copy, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { NeuralButton } from "@/components/ui/core/NeuralButton";
+import { AivexButton } from "@/components/ui/core/AivexButton";
 
 interface AddressBadgeProps {
     address: string;

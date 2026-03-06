@@ -2,14 +2,16 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Layout, Zap, Layers, Box, Terminal, Cpu, ChevronRight, Star, Globe, Shield, Activity, Sparkles, Rocket, type LucideIcon } from "lucide-react";
-import { NeuralButton } from "@/components/ui/core/NeuralButton";
+import { AivexButton } from "@/components/ui/core/AivexButton";
 import { Navbar } from "@/components/layout/Navbar";
 import Link from "next/link";
 import { useState } from "react";
 import { BootLoader } from "@/components/ui/core/BootLoader";
-import { NeuralProgress } from "@/components/ui/core/NeuralProgress";
+import { AivexProgress } from "@/components/ui/core/AivexProgress";
 import { SpotlightCard } from "@/components/ui/ex/SpotlightCard";
 import { cn } from "@/lib/utils";
+import { HugeIcon } from "@/components/ui/core/HugeIcon";
+import { AivexLogo } from "@/components/icons/AivexLogo";
 
 // --- Components for the Landing Page ---
 
@@ -142,10 +144,10 @@ export default function Home() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/5 bg-white/[0.02] text-zinc-300 text-xs font-medium backdrop-blur-xl font-mono hover:bg-white/5 hover:border-white/10 transition-all cursor-pointer group shadow-2xl shadow-emerald-900/10">
               <span className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400">
-                <Star size={10} fill="currentColor" />
+                <HugeIcon name="star" size={12} className="fill-current" />
               </span>
               <span className="tracking-wide">v1.0 Beta is now available</span>
-              <ChevronRight size={12} className="text-zinc-400 group-hover:translate-x-0.5 transition-transform" />
+              <HugeIcon name="arrow-right-01" size={14} className="text-zinc-500 group-hover:translate-x-0.5 transition-transform" />
             </div>
           </motion.div>
 
@@ -176,17 +178,17 @@ export default function Home() {
             className="flex flex-col sm:flex-row justify-center gap-5 items-center mb-8"
           >
             <Link href="/docs">
-              <NeuralButton size="lg" className="rounded-full px-10 py-7 text-lg bg-emerald-500 hover:bg-emerald-400 text-zinc-950 shadow-[0_0_50px_-10px_rgba(16,185,129,0.5)] hover:shadow-[0_0_80px_-20px_rgba(16,185,129,0.7)] transition-all font-bold tracking-tight group border-none">
+              <AivexButton size="lg" className="rounded-full px-10 py-7 text-lg bg-emerald-500 hover:bg-emerald-400 text-zinc-950 shadow-[0_0_50px_-10px_rgba(16,185,129,0.5)] hover:shadow-[0_0_80px_-20px_rgba(16,185,129,0.7)] transition-all font-bold tracking-tight group border-none">
                 Start Building
                 <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </NeuralButton>
+              </AivexButton>
             </Link>
 
             <Link href="/docs">
-              <NeuralButton variant="ghost" size="lg" className="rounded-full px-8 py-7 text-lg text-zinc-300 hover:text-white hover:bg-white/5 transition-all font-medium tracking-tight">
+              <AivexButton variant="ghost" size="lg" className="rounded-full px-8 py-7 text-lg text-zinc-300 hover:text-white hover:bg-white/5 transition-all font-medium tracking-tight">
                 <span className="mr-2"><Box size={20} /></span>
                 View Components
-              </NeuralButton>
+              </AivexButton>
             </Link>
           </motion.div>
         </div>
@@ -261,14 +263,14 @@ export default function Home() {
                   </div>
                   <h3 className="text-3xl font-bold font-sans">Build 10x Faster with Primitives</h3>
                   <p className="text-zinc-400 leading-relaxed font-light">
-                    Stop reinventing common AI interface patterns. NeuralUI provides pre-built, high-fidelity components like Chat Interfaces, Radar Charts, and Spotlight Cards that you can drop into any Next.js project.
+                    Stop reinventing common AI interface patterns. AivexCore provides pre-built, high-fidelity components like Chat Interfaces, Radar Charts, and Spotlight Cards that you can drop into any Next.js project.
                   </p>
                   <div className="flex gap-4 pt-4">
                     <Link href="/docs">
-                      <NeuralButton size="lg" className="gap-2">
+                      <AivexButton size="lg" className="gap-2">
                         Browse Components
                         <ArrowRight size={18} />
-                      </NeuralButton>
+                      </AivexButton>
                     </Link>
                   </div>
                 </div>
@@ -281,14 +283,14 @@ export default function Home() {
                           <span>IMPLEMENTATION SPEED</span>
                           <span className="text-white">~10x Gain</span>
                         </div>
-                        <NeuralProgress value={95} variant="gradient" className="h-1.5" />
+                        <AivexProgress value={95} variant="gradient" className="h-1.5" />
                       </div>
                       <div className="space-y-2">
                         <div className="flex justify-between text-xs font-mono text-zinc-400">
                           <span>VISUAL FIDELITY</span>
                           <span className="text-white">Premium Grade</span>
                         </div>
-                        <NeuralProgress value={100} variant="gradient" className="h-1.5" />
+                        <AivexProgress value={100} variant="gradient" className="h-1.5" />
                       </div>
                       <div className="grid grid-cols-2 gap-4 pt-4">
                         <div className="p-4 rounded-xl bg-white/5 border border-white/5 text-center">
@@ -318,7 +320,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 font-sans tracking-tight">Engineered for perfection.</h2>
             <p className="text-zinc-400 text-lg leading-relaxed">
               We obsessed over every pixel, animation, and interaction so you don't have to.
-              NeuralUI delivers a native-feel experience on the web.
+              AivexCore delivers a native-feel experience on the web.
             </p>
           </div>
 
@@ -368,18 +370,18 @@ export default function Home() {
           <div className="relative z-10">
             <h2 className="text-4xl md:text-6xl font-bold mb-6 font-sans">Ready to build?</h2>
             <p className="text-zinc-400 text-lg max-w-2xl mx-auto mb-10">
-              Join thousands of developers building the future of AI and Crypto with NeuralUI.
+              Join thousands of developers building the future of AI and Crypto with AivexCore.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link href="/docs">
-                <NeuralButton size="lg" className="rounded-full px-12 py-6 text-lg bg-white text-black hover:bg-zinc-200 border-none font-bold">
+                <AivexButton size="lg" className="rounded-full px-12 py-6 text-lg bg-white text-black hover:bg-zinc-200 border-none font-bold">
                   Get Started Now
-                </NeuralButton>
+                </AivexButton>
               </Link>
               <Link href="https://github.com" target="_blank">
-                <NeuralButton size="lg" variant="secondary" className="rounded-full px-12 py-6 text-lg border-white/10 bg-white/5 hover:bg-white/10">
+                <AivexButton size="lg" variant="secondary" className="rounded-full px-12 py-6 text-lg border-white/10 bg-white/5 hover:bg-white/10">
                   GitHub Repository
-                </NeuralButton>
+                </AivexButton>
               </Link>
             </div>
           </div>
@@ -400,11 +402,11 @@ export default function Home() {
             {/* Brand Column */}
             <div className="lg:col-span-3 space-y-6">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center relative group">
-                  <div className="absolute inset-0 bg-emerald-400 blur-lg opacity-40 group-hover:opacity-60 transition-opacity" />
-                  <Layers size={16} className="text-black relative z-10" />
+                <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-white/10 flex items-center justify-center relative group overflow-hidden">
+                  <div className="absolute inset-0 bg-emerald-400 blur-lg opacity-20 group-hover:opacity-40 transition-opacity" />
+                  <AivexLogo size={20} className="text-white relative z-10" />
                 </div>
-                <span className="text-xl font-bold text-white font-sans tracking-tight">Neural<span className="text-zinc-600">UI</span></span>
+                <span className="text-xl font-bold text-white font-sans tracking-tight">Aivex<span className="text-zinc-600">Core</span></span>
               </div>
               <p className="text-zinc-400 text-sm leading-relaxed max-w-sm font-light">
                 The definitive component library for building modern, high-performance web applications. Designed for the future of AI.
@@ -416,19 +418,18 @@ export default function Home() {
             <div className="lg:col-start-4">
               <h4 className="font-bold text-white mb-6 text-sm uppercase tracking-wider font-mono text-zinc-500">Product</h4>
               <ul className="space-y-3 text-sm text-zinc-400 font-light">
-                <li><Link href="#" className="hover:text-emerald-400 transition-colors flex items-center gap-2 group"><span className="w-1 h-1 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />Components</Link></li>
-                <li><Link href="#" className="hover:text-emerald-400 transition-colors flex items-center gap-2 group"><span className="w-1 h-1 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />Templates</Link></li>
-
-                <li><Link href="#" className="hover:text-emerald-400 transition-colors flex items-center gap-2 group"><span className="w-1 h-1 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />Pricing</Link></li>
+                <li><Link href="/docs" className="hover:text-emerald-400 transition-colors flex items-center gap-2 group"><span className="w-1 h-1 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />Components</Link></li>
+                <li><Link href="/templates" className="hover:text-emerald-400 transition-colors flex items-center gap-2 group"><span className="w-1 h-1 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />Templates</Link></li>
+                <li><Link href="https://github.com/raymoncoder/AivexCore" className="hover:text-emerald-400 transition-colors flex items-center gap-2 group"><span className="w-1 h-1 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />GitHub</Link></li>
               </ul>
             </div>
 
             <div>
               <h4 className="font-bold text-white mb-6 text-sm uppercase tracking-wider font-mono text-zinc-500">Resources</h4>
               <ul className="space-y-3 text-sm text-zinc-400 font-light">
-                <li><Link href="#" className="hover:text-emerald-400 transition-colors flex items-center gap-2 group"><span className="w-1 h-1 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />Documentation</Link></li>
-                <li><Link href="#" className="hover:text-emerald-400 transition-colors flex items-center gap-2 group"><span className="w-1 h-1 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />GitHub</Link></li>
-                <li><Link href="#" className="hover:text-emerald-400 transition-colors flex items-center gap-2 group"><span className="w-1 h-1 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />Figma Kit</Link></li>
+                <li><Link href="/docs" className="hover:text-emerald-400 transition-colors flex items-center gap-2 group"><span className="w-1 h-1 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />Documentation</Link></li>
+                <li><Link href="https://github.com/raymoncoder/AivexCore" className="hover:text-emerald-400 transition-colors flex items-center gap-2 group"><span className="w-1 h-1 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />GitHub</Link></li>
+                <li><div className="text-zinc-500 flex items-center gap-2 cursor-default"><span className="w-1 h-1 rounded-full bg-zinc-800" />Figma Kit <span className="text-[10px] font-mono bg-zinc-900 border border-white/5 px-1.5 py-0.5 rounded text-zinc-600 uppercase tracking-widest ml-1">Soon</span></div></li>
                 <li><Link href="#" className="hover:text-emerald-400 transition-colors flex items-center gap-2 group"><span className="w-1 h-1 rounded-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />Changelog</Link></li>
               </ul>
             </div>
@@ -436,18 +437,52 @@ export default function Home() {
             <div>
               <h4 className="font-bold text-white mb-6 text-sm uppercase tracking-wider font-mono text-zinc-500">Legal</h4>
               <ul className="space-y-3 text-sm text-zinc-400 font-light">
-                <li><Link href="#" className="hover:text-emerald-400 transition-colors">Privacy Policy</Link></li>
-                <li><Link href="#" className="hover:text-emerald-400 transition-colors">Terms of Service</Link></li>
-                <li><Link href="#" className="hover:text-emerald-400 transition-colors">Cookie Policy</Link></li>
-                <li><Link href="#" className="hover:text-emerald-400 transition-colors">Licenses</Link></li>
+                <li><Link href="/privacy" className="hover:text-emerald-400 transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="hover:text-emerald-400 transition-colors">Terms of Service</Link></li>
+                <li><Link href="/cookies" className="hover:text-emerald-400 transition-colors">Cookie Policy</Link></li>
+                <li><Link href="/license" className="hover:text-emerald-400 transition-colors">Licenses</Link></li>
               </ul>
+            </div>
+          </div>
+
+          {/* Support / Donation Block */}
+          <div className="w-full mb-12 border border-zinc-900 bg-zinc-900/10 rounded-3xl p-8 relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+            <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10">
+              <div className="max-w-md">
+                <div className="flex items-center gap-2 text-emerald-500 mb-3">
+                  <span className="w-4 h-4 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  </span>
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Support the Development</span>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2 font-sans tracking-tight">Invest in the <span className="text-emerald-500">Core.</span></h3>
+                <p className="text-zinc-500 text-sm font-light leading-relaxed">
+                  Help us maintain the high-end component registry and keep it free for every builder.
+                </p>
+              </div>
+
+              <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-3 w-full">
+                {[
+                  { label: "USDT (TRC20)", address: "TVgHuxxjb3BVzJsh2PqQL1p5jwgSbMG5wa" },
+                  { label: "ETH (ERC20)", address: "0xcd0b27dc16110eef3670b25620ed80c701a40b48" },
+                  { label: "BTC (Native)", address: "bc1pqwve2d2xr5vx79uqrld3nzar660y9qnez27wwdasax5c5evwktrsdde6q4" }
+                ].map((wallet) => (
+                  <div key={wallet.label} className="p-4 rounded-xl bg-zinc-950/50 border border-white/5 group/wallet hover:border-emerald-500/20 transition-all flex flex-col gap-2">
+                    <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest font-bold">{wallet.label}</span>
+                    <p className="text-[11px] font-mono text-zinc-400 break-all select-all hover:text-white transition-colors leading-tight">
+                      {wallet.address}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
           <div className="w-full border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex flex-col md:flex-row items-center gap-6">
               <p className="text-xs text-zinc-600 font-mono">
-                © 2024 Neural Inc. All rights reserved.
+                © 2024 Built by <Link href="https://github.com/raymoncoder" target="_blank" className="text-zinc-400 hover:text-emerald-400 transition-colors border-b border-zinc-800 hover:border-emerald-500/50">Raymon</Link>. The source code is available on <Link href="https://github.com/raymoncoder/AivexCore" target="_blank" className="text-zinc-400 hover:text-emerald-400 transition-colors border-b border-zinc-800 hover:border-emerald-500/50">GitHub</Link>.
               </p>
 
               {/* System Status */}

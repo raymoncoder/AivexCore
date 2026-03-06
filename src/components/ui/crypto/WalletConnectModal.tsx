@@ -1,12 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { Copy, Check, Menu, X, Wallet, ChevronRight, Link2, ExternalLink } from "lucide-react";
+import { X, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { NeuralButton } from "@/components/ui/core/NeuralButton";
-import { NeuralBadge } from "@/components/ui/core/NeuralBadge";
-import { NeuralInput } from "@/components/ui/core/NeuralInput";
+import { AivexButton } from "@/components/ui/core/AivexButton";
+import { AivexBadge } from "@/components/ui/core/AivexBadge";
 
 interface WalletOption {
     id: string;
@@ -30,10 +28,8 @@ interface WalletConnectModalProps {
 
 export const WalletConnectModal = ({ isOpen, onClose, onConnect }: WalletConnectModalProps) => {
     const [view, setView] = useState<"list" | "qr">("list");
-    const [selectedWallet, setSelectedWallet] = useState<WalletOption | null>(null);
 
     const handleSelect = (wallet: WalletOption) => {
-        setSelectedWallet(wallet);
         if (wallet.id === "walletconnect") {
             setView("qr");
         } else {
@@ -85,7 +81,7 @@ export const WalletConnectModal = ({ isOpen, onClose, onConnect }: WalletConnect
                                                     {wallet.icon}
                                                     <div className="flex items-center gap-2">
                                                         <span className="font-semibold text-zinc-300 group-hover:text-zinc-100 font-sans">{wallet.name}</span>
-                                                        {wallet.id === "metamask" && <NeuralBadge status="warning" className="text-[10px] py-0.5 px-1.5 h-auto">Popular</NeuralBadge>}
+                                                        {wallet.id === "metamask" && <AivexBadge status="warning" className="text-[10px] py-0.5 px-1.5 h-auto">Popular</AivexBadge>}
                                                     </div>
                                                 </div>
                                                 <div className="text-zinc-600 group-hover:text-emerald-500 transition-colors">
@@ -96,7 +92,7 @@ export const WalletConnectModal = ({ isOpen, onClose, onConnect }: WalletConnect
 
                                         <div className="pt-4 border-t border-zinc-900 mt-4">
                                             <p className="text-xs text-zinc-500 text-center">
-                                                By connecting a wallet, you agree to NeuralUI's <a href="#" className="text-emerald-500 hover:underline">Terms of Service</a>
+                                                By connecting a wallet, you agree to AivexCore's <a href="#" className="text-emerald-500 hover:underline">Terms of Service</a>
                                             </p>
                                         </div>
                                     </div>
@@ -113,9 +109,9 @@ export const WalletConnectModal = ({ isOpen, onClose, onConnect }: WalletConnect
                                             <h3 className="font-bold text-zinc-100 mb-1">Scan with your phone</h3>
                                             <p className="text-sm text-zinc-500">Open your wallet app and scan the code to connect.</p>
                                         </div>
-                                        <NeuralButton variant="ghost" onClick={() => setView("list")}>
+                                        <AivexButton variant="ghost" onClick={() => setView("list")}>
                                             Back to Wallets
-                                        </NeuralButton>
+                                        </AivexButton>
                                     </div>
                                 )}
                             </div>

@@ -1,52 +1,52 @@
 "use client";
 
-import { NeuralButton } from "@/components/ui/core/NeuralButton";
-import { NeuralInput } from "@/components/ui/core/NeuralInput";
-import { NeuralBadge } from "@/components/ui/core/NeuralBadge";
-import { NeuralMarquee } from "@/components/ui/core/NeuralMarquee";
-import { NeuralToastProvider, useNeuralToast } from "@/components/ui/core/NeuralToaster";
-import { NeuralSwitch } from "@/components/ui/core/NeuralSwitch";
-import { NeuralPasswordInput } from "@/components/ui/core/NeuralPasswordInput";
-import { NeuralOTPInput } from "@/components/ui/core/NeuralOTPInput";
-import { NeuralSelect } from "@/components/ui/core/NeuralSelect";
-import { NeuralTabs } from "@/components/ui/core/NeuralTabs";
-import { NeuralCard, NeuralCardHeader, NeuralCardTitle, NeuralCardDescription, NeuralCardContent } from "@/components/ui/core/NeuralCard";
+import { AivexButton } from "@/components/ui/core/AivexButton";
+import { AivexInput } from "@/components/ui/core/AivexInput";
+import { AivexBadge } from "@/components/ui/core/AivexBadge";
+import { AivexMarquee } from "@/components/ui/core/AivexMarquee";
+import { AivexToastProvider, useAivexToast } from "@/components/ui/core/AivexToaster";
+import { AivexSwitch } from "@/components/ui/core/AivexSwitch";
+import { AivexPasswordInput } from "@/components/ui/core/AivexPasswordInput";
+import { AivexOTPInput } from "@/components/ui/core/AivexOTPInput";
+import { AivexSelect } from "@/components/ui/core/AivexSelect";
+import { AivexTabs } from "@/components/ui/core/AivexTabs";
+import { AivexCard, AivexCardHeader, AivexCardTitle, AivexCardDescription, AivexCardContent } from "@/components/ui/core/AivexCard";
 import { AnalyticsCard } from "@/components/ui/patterns/AnalyticsCard";
 import { SwapCard } from "@/components/ui/crypto/SwapCard";
 import { AIChatInterface } from "@/components/ui/ai/AIChatInterface";
-import { NeuralSkeleton } from "@/components/ui/core/NeuralSkeleton";
+import { AivexSkeleton } from "@/components/ui/core/AivexSkeleton";
 import { Box, PieChart, Sparkles, ToggleLeft, Copy, Check, Terminal, Layout, Layers, Menu, Grid, Magnet, Loader2, MousePointer2, Info, MoveHorizontal, Wallet, AlertCircle, ChevronRight, User, Search, Percent, Table as TableIcon, Github, ExternalLink, ArrowRight, ArrowLeft, Play, Eye, Code, Plus, Database, Cpu, Shield, Globe, Coins, Calendar, GripVertical, Zap, Brain } from "lucide-react";
 import { XIcon } from "@/components/icons/XIcon";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { differenceInDays } from "date-fns";
-import { NeuralCheckbox } from "@/components/ui/core/NeuralCheckbox";
-import { NeuralSlider } from "@/components/ui/core/NeuralSlider";
-import { NeuralTooltip } from "@/components/ui/core/NeuralTooltip";
-import { NeuralLoader } from "@/components/ui/core/NeuralLoader";
+import { AivexCheckbox } from "@/components/ui/core/AivexCheckbox";
+import { AivexSlider } from "@/components/ui/core/AivexSlider";
+import { AivexTooltip } from "@/components/ui/core/AivexTooltip";
+import { AivexLoader } from "@/components/ui/core/AivexLoader";
 import { Magnetic } from "@/components/ui/ex/Magnetic";
 import { AddressBadge } from "@/components/ui/crypto/AddressBadge";
 import { StreamingText } from "@/components/ui/ai/StreamingText";
 import { WalletConnectModal } from "@/components/ui/crypto/WalletConnectModal";
-import { NeuralAccordion } from "@/components/ui/core/NeuralAccordion";
-import { NeuralAlert } from "@/components/ui/core/NeuralAlert";
-import { NeuralAvatar } from "@/components/ui/core/NeuralAvatar";
-import { NeuralBreadcrumb } from "@/components/ui/core/NeuralBreadcrumb";
-import { NeuralProgress } from "@/components/ui/core/NeuralProgress";
+import { AivexAccordion } from "@/components/ui/core/AivexAccordion";
+import { AivexAlert } from "@/components/ui/core/AivexAlert";
+import { AivexAvatar } from "@/components/ui/core/AivexAvatar";
+import { AivexBreadcrumb } from "@/components/ui/core/AivexBreadcrumb";
+import { AivexProgress } from "@/components/ui/core/AivexProgress";
 import { CommandPalette } from "@/components/ui/data/CommandPalette";
-import { NeuralDataTable } from "@/components/ui/data/NeuralDataTable";
-import { NeuralDialog, NeuralDialogContent, NeuralDialogHeader, NeuralDialogTitle, NeuralDialogDescription, NeuralDialogFooter } from "@/components/ui/core/NeuralDialog";
+import { AivexDataTable } from "@/components/ui/data/AivexDataTable";
+import { AivexDialog, AivexDialogContent, AivexDialogHeader, AivexDialogTitle, AivexDialogDescription, AivexDialogFooter } from "@/components/ui/core/AivexDialog";
 import { SpotlightCard } from "@/components/ui/ex/SpotlightCard";
 import { StepProcess } from "@/components/ui/ai/StepProcess";
-import { NeuralCommandBar } from "@/components/ui/ex/NeuralCommandBar";
-import { NeuralCodeEditor } from "@/components/ui/data/NeuralCodeEditor";
+import { AivexCommandBar } from "@/components/ui/ex/AivexCommandBar";
+import { AivexCodeEditor } from "@/components/ui/data/AivexCodeEditor";
 import { RadarChart } from "@/components/ui/data/RadarChart";
 import { MiniSparkline } from "@/components/ui/data/MiniSparkline";
-import { NeuralExportButton } from "@/components/ui/data/NeuralExportButton";
-import { NeuralLoader as NeuralLoaderVariants } from "@/components/ui/core/NeuralLoaderVariants";
+import { AivexExportButton } from "@/components/ui/data/AivexExportButton";
+import { AivexLoader as AivexLoaderVariants } from "@/components/ui/core/AivexLoaderVariants";
 import { FileUploadZone } from "@/components/ui/core/FileUploadZone";
-import { NeuralDatePicker } from "@/components/ui/core/NeuralDatePicker";
+import { AivexDatePicker } from "@/components/ui/core/AivexDatePicker";
 import { DragDropList } from "@/components/ui/core/DragDropCard";
 import { CustomScrollBar } from "@/components/ui/core/CustomScrollBar";
 import { AgentThoughtFlow } from "@/components/ui/ai/AgentThoughtFlow";
@@ -54,8 +54,8 @@ import { ModelParameters } from "@/components/ui/ai/ModelParameters";
 import { PriceMetric } from "@/components/ui/crypto/PriceMetric";
 import { TokenPerformance } from "@/components/ui/crypto/TokenPerformance";
 import { AgentActivityFeed } from "@/components/ui/ai/AgentActivityFeed";
-import { NeuralCarousel } from "@/components/ui/patterns/NeuralCarousel";
-import { NeuralBentoGrid, NeuralBentoCard } from "@/components/ui/patterns/NeuralBentoGrid";
+import { AivexCarousel } from "@/components/ui/patterns/AivexCarousel";
+import { AivexBentoGrid, AivexBentoCard } from "@/components/ui/patterns/AivexBentoGrid";
 import Link from "next/link";
 
 // --- Types & Data ---
@@ -92,7 +92,7 @@ const WalletConnectPreview = () => {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <>
-            <NeuralButton onClick={() => setIsOpen(true)} icon={<Wallet size={16} />}>Connect Wallet</NeuralButton>
+            <AivexButton onClick={() => setIsOpen(true)} icon={<Wallet size={16} />}>Connect Wallet</AivexButton>
             <WalletConnectModal isOpen={isOpen} onClose={() => setIsOpen(false)} onConnect={(id) => alert(`Connected to ${id}`)} />
         </>
     );
@@ -116,23 +116,23 @@ const CommandPalettePreview = () => {
         <>
             <div className="flex flex-col items-center gap-4 text-center">
                 <p className="text-sm text-zinc-500 font-sans">Press <kbd className="bg-zinc-800 border border-zinc-700 px-1.5 py-0.5 rounded text-zinc-300 font-mono text-xs">⌘K</kbd> or click below</p>
-                <NeuralButton onClick={() => setIsOpen(true)} variant="secondary" icon={<Search size={14} />}>Open Command Palette</NeuralButton>
+                <AivexButton onClick={() => setIsOpen(true)} variant="secondary" icon={<Search size={14} />}>Open Command Palette</AivexButton>
             </div>
             <CommandPalette isOpen={isOpen} onClose={() => setIsOpen(false)} />
         </>
     )
 };
 
-const NeuralToastDemo = () => {
-    const { toast } = useNeuralToast();
+const AivexToastDemo = () => {
+    const { toast } = useAivexToast();
     return (
         <div className="flex flex-wrap gap-4">
-            <NeuralButton onClick={() => toast("Handshake Successful", { type: "success", description: "Agent node connected." })}>
+            <AivexButton onClick={() => toast("Handshake Successful", { type: "success", description: "Agent node connected." })}>
                 Success
-            </NeuralButton>
-            <NeuralButton onClick={() => toast("Anomalous Activity", { type: "error", description: "Node rejected connection." })}>
+            </AivexButton>
+            <AivexButton onClick={() => toast("Anomalous Activity", { type: "error", description: "Node rejected connection." })}>
                 Error
-            </NeuralButton>
+            </AivexButton>
         </div>
     );
 };
@@ -141,24 +141,24 @@ const DialogPreview = () => {
     const [open, setOpen] = useState(false);
     return (
         <>
-            <NeuralButton onClick={() => setOpen(true)}>Open Dialog</NeuralButton>
-            <NeuralDialog open={open} onOpenChange={setOpen}>
-                <NeuralDialogContent>
-                    <NeuralDialogHeader>
-                        <NeuralDialogTitle>Edit Profile</NeuralDialogTitle>
-                        <NeuralDialogDescription>
+            <AivexButton onClick={() => setOpen(true)}>Open Dialog</AivexButton>
+            <AivexDialog open={open} onOpenChange={setOpen}>
+                <AivexDialogContent>
+                    <AivexDialogHeader>
+                        <AivexDialogTitle>Edit Profile</AivexDialogTitle>
+                        <AivexDialogDescription>
                             Make changes to your profile here. Click save when you're done.
-                        </NeuralDialogDescription>
-                    </NeuralDialogHeader>
+                        </AivexDialogDescription>
+                    </AivexDialogHeader>
                     <div className="grid gap-4 py-4">
-                        <NeuralInput label="Name" defaultValue="Pedro Duarte" />
-                        <NeuralInput label="Username" defaultValue="@peduarte" />
+                        <AivexInput label="Name" defaultValue="Pedro Duarte" />
+                        <AivexInput label="Username" defaultValue="@peduarte" />
                     </div>
-                    <NeuralDialogFooter>
-                        <NeuralButton type="submit" onClick={() => setOpen(false)}>Save changes</NeuralButton>
-                    </NeuralDialogFooter>
-                </NeuralDialogContent>
-            </NeuralDialog>
+                    <AivexDialogFooter>
+                        <AivexButton type="submit" onClick={() => setOpen(false)}>Save changes</AivexButton>
+                    </AivexDialogFooter>
+                </AivexDialogContent>
+            </AivexDialog>
         </>
     )
 }
@@ -196,22 +196,22 @@ const LoadingInterfaceDemo = () => {
                         className="w-full max-w-sm p-6 rounded-3xl bg-[#09090b] border border-zinc-900 shadow-2xl space-y-6"
                     >
                         <div className="flex items-center gap-4">
-                            <NeuralSkeleton className="w-16 h-16 rounded-2xl" />
+                            <AivexSkeleton className="w-16 h-16 rounded-2xl" />
                             <div className="space-y-2 flex-1">
-                                <NeuralSkeleton className="h-4 w-3/4" />
-                                <NeuralSkeleton className="h-3 w-1/2 opacity-50" />
+                                <AivexSkeleton className="h-4 w-3/4" />
+                                <AivexSkeleton className="h-3 w-1/2 opacity-50" />
                             </div>
                         </div>
 
                         <div className="space-y-3">
-                            <NeuralSkeleton className="h-3 w-full" />
-                            <NeuralSkeleton className="h-3 w-full" />
-                            <NeuralSkeleton className="h-3 w-2/3 opacity-50" />
+                            <AivexSkeleton className="h-3 w-full" />
+                            <AivexSkeleton className="h-3 w-full" />
+                            <AivexSkeleton className="h-3 w-2/3 opacity-50" />
                         </div>
 
                         <div className="grid grid-cols-2 gap-3 pt-2">
-                            <NeuralSkeleton className="h-10 w-full rounded-xl" />
-                            <NeuralSkeleton className="h-10 w-full rounded-xl" />
+                            <AivexSkeleton className="h-10 w-full rounded-xl" />
+                            <AivexSkeleton className="h-10 w-full rounded-xl" />
                         </div>
                     </motion.div>
                 ) : (
@@ -233,7 +233,7 @@ const LoadingInterfaceDemo = () => {
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold text-white tracking-tight">Alex Rivera</h3>
-                                <p className="text-sm text-emerald-500/70 font-mono">@neural_prime</p>
+                                <p className="text-sm text-emerald-500/70 font-mono">@Aivex_prime</p>
                             </div>
                         </motion.div>
 
@@ -244,7 +244,7 @@ const LoadingInterfaceDemo = () => {
                             transition={{ delay: 0.2, type: "spring", damping: 20 }}
                         >
                             <p className="text-sm text-zinc-400 leading-relaxed font-sans">
-                                Senior Neural Architect specializing in encrypted data streams and autonomous интерфейс logic.
+                                Senior Aivex Architect specializing in encrypted data streams and autonomous интерфейс logic.
                             </p>
                         </motion.div>
 
@@ -254,12 +254,12 @@ const LoadingInterfaceDemo = () => {
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.3, type: "spring", damping: 20 }}
                         >
-                            <NeuralButton variant="secondary" className="rounded-xl border-zinc-800 text-zinc-400 hover:text-white">
+                            <AivexButton variant="secondary" className="rounded-xl border-zinc-800 text-zinc-400 hover:text-white">
                                 Edit Profile
-                            </NeuralButton>
-                            <NeuralButton className="rounded-xl bg-emerald-500 text-black hover:bg-emerald-400 font-bold">
+                            </AivexButton>
+                            <AivexButton className="rounded-xl bg-emerald-500 text-black hover:bg-emerald-400 font-bold">
                                 View Activity
-                            </NeuralButton>
+                            </AivexButton>
                         </motion.div>
 
                         {/* Decorative glow that settles */}
@@ -278,7 +278,7 @@ const LoadingInterfaceDemo = () => {
 
 const TablePreview = () => {
     const data = [
-        { id: 1, name: "Neural Interface", status: "Active", users: "1.2k", revenue: "$4,200" },
+        { id: 1, name: "Aivex Interface", status: "Active", users: "1.2k", revenue: "$4,200" },
         { id: 2, name: "Crypto Module", status: "Active", users: "850", revenue: "$2,100" },
         { id: 3, name: "AI Engine", status: "Beta", users: "300", revenue: "$0" },
         { id: 4, name: "Analytics Dashboard", status: "Inactive", users: "120", revenue: "$500" },
@@ -293,9 +293,9 @@ const TablePreview = () => {
             key: "status" as const,
             header: "Status",
             render: (val: any) => (
-                <NeuralBadge status={val === "Active" ? "success" : val === "Beta" ? "warning" : "default"} dot>
+                <AivexBadge status={val === "Active" ? "success" : val === "Beta" ? "warning" : "default"} dot>
                     {val}
-                </NeuralBadge>
+                </AivexBadge>
             )
         },
         {
@@ -311,7 +311,7 @@ const TablePreview = () => {
     ];
 
     return (
-        <NeuralDataTable data={data} columns={columns as any} pageSize={4} />
+        <AivexDataTable data={data} columns={columns as any} pageSize={4} />
     )
 }
 
@@ -320,7 +320,7 @@ const IntroductionSection = () => (
         <div className="space-y-4">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight font-sans">Introduction</h1>
             <p className="text-xl text-zinc-400 font-light font-sans leading-relaxed">
-                Neural UI is a collection of re-usable components built for the next generation of AI and Crypto applications.
+                Aivex UI is a collection of re-usable components built for the next generation of AI and Crypto applications.
                 Designed with a premium dark-mode aesthetic, buttery smooth animations, and high-performance in mind.
             </p>
         </div>
@@ -346,7 +346,7 @@ const IntroductionSection = () => (
             <h2 className="text-2xl font-bold font-sans">Core Philosophy</h2>
             <div className="space-y-4 border-l border-zinc-800 pl-6 text-zinc-400 font-sans italic leading-relaxed">
                 "We believe that AI software shouldn't just be functional; it should feel alive.
-                Neural UI provides the building blocks for interfaces that respond to intelligence with fluid precision."
+                Aivex UI provides the building blocks for interfaces that respond to intelligence with fluid precision."
             </div>
         </div>
     </div>
@@ -357,7 +357,7 @@ const InstallationSection = () => (
         <div className="space-y-4">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight font-sans">Installation</h1>
             <p className="text-xl text-zinc-400 font-light font-sans leading-relaxed">
-                Seamlessly integrate Neural UI into your Next.js application.
+                Seamlessly integrate Aivex UI into your Next.js application.
             </p>
         </div>
 
@@ -394,11 +394,11 @@ const InstallationSection = () => (
                     <div className="w-8 h-8 rounded-lg bg-zinc-800 flex items-center justify-center text-zinc-400 font-bold border border-zinc-700 font-mono">2</div>
                     <div>
                         <h3 className="text-xl font-bold font-sans text-zinc-100">Install Dependencies</h3>
-                        <p className="text-sm text-zinc-500 font-sans mt-1">Neural UI is built on top of robust foundations.</p>
+                        <p className="text-sm text-zinc-500 font-sans mt-1">Aivex UI is built on top of robust foundations.</p>
                     </div>
                 </div>
                 <div className="ml-12">
-                    <NeuralCodeEditor
+                    <AivexCodeEditor
                         initialCode="npm install framer-motion lucide-react clsx tailwind-merge date-fns"
                         language="bash"
                         title="Terminal"
@@ -416,7 +416,7 @@ const InstallationSection = () => (
                     </div>
                 </div>
                 <div className="ml-12">
-                    <NeuralCodeEditor
+                    <AivexCodeEditor
                         initialCode={`import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -463,21 +463,21 @@ export default config;`}
                     </div>
                 </div>
                 <div className="ml-12">
-                    <NeuralCodeEditor
-                        initialCode={`import { NeuralButton } from "@/components/ui/core/NeuralButton";
+                    <AivexCodeEditor
+                        initialCode={`import { AivexButton } from "@/components/ui/core/AivexButton";
 
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-zinc-950 gap-4">
-      <h1 className="text-2xl font-bold text-white">Welcome to Neural UI</h1>
+      <h1 className="text-2xl font-bold text-white">Welcome to Aivex UI</h1>
       
-      <NeuralButton variant="neon" size="lg">
+      <AivexButton variant="neon" size="lg">
         Initialize Core
-      </NeuralButton>
+      </AivexButton>
       
-      <NeuralButton variant="ghost">
+      <AivexButton variant="ghost">
         View Documentation
-      </NeuralButton>
+      </AivexButton>
     </div>
   );
 }`}
@@ -501,7 +501,7 @@ const categories: Category[] = [
             {
                 id: "introduction",
                 title: "Introduction",
-                description: "The core design philosophy and goals of Neural UI.",
+                description: "The core design philosophy and goals of Aivex UI.",
                 component: <IntroductionSection />,
                 code: ""
             },
@@ -523,36 +523,36 @@ const categories: Category[] = [
                 id: "button",
                 title: "Button",
                 description: "Interactive button with multiple variants, sizes and loading states. Built on top of Radix UI Slot for seamless composition.",
-                component: <NeuralButton>Primary Action</NeuralButton>,
-                code: `<NeuralButton>Primary Action</NeuralButton>`,
+                component: <AivexButton>Primary Action</AivexButton>,
+                code: `<AivexButton>Primary Action</AivexButton>`,
                 variants: [
                     {
                         id: "secondary",
                         title: "Secondary Variant",
                         description: "Used for less prominent actions. Uses a subtle background and border.",
-                        component: <NeuralButton variant="secondary">Secondary Action</NeuralButton>,
-                        code: `<NeuralButton variant="secondary">Secondary Action</NeuralButton>`
+                        component: <AivexButton variant="secondary">Secondary Action</AivexButton>,
+                        code: `<AivexButton variant="secondary">Secondary Action</AivexButton>`
                     },
                     {
                         id: "ghost",
                         title: "Ghost Variant",
                         description: "Minimalist style, often used in toolbars or secondary navigation.",
-                        component: <NeuralButton variant="ghost">Ghost Button</NeuralButton>,
-                        code: `<NeuralButton variant="ghost">Ghost Button</NeuralButton>`
+                        component: <AivexButton variant="ghost">Ghost Button</AivexButton>,
+                        code: `<AivexButton variant="ghost">Ghost Button</AivexButton>`
                     },
                     {
                         id: "loading",
                         title: "Loading State",
                         description: "Built-in loading indicator that maintains layout width.",
-                        component: <NeuralButton isLoading>Processing...</NeuralButton>,
-                        code: `<NeuralButton isLoading>Processing...</NeuralButton>`
+                        component: <AivexButton isLoading>Processing...</AivexButton>,
+                        code: `<AivexButton isLoading>Processing...</AivexButton>`
                     },
                     {
                         id: "icon",
                         title: "With Icon",
                         description: "Enhanced with Lucide icons for better visual cues.",
-                        component: <NeuralButton icon={<Plus size={16} />}>Create New</NeuralButton>,
-                        code: `<NeuralButton icon={<Plus size={16} />}>Create New</NeuralButton>`
+                        component: <AivexButton icon={<Plus size={16} />}>Create New</AivexButton>,
+                        code: `<AivexButton icon={<Plus size={16} />}>Create New</AivexButton>`
                     }
                 ]
             },
@@ -560,29 +560,29 @@ const categories: Category[] = [
                 id: "badge",
                 title: "Badge",
                 description: "Compact status indicators using system tints and micro-animations.",
-                component: <NeuralBadge>Default Badge</NeuralBadge>,
-                code: `<NeuralBadge>Default Badge</NeuralBadge>`,
+                component: <AivexBadge>Default Badge</AivexBadge>,
+                code: `<AivexBadge>Default Badge</AivexBadge>`,
                 variants: [
                     {
                         id: "success",
                         title: "Success State",
                         description: "Indicates a positive or completed process.",
-                        component: <NeuralBadge status="success" dot>Operational</NeuralBadge>,
-                        code: `<NeuralBadge status="success" dot>Operational</NeuralBadge>`
+                        component: <AivexBadge status="success" dot>Operational</AivexBadge>,
+                        code: `<AivexBadge status="success" dot>Operational</AivexBadge>`
                     },
                     {
                         id: "warning",
                         title: "Warning State",
                         description: "Used for alerts or attention-requiring items.",
-                        component: <NeuralBadge status="warning">Degraded</NeuralBadge>,
-                        code: `<NeuralBadge status="warning">Degraded</NeuralBadge>`
+                        component: <AivexBadge status="warning">Degraded</AivexBadge>,
+                        code: `<AivexBadge status="warning">Degraded</AivexBadge>`
                     },
                     {
                         id: "error",
                         title: "Error State",
                         description: "Indicates failure or critical system issues.",
-                        component: <NeuralBadge status="error">Downtime</NeuralBadge>,
-                        code: `<NeuralBadge status="error">Downtime</NeuralBadge>`
+                        component: <AivexBadge status="error">Downtime</AivexBadge>,
+                        code: `<AivexBadge status="error">Downtime</AivexBadge>`
                     }
                 ]
             },
@@ -592,13 +592,13 @@ const categories: Category[] = [
                 description: "User profile image with fallback and status indicators.",
                 component: (
                     <div className="flex items-center gap-6">
-                        <NeuralAvatar src="https://api.dicebear.com/7.x/bottts/svg?seed=Neural" size="lg" status="online" />
-                        <NeuralAvatar fallback="JD" size="md" status="busy" />
-                        <NeuralAvatar fallback="??" size="sm" status="offline" />
+                        <AivexAvatar src="https://api.dicebear.com/7.x/bottts/svg?seed=Aivex" size="lg" status="online" />
+                        <AivexAvatar fallback="JD" size="md" status="busy" />
+                        <AivexAvatar fallback="??" size="sm" status="offline" />
                     </div>
                 ),
-                code: `<NeuralAvatar src="https://api.dicebear.com/7.x/bottts/svg?seed=Neural" size="lg" status="online" />
-<NeuralAvatar fallback="JD" size="md" status="busy" />`
+                code: `<AivexAvatar src="https://api.dicebear.com/7.x/bottts/svg?seed=Aivex" size="lg" status="online" />
+<AivexAvatar fallback="JD" size="md" status="busy" />`
             },
             {
                 id: "loader",
@@ -615,14 +615,14 @@ const categories: Category[] = [
                             { v: "wave", l: "Wave" }
                         ].map(({ v, l }) => (
                             <div key={v} className="flex flex-col items-center justify-center p-8 rounded-2xl bg-zinc-900/40 border border-white/5 backdrop-blur-sm group hover:border-emerald-500/20 transition-all duration-300">
-                                <NeuralLoaderVariants variant={v as any} size="md" />
+                                <AivexLoaderVariants variant={v as any} size="md" />
                                 <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mt-6 group-hover:text-zinc-300 transition-colors">{l}</span>
                             </div>
                         ))}
                     </div>
                 ),
-                code: `<NeuralLoader variant="spinner" size="md" />
-<NeuralLoader variant="orbit" size="lg" color="blue-400" />`,
+                code: `<AivexLoader variant="spinner" size="md" />
+<AivexLoader variant="orbit" size="lg" color="blue-400" />`,
                 variants: [
                     {
                         id: "loader-sizes",
@@ -631,20 +631,20 @@ const categories: Category[] = [
                         component: (
                             <div className="flex items-center justify-around w-full p-8 rounded-2xl bg-zinc-900/20 border border-white/5">
                                 <div className="text-center space-y-4">
-                                    <NeuralLoaderVariants variant="spinner" size="sm" />
+                                    <AivexLoaderVariants variant="spinner" size="sm" />
                                     <div className="text-[10px] text-zinc-600 font-mono">SMALL</div>
                                 </div>
                                 <div className="text-center space-y-4">
-                                    <NeuralLoaderVariants variant="spinner" size="md" />
+                                    <AivexLoaderVariants variant="spinner" size="md" />
                                     <div className="text-[10px] text-zinc-600 font-mono">MEDIUM</div>
                                 </div>
                                 <div className="text-center space-y-4">
-                                    <NeuralLoaderVariants variant="spinner" size="lg" />
+                                    <AivexLoaderVariants variant="spinner" size="lg" />
                                     <div className="text-[10px] text-zinc-600 font-mono">LARGE</div>
                                 </div>
                             </div>
                         ),
-                        code: `<NeuralLoader size="sm" />\n<NeuralLoader size="md" />\n<NeuralLoader size="lg" />`
+                        code: `<AivexLoader size="sm" />\n<AivexLoader size="md" />\n<AivexLoader size="lg" />`
                     },
                 ]
             },
@@ -654,20 +654,20 @@ const categories: Category[] = [
                 description: "Premium linear indicators with glassmorphism, animated gradients, and matching glows.",
                 component: (
                     <div className="w-full max-w-sm space-y-8">
-                        <NeuralProgress value={33} color="emerald" showValue />
-                        <NeuralProgress value={65} color="blue" variant="gradient" showValue />
-                        <NeuralProgress value={85} color="purple" variant="gradient" showValue />
+                        <AivexProgress value={33} color="emerald" showValue />
+                        <AivexProgress value={65} color="blue" variant="gradient" showValue />
+                        <AivexProgress value={85} color="purple" variant="gradient" showValue />
                     </div>
                 ),
-                code: `<NeuralProgress value={33} color="emerald" showValue />
-<NeuralProgress value={65} color="blue" variant="gradient" showValue />`,
+                code: `<AivexProgress value={33} color="emerald" showValue />
+<AivexProgress value={65} color="blue" variant="gradient" showValue />`,
                 variants: [
                     {
                         id: "gradient-variant",
                         title: "Gradient Variant",
                         description: "Uses a multi-stop animated gradient for a dynamic feel.",
-                        component: <NeuralProgress value={75} color="blue" variant="gradient" showValue />,
-                        code: `<NeuralProgress variant="gradient" color="blue" value={75} />`
+                        component: <AivexProgress value={75} color="blue" variant="gradient" showValue />,
+                        code: `<AivexProgress variant="gradient" color="blue" value={75} />`
                     },
                     {
                         id: "colors",
@@ -675,11 +675,11 @@ const categories: Category[] = [
                         description: "Pre-configured semantic tints with matching glows.",
                         component: (
                             <div className="w-full space-y-4">
-                                <NeuralProgress value={90} color="rose" />
-                                <NeuralProgress value={45} color="amber" />
+                                <AivexProgress value={90} color="rose" />
+                                <AivexProgress value={45} color="amber" />
                             </div>
                         ),
-                        code: `<NeuralProgress color="rose" value={90} />`
+                        code: `<AivexProgress color="rose" value={90} />`
                     }
                 ]
             },
@@ -689,19 +689,19 @@ const categories: Category[] = [
                 description: "Contextual information accessible on hover.",
                 component: (
                     <div className="flex items-center gap-4">
-                        <NeuralTooltip content="This is a helpful tip" position="top">
-                            <NeuralButton variant="secondary" size="sm">Hover Me</NeuralButton>
-                        </NeuralTooltip>
-                        <NeuralTooltip content="Quick Info" position="right">
+                        <AivexTooltip content="This is a helpful tip" position="top">
+                            <AivexButton variant="secondary" size="sm">Hover Me</AivexButton>
+                        </AivexTooltip>
+                        <AivexTooltip content="Quick Info" position="right">
                             <div className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center border border-zinc-700">
                                 <Info size={16} className="text-zinc-400" />
                             </div>
-                        </NeuralTooltip>
+                        </AivexTooltip>
                     </div>
                 ),
-                code: `<NeuralTooltip content="This is a helpful tip" position="top">
-    <NeuralButton>Hover Me</NeuralButton>
-</NeuralTooltip>`
+                code: `<AivexTooltip content="This is a helpful tip" position="top">
+    <AivexButton>Hover Me</AivexButton>
+</AivexTooltip>`
             },
             {
                 id: "alert",
@@ -709,13 +709,13 @@ const categories: Category[] = [
                 description: "Contextual feedback messages for user actions.",
                 component: (
                     <div className="w-full max-w-md space-y-4">
-                        <NeuralAlert title="Heads up!" description="You can add components to your app using the CLI." />
-                        <NeuralAlert variant="destructive" title="Error" description="Something went wrong while fetching data." />
-                        <NeuralAlert variant="success" title="Success" description="Your changes have been saved successfully." />
+                        <AivexAlert title="Heads up!" description="You can add components to your app using the CLI." />
+                        <AivexAlert variant="destructive" title="Error" description="Something went wrong while fetching data." />
+                        <AivexAlert variant="success" title="Success" description="Your changes have been saved successfully." />
                     </div>
                 ),
-                code: `<NeuralAlert title="Heads up!" description="Info message." />
-<NeuralAlert variant="destructive" title="Error" description="Something went wrong." />`
+                code: `<AivexAlert title="Heads up!" description="Info message." />
+<AivexAlert variant="destructive" title="Error" description="Something went wrong." />`
             },
             {
                 id: "tabs",
@@ -726,7 +726,7 @@ const categories: Category[] = [
                         <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                         <div className="relative z-10 space-y-6">
                             <h4 className="text-sm font-medium text-zinc-400">Workspace Settings</h4>
-                            <NeuralTabs
+                            <AivexTabs
                                 tabs={[
                                     { id: "account", label: "Account" },
                                     { id: "password", label: "Security" },
@@ -739,7 +739,7 @@ const categories: Category[] = [
                         </div>
                     </div>
                 ),
-                code: `<NeuralTabs
+                code: `<AivexTabs
     tabs={[
         { id: "account", label: "Account" },
         { id: "security", label: "Security" },
@@ -760,7 +760,7 @@ const categories: Category[] = [
                                         <span className="text-[10px] text-zinc-400 font-mono text-emerald-500">LIVE</span>
                                     </div>
                                 </div>
-                                <NeuralTabs
+                                <AivexTabs
                                     variant="pill"
                                     tabs={[
                                         { id: "all", label: "All" },
@@ -782,7 +782,7 @@ const categories: Category[] = [
                                 </div>
                             </div>
                         ),
-                        code: `<NeuralTabs variant="pill" tabs={assets} />`
+                        code: `<AivexTabs variant="pill" tabs={assets} />`
                     },
                     {
                         id: "underline-tabs",
@@ -801,7 +801,7 @@ const categories: Category[] = [
                                         <p className="text-xs text-zinc-500 font-mono">PRO MEMBER</p>
                                     </div>
                                 </div>
-                                <NeuralTabs
+                                <AivexTabs
                                     variant="underline"
                                     className="w-full"
                                     tabs={[
@@ -816,7 +816,7 @@ const categories: Category[] = [
                                 </div>
                             </div>
                         ),
-                        code: `<NeuralTabs variant="underline" tabs={navItems} />`
+                        code: `<AivexTabs variant="underline" tabs={navItems} />`
                     },
                     {
                         id: "glass-tabs",
@@ -828,10 +828,10 @@ const categories: Category[] = [
                                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/20 blur-[100px] rounded-full translate-y-1/2 -translate-x-1/2" />
                                 <div className="relative z-10 flex flex-col items-center gap-8">
                                     <div className="text-center space-y-2">
-                                        <h3 className="text-lg font-bold text-white">Neural Cluster</h3>
+                                        <h3 className="text-lg font-bold text-white">Aivex Cluster</h3>
                                         <p className="text-xs text-zinc-400">Select active processing node</p>
                                     </div>
-                                    <NeuralTabs
+                                    <AivexTabs
                                         variant="glass"
                                         tabs={[
                                             { id: "v1", label: "Node Alpha" },
@@ -850,25 +850,25 @@ const categories: Category[] = [
                                 </div>
                             </div>
                         ),
-                        code: `<NeuralTabs variant="glass" tabs={nodes} />`
+                        code: `<AivexTabs variant="glass" tabs={nodes} />`
                     }
                 ]
             },
             {
                 id: "marquee",
-                title: "Neural Marquee",
+                title: "Aivex Marquee",
                 description: "GPU-accelerated scrolling ticker for text, images, or log data. Supports vertical and horizontal orientations.",
                 addedAt: "2026-02-27",
                 component: (
                     <div className="w-full py-4 border-y border-zinc-900 bg-zinc-950/30">
-                        <NeuralMarquee speed={30}>
-                            {["BLOCKCHAIN", "NEURAL", "AGENTIC", "AUTONOMOUS", "CRYPTO"].map((s) => (
+                        <AivexMarquee speed={30}>
+                            {["BLOCKCHAIN", "Aivex", "AGENTIC", "AUTONOMOUS", "CRYPTO"].map((s) => (
                                 <span key={s} className="text-xl font-bold font-mono text-zinc-600 px-4">{s}</span>
                             ))}
-                        </NeuralMarquee>
+                        </AivexMarquee>
                     </div>
                 ),
-                code: `<NeuralMarquee speed={30}>\n  {items.map(i => <div key={i}>{i}</div>)}\n</NeuralMarquee>`,
+                code: `<AivexMarquee speed={30}>\n  {items.map(i => <div key={i}>{i}</div>)}\n</AivexMarquee>`,
                 variants: [
                     {
                         id: "vertical-marquee",
@@ -876,30 +876,30 @@ const categories: Category[] = [
                         description: "Scrolls vertically, useful for logs or sidebars.",
                         component: (
                             <div className="h-40 border border-zinc-800 rounded-xl overflow-hidden bg-zinc-950">
-                                <NeuralMarquee direction="up" speed={15} className="h-full">
+                                <AivexMarquee direction="up" speed={15} className="h-full">
                                     {[1, 2, 3, 4, 5].map(i => (
                                         <div key={i} className="text-[10px] font-mono text-emerald-500 py-1 px-3">
                                             PROTOCOL_SYNC_NODE_{i}
                                         </div>
                                     ))}
-                                </NeuralMarquee>
+                                </AivexMarquee>
                             </div>
                         ),
-                        code: `<NeuralMarquee direction="up" />`
+                        code: `<AivexMarquee direction="up" />`
                     }
                 ]
             },
             {
                 id: "toast",
-                title: "Neural Toaster",
+                title: "Aivex Toaster",
                 description: "Premium notification system with status-specific styling and smooth entry animations.",
                 addedAt: "2026-02-27",
                 component: (
                     <div className="flex gap-4">
-                        <NeuralToastDemo />
+                        <AivexToastDemo />
                     </div>
                 ),
-                code: `// Wrap app in <NeuralToastProvider />\nconst { toast } = useNeuralToast();\ntoast("System Online", { type: "success" });`
+                code: `// Wrap app in <AivexToastProvider />\nconst { toast } = useAivexToast();\ntoast("System Online", { type: "success" });`
             },
             {
                 id: "dialog",
@@ -910,15 +910,15 @@ const categories: Category[] = [
                         <DialogPreview />
                     </div>
                 ),
-                code: `<NeuralDialog>
-  <NeuralDialogTrigger>Open</NeuralDialogTrigger>
-  <NeuralDialogContent>
-    <NeuralDialogHeader>
-      <NeuralDialogTitle>Title</NeuralDialogTitle>
-    </NeuralDialogHeader>
+                code: `<AivexDialog>
+  <AivexDialogTrigger>Open</AivexDialogTrigger>
+  <AivexDialogContent>
+    <AivexDialogHeader>
+      <AivexDialogTitle>Title</AivexDialogTitle>
+    </AivexDialogHeader>
     {/* Content */}
-  </NeuralDialogContent>
-</NeuralDialog>`
+  </AivexDialogContent>
+</AivexDialog>`
             }
         ]
     },
@@ -939,9 +939,9 @@ const categories: Category[] = [
                                 <div className="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.4)]">
                                     <Search size={18} className="text-black" />
                                 </div>
-                                <h4 className="text-sm font-bold text-white tracking-tight">Neural Search</h4>
+                                <h4 className="text-sm font-bold text-white tracking-tight">Aivex Search</h4>
                             </div>
-                            <NeuralInput
+                            <AivexInput
                                 variant="default"
                                 placeholder="Search for components, files, or users..."
                                 className="h-12"
@@ -954,7 +954,7 @@ const categories: Category[] = [
                         </div>
                     </div>
                 ),
-                code: `<NeuralInput 
+                code: `<AivexInput 
   icon={<Search size={14} />} 
   placeholder="Search..." 
 />`,
@@ -967,15 +967,15 @@ const categories: Category[] = [
                             <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="p-6 rounded-2xl bg-zinc-900/30 border border-zinc-800/50 space-y-4">
                                     <h5 className="text-[10px] font-bold text-zinc-500 uppercase">Modern Underline</h5>
-                                    <NeuralInput variant="underlined" placeholder="Write something..." />
+                                    <AivexInput variant="underlined" placeholder="Write something..." />
                                 </div>
                                 <div className="p-6 rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-white/5 backdrop-blur-md space-y-4">
                                     <h5 className="text-[10px] font-bold text-blue-400 uppercase">Glass Morphic</h5>
-                                    <NeuralInput variant="glass" placeholder="Overlay input..." />
+                                    <AivexInput variant="glass" placeholder="Overlay input..." />
                                 </div>
                             </div>
                         ),
-                        code: `<NeuralInput variant="underlined" />\n<NeuralInput variant="glass" />`
+                        code: `<AivexInput variant="underlined" />\n<AivexInput variant="glass" />`
                     },
                     {
                         id: "password-input",
@@ -989,16 +989,16 @@ const categories: Category[] = [
                                         <h4 className="text-lg font-bold text-white">Unlock Access</h4>
                                         <p className="text-xs text-zinc-500">Minimum 8 characters with symbols</p>
                                     </div>
-                                    <NeuralPasswordInput
+                                    <AivexPasswordInput
                                         label="Personal Ledger Key"
                                         placeholder="Enter key"
                                         showStrengthIndicator
                                     />
-                                    <NeuralButton className="w-full rounded-xl bg-zinc-50 text-black hover:bg-white">Authorize Access</NeuralButton>
+                                    <AivexButton className="w-full rounded-xl bg-zinc-50 text-black hover:bg-white">Authorize Access</AivexButton>
                                 </div>
                             </div>
                         ),
-                        code: `<NeuralPasswordInput showStrengthIndicator />`
+                        code: `<AivexPasswordInput showStrengthIndicator />`
                     },
                     {
                         id: "otp-input",
@@ -1013,14 +1013,14 @@ const categories: Category[] = [
                                     <h4 className="text-xl font-black text-white">Confirm Identity</h4>
                                     <p className="text-xs text-zinc-500">We sent a 6-digit code to your mobile</p>
                                 </div>
-                                <NeuralOTPInput length={6} />
+                                <AivexOTPInput length={6} />
                                 <div className="flex gap-4">
                                     <button className="text-[10px] text-zinc-500 hover:text-zinc-300 font-bold uppercase underline underline-offset-4 decoration-zinc-800">Resend Code</button>
                                     <button className="text-[10px] text-zinc-500 hover:text-zinc-300 font-bold uppercase underline underline-offset-4 decoration-zinc-800">Support</button>
                                 </div>
                             </div>
                         ),
-                        code: `<NeuralOTPInput length={6} />`
+                        code: `<AivexOTPInput length={6} />`
                     }
                 ]
             },
@@ -1030,13 +1030,13 @@ const categories: Category[] = [
                 description: "Minimalist checkbox with micro-animations.",
                 component: (
                     <div className="flex flex-col gap-4">
-                        <NeuralCheckbox label="Accept Terms" description="You agree to our Terms of Service." defaultChecked />
-                        <NeuralCheckbox label="Subscribe to Newsletter" />
-                        <NeuralCheckbox label="Disabled Option" disabled />
+                        <AivexCheckbox label="Accept Terms" description="You agree to our Terms of Service." defaultChecked />
+                        <AivexCheckbox label="Subscribe to Newsletter" />
+                        <AivexCheckbox label="Disabled Option" disabled />
                     </div>
                 ),
-                code: `<NeuralCheckbox label="Accept Terms" defaultChecked />
-<NeuralCheckbox label="Subscribe" />`
+                code: `<AivexCheckbox label="Accept Terms" defaultChecked />
+<AivexCheckbox label="Subscribe" />`
             },
             {
                 id: "slider",
@@ -1044,11 +1044,11 @@ const categories: Category[] = [
                 description: "Range slider for numeric values.",
                 component: (
                     <div className="w-full max-w-xs space-y-6">
-                        <NeuralSlider min={0} max={100} defaultValue={50} label="Volume" />
-                        <NeuralSlider min={10} max={200} step={10} defaultValue={120} label="Capacity" />
+                        <AivexSlider min={0} max={100} defaultValue={50} label="Volume" />
+                        <AivexSlider min={10} max={200} step={10} defaultValue={120} label="Capacity" />
                     </div>
                 ),
-                code: `<NeuralSlider min={0} max={100} defaultValue={50} label="Volume" />`
+                code: `<AivexSlider min={0} max={100} defaultValue={50} label="Volume" />`
             },
             {
                 id: "select",
@@ -1058,8 +1058,8 @@ const categories: Category[] = [
                 component: (
                     <div className="w-full max-w-sm p-12 rounded-[2.5rem] bg-zinc-950 border border-zinc-900 shadow-2xl relative group overflow-visible">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 blur-[60px] rounded-full -translate-y-1/2 translate-x-1/2" />
-                        <NeuralSelect
-                            label="Neural Architecture"
+                        <AivexSelect
+                            label="Aivex Architecture"
                             variant="neon"
                             options={[
                                 { value: "gpt-4", label: "GPT-4 Turbo", icon: <Cpu size={14} />, description: "Advanced reasoning & logic" },
@@ -1072,7 +1072,7 @@ const categories: Category[] = [
                         />
                     </div>
                 ),
-                code: `<NeuralSelect
+                code: `<AivexSelect
     label="Architecture"
     variant="neon"
     options={[
@@ -1089,7 +1089,7 @@ const categories: Category[] = [
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
                                 <div className="space-y-2">
                                     <span className="text-[9px] font-mono text-zinc-600 uppercase">Standard</span>
-                                    <NeuralSelect
+                                    <AivexSelect
                                         variant="default"
                                         options={[{ value: '1', label: 'Option 1' }]}
                                         onValueChange={() => { }}
@@ -1098,7 +1098,7 @@ const categories: Category[] = [
                                 </div>
                                 <div className="space-y-2">
                                     <span className="text-[9px] font-mono text-zinc-600 uppercase">Glass</span>
-                                    <NeuralSelect
+                                    <AivexSelect
                                         variant="glass"
                                         options={[{ value: '1', label: 'Glass View' }]}
                                         onValueChange={() => { }}
@@ -1107,7 +1107,7 @@ const categories: Category[] = [
                                 </div>
                                 <div className="space-y-2">
                                     <span className="text-[9px] font-mono text-zinc-600 uppercase">Ghost</span>
-                                    <NeuralSelect
+                                    <AivexSelect
                                         variant="ghost"
                                         options={[{ value: '1', label: 'Minimalist' }]}
                                         onValueChange={() => { }}
@@ -1116,7 +1116,7 @@ const categories: Category[] = [
                                 </div>
                             </div>
                         ),
-                        code: `<NeuralSelect variant="glass" />\n<NeuralSelect variant="ghost" />`
+                        code: `<AivexSelect variant="glass" />\n<AivexSelect variant="ghost" />`
                     },
                     {
                         id: "select-metadata",
@@ -1124,7 +1124,7 @@ const categories: Category[] = [
                         description: "Enhance decision making with integrated icons and descriptions for every option.",
                         component: (
                             <div className="w-full max-w-sm">
-                                <NeuralSelect
+                                <AivexSelect
                                     variant="default"
                                     options={[
                                         { value: "eth", label: "Ethereum", icon: <Coins size={14} className="text-blue-400" />, description: "ERC-20 Ecosystem" },
@@ -1136,7 +1136,7 @@ const categories: Category[] = [
                                 />
                             </div>
                         ),
-                        code: `<NeuralSelect\n  options={[\n    { label: "ETH", icon: <Coins />, description: "Chain" },\n    // ...\n  ]}\n/>`
+                        code: `<AivexSelect\n  options={[\n    { label: "ETH", icon: <Coins />, description: "Chain" },\n    // ...\n  ]}\n/>`
                     }
                 ]
             },
@@ -1146,12 +1146,12 @@ const categories: Category[] = [
                 description: "Spring-animated toggle switch with glow effects.",
                 component: (
                     <div className="flex flex-col gap-4">
-                        <NeuralSwitch label="Airplane Mode" checked />
-                        <NeuralSwitch label="Do Not Disturb" />
-                        <NeuralSwitch label="Disabled" disabled />
+                        <AivexSwitch label="Airplane Mode" checked />
+                        <AivexSwitch label="Do Not Disturb" />
+                        <AivexSwitch label="Disabled" disabled />
                     </div>
                 ),
-                code: `<NeuralSwitch label="Airplane Mode" checked />\n<NeuralSwitch label="Do Not Disturb" />\n<NeuralSwitch label="Disabled" disabled />`
+                code: `<AivexSwitch label="Airplane Mode" checked />\n<AivexSwitch label="Do Not Disturb" />\n<AivexSwitch label="Disabled" disabled />`
             },
             {
                 id: "date-picker",
@@ -1160,17 +1160,17 @@ const categories: Category[] = [
                 addedAt: "2026-02-11",
                 component: (
                     <div className="w-full max-w-sm">
-                        <NeuralDatePicker label="Deployment Schedule" variant="neon" />
+                        <AivexDatePicker label="Deployment Schedule" variant="neon" />
                     </div>
                 ),
-                code: `<NeuralDatePicker label="Schedule" variant="neon" />`,
+                code: `<AivexDatePicker label="Schedule" variant="neon" />`,
                 variants: [
                     {
                         id: "date-glass",
                         title: "Glass Variation",
                         description: "Soft aesthetic for transparent layouts.",
-                        component: <NeuralDatePicker variant="glass" />,
-                        code: `<NeuralDatePicker variant="glass" />`
+                        component: <AivexDatePicker variant="glass" />,
+                        code: `<AivexDatePicker variant="glass" />`
                     }
                 ]
             },
@@ -1221,14 +1221,14 @@ const categories: Category[] = [
                         <Magnetic strength={0.25}>
                             <div className="relative">
                                 <div className="absolute inset-[-15px] bg-emerald-500/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-                                <NeuralButton size="lg" className="rounded-full h-20 w-20 p-0 flex items-center justify-center shadow-2xl border-emerald-500/20">
+                                <AivexButton size="lg" className="rounded-full h-20 w-20 p-0 flex items-center justify-center shadow-2xl border-emerald-500/20">
                                     <Sparkles size={32} className="text-emerald-400" />
-                                </NeuralButton>
+                                </AivexButton>
                             </div>
                         </Magnetic>
                     </div>
                 ),
-                code: `<Magnetic strength={0.3}>\n  <NeuralButton>Magnetic</NeuralButton>\n</Magnetic>`,
+                code: `<Magnetic strength={0.3}>\n  <AivexButton>Magnetic</AivexButton>\n</Magnetic>`,
                 variants: [
                     {
                         id: "magnetic-dock",
@@ -1262,7 +1262,7 @@ const categories: Category[] = [
                                         <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-6 group-hover/card:scale-110 transition-transform">
                                             <Layers size={22} />
                                         </div>
-                                        <h4 className="text-lg font-bold text-white mb-2">Neural Link</h4>
+                                        <h4 className="text-lg font-bold text-white mb-2">Aivex Link</h4>
                                         <p className="text-xs text-zinc-500 leading-relaxed font-sans">
                                             A weightless interface element that reacts to the cursor presence.
                                         </p>
@@ -1281,7 +1281,7 @@ const categories: Category[] = [
                 component: (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full px-4">
                         <SpotlightCard className="p-8 min-h-[200px] flex flex-col justify-end">
-                            <h4 className="text-xl font-bold font-sans mb-2">Neural Card</h4>
+                            <h4 className="text-xl font-bold font-sans mb-2">Aivex Card</h4>
                             <p className="text-sm text-zinc-500 font-sans">Hover to see the spotlight.</p>
                         </SpotlightCard>
                         <SpotlightCard spotlightColor="rgba(59, 130, 246, 0.15)" className="p-8 min-h-[200px] flex flex-col justify-end">
@@ -1301,12 +1301,12 @@ const categories: Category[] = [
                 component: (
                     <div className="flex flex-col items-center gap-4 py-8">
                         <p className="text-sm text-zinc-500 font-sans">The command bar is active on this site. Try the shortcut.</p>
-                        <NeuralButton onClick={() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}>
+                        <AivexButton onClick={() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}>
                             Open Command Bar (⌘K)
-                        </NeuralButton>
+                        </AivexButton>
                     </div>
                 ),
-                code: `<NeuralCommandBar />`
+                code: `<AivexCommandBar />`
             },
             {
                 id: "skeleton",
@@ -1317,32 +1317,32 @@ const categories: Category[] = [
                         {/* Standard Variants */}
                         <div className="p-6 rounded-2xl bg-zinc-950 border border-zinc-900 space-y-4">
                             <div className="flex items-center gap-3">
-                                <NeuralSkeleton className="w-10 h-10 rounded-xl" />
+                                <AivexSkeleton className="w-10 h-10 rounded-xl" />
                                 <div className="space-y-1.5 flex-1">
-                                    <NeuralSkeleton className="h-3 w-1/2" />
-                                    <NeuralSkeleton className="h-2 w-1/3 opacity-50" />
+                                    <AivexSkeleton className="h-3 w-1/2" />
+                                    <AivexSkeleton className="h-2 w-1/3 opacity-50" />
                                 </div>
                             </div>
-                            <NeuralSkeleton className="h-24 w-full rounded-xl" />
+                            <AivexSkeleton className="h-24 w-full rounded-xl" />
                             <div className="flex justify-between items-center pt-2">
-                                <NeuralSkeleton className="h-2 w-16" />
-                                <NeuralSkeleton className="h-8 w-24 rounded-lg" />
+                                <AivexSkeleton className="h-2 w-16" />
+                                <AivexSkeleton className="h-8 w-24 rounded-lg" />
                             </div>
                         </div>
 
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
                                 <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-widest pl-1">Pulse Variant</span>
-                                <NeuralSkeleton variant="pulse" className="h-12 w-full" />
+                                <AivexSkeleton variant="pulse" className="h-12 w-full" />
                             </div>
                             <div className="space-y-2">
                                 <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-widest pl-1">Shimmer (Default)</span>
-                                <NeuralSkeleton variant="default" className="h-12 w-full" />
+                                <AivexSkeleton variant="default" className="h-12 w-full" />
                             </div>
                         </div>
                     </div>
                 ),
-                code: `<NeuralSkeleton className="w-full h-24" />\n<NeuralSkeleton variant="pulse" className="w-full h-24" />`,
+                code: `<AivexSkeleton className="w-full h-24" />\n<AivexSkeleton variant="pulse" className="w-full h-24" />`,
                 variants: [
                     {
                         id: "skeleton-interactive",
@@ -1353,7 +1353,7 @@ const categories: Category[] = [
                                 <LoadingInterfaceDemo />
                             </div>
                         ),
-                        code: `// loading state toggles visibility of skeletons\n{isLoading ? <NeuralSkeleton /> : <Content />}`
+                        code: `// loading state toggles visibility of skeletons\n{isLoading ? <AivexSkeleton /> : <Content />}`
                     }
                 ]
             },
@@ -1369,31 +1369,31 @@ const categories: Category[] = [
                 title: "Card",
                 description: "Composable card architecture for standard UI patterns.",
                 component: (
-                    <NeuralCard className="w-full max-w-sm">
-                        <NeuralCardHeader>
-                            <NeuralCardTitle>Project Settings</NeuralCardTitle>
-                            <NeuralCardDescription>Manage your deployment keys.</NeuralCardDescription>
-                        </NeuralCardHeader>
-                        <NeuralCardContent>
+                    <AivexCard className="w-full max-w-sm">
+                        <AivexCardHeader>
+                            <AivexCardTitle>Project Settings</AivexCardTitle>
+                            <AivexCardDescription>Manage your deployment keys.</AivexCardDescription>
+                        </AivexCardHeader>
+                        <AivexCardContent>
                             <div className="space-y-2">
-                                <NeuralInput placeholder="Project Name" defaultValue="NeuralUI" />
+                                <AivexInput placeholder="Project Name" defaultValue="AivexCore" />
                                 <div className="flex justify-end gap-2 mt-4">
-                                    <NeuralButton variant="ghost" size="sm">Cancel</NeuralButton>
-                                    <NeuralButton size="sm">Save</NeuralButton>
+                                    <AivexButton variant="ghost" size="sm">Cancel</AivexButton>
+                                    <AivexButton size="sm">Save</AivexButton>
                                 </div>
                             </div>
-                        </NeuralCardContent>
-                    </NeuralCard>
+                        </AivexCardContent>
+                    </AivexCard>
                 ),
-                code: `<NeuralCard>
-  <NeuralCardHeader>
-    <NeuralCardTitle>Project Settings</NeuralCardTitle>
-    <NeuralCardDescription>Manage keys.</NeuralCardDescription>
-  </NeuralCardHeader>
-  <NeuralCardContent>
+                code: `<AivexCard>
+  <AivexCardHeader>
+    <AivexCardTitle>Project Settings</AivexCardTitle>
+    <AivexCardDescription>Manage keys.</AivexCardDescription>
+  </AivexCardHeader>
+  <AivexCardContent>
     {/* Content */}
-  </NeuralCardContent>
-</NeuralCard>`
+  </AivexCardContent>
+</AivexCard>`
             },
             {
                 id: "accordion",
@@ -1401,7 +1401,7 @@ const categories: Category[] = [
                 description: "Vertically stacked interactive headings that reveal details.",
                 component: (
                     <div className="w-full max-w-md">
-                        <NeuralAccordion
+                        <AivexAccordion
                             items={[
                                 { value: "item-1", title: "Is it accessible?", content: "Yes. It adheres to the WAI-ARIA design pattern." },
                                 { value: "item-2", title: "Is it styled?", content: "Yes. It comes with default styles that matches the other components' aesthetic." },
@@ -1410,7 +1410,7 @@ const categories: Category[] = [
                         />
                     </div>
                 ),
-                code: `<NeuralAccordion 
+                code: `<AivexAccordion 
     items={[
         { value: "item-1", title: "Question?", content: "Answer." },
         { value: "item-2", title: "Another?", content: "Yes." },
@@ -1423,7 +1423,7 @@ const categories: Category[] = [
                 description: "Displays the path to the current resource.",
                 component: (
                     <div className="p-4 bg-zinc-900/50 rounded-lg border border-zinc-800">
-                        <NeuralBreadcrumb
+                        <AivexBreadcrumb
                             items={[
                                 { label: "Dashboard", href: "#" },
                                 { label: "Components", href: "#" },
@@ -1432,7 +1432,7 @@ const categories: Category[] = [
                         />
                     </div>
                 ),
-                code: `<NeuralBreadcrumb 
+                code: `<AivexBreadcrumb 
     items={[
         { label: "Dashboard", href: "/dashboard" },
         { label: "Components", href: "/docs" },
@@ -1460,7 +1460,7 @@ const categories: Category[] = [
                         <TablePreview />
                     </div>
                 ),
-                code: `<NeuralDataTable 
+                code: `<AivexDataTable 
     data={users} 
     columns={columns} 
     pageSize={5} 
@@ -1506,13 +1506,13 @@ const categories: Category[] = [
                 description: "Interactive PrismJS powered editor with custom syntax highlighting.",
                 component: (
                     <div className="w-full max-w-2xl">
-                        <NeuralCodeEditor
-                            initialCode={`function NeuralAI() {\n  const [state, setState] = useState("active");\n\n  return (\n    <div className="neural-node">\n      Cognitive bridge: {state}\n    </div>\n  );\n}`}
+                        <AivexCodeEditor
+                            initialCode={`function AivexAI() {\n  const [state, setState] = useState("active");\n\n  return (\n    <div className="Aivex-node">\n      Cognitive bridge: {state}\n    </div>\n  );\n}`}
                             language="tsx"
                         />
                     </div>
                 ),
-                code: `<NeuralCodeEditor \n  initialCode={code} \n  language="tsx" \n/>`
+                code: `<AivexCodeEditor \n  initialCode={code} \n  language="tsx" \n/>`
             },
             {
                 id: "radar-chart",
@@ -1580,16 +1580,16 @@ const categories: Category[] = [
                 title: "Export Button",
                 description: "Premium client-side data downloader supporting CSV and JSON formats.",
                 component: (
-                    <NeuralExportButton
+                    <AivexExportButton
                         data={[
-                            { id: 1, name: "Neural Node A", status: "Active", throughput: "1.2GB/s" },
-                            { id: 2, name: "Neural Node B", status: "Idle", throughput: "0GB/s" },
-                            { id: 3, name: "Neural Node C", status: "Active", throughput: "4.5GB/s" },
+                            { id: 1, name: "Aivex Node A", status: "Active", throughput: "1.2GB/s" },
+                            { id: 2, name: "Aivex Node B", status: "Idle", throughput: "0GB/s" },
+                            { id: 3, name: "Aivex Node C", status: "Active", throughput: "4.5GB/s" },
                         ]}
-                        filename="neural-system-export"
+                        filename="Aivex-system-export"
                     />
                 ),
-                code: `<NeuralExportButton 
+                code: `<AivexExportButton 
     data={data} 
     filename="system-report" 
 />`
@@ -1663,7 +1663,7 @@ const categories: Category[] = [
                                                 </div>
                                                 <div className="space-y-2">
                                                     <div className="flex items-center justify-between">
-                                                        <h4 className="text-sm font-bold text-zinc-200 group-hover:text-white transition-colors">Neural Module {i + 1}</h4>
+                                                        <h4 className="text-sm font-bold text-zinc-200 group-hover:text-white transition-colors">Aivex Module {i + 1}</h4>
                                                         <ArrowRight size={14} className="text-zinc-600 group-hover:text-zinc-400 group-hover:translate-x-0.5 transition-all" />
                                                     </div>
                                                     <p className="text-xs text-zinc-500 leading-relaxed">
@@ -1697,15 +1697,15 @@ const categories: Category[] = [
         components: [
             {
                 id: "bento",
-                title: "Neural Bento Grid",
+                title: "Aivex Bento Grid",
                 description: "Swiss-design inspired grid layout for cinematic dashboards.",
                 addedAt: "2026-02-11",
                 component: (
                     <div className="w-full scale-[0.85] origin-top bg-zinc-950/50 p-8 rounded-[2rem] border border-zinc-900">
-                        <NeuralBentoGrid>
-                            <NeuralBentoCard
+                        <AivexBentoGrid>
+                            <AivexBentoCard
                                 className="md:col-span-2"
-                                title="Neural Core"
+                                title="Aivex Core"
                                 description="Real-time infrastructure monitoring."
                                 icon={<Cpu size={18} />}
                             >
@@ -1719,8 +1719,8 @@ const categories: Category[] = [
                                         />
                                     ))}
                                 </div>
-                            </NeuralBentoCard>
-                            <NeuralBentoCard
+                            </AivexBentoCard>
+                            <AivexBentoCard
                                 title="Security Status"
                                 description="Guardian protocols active."
                                 icon={<Shield size={18} />}
@@ -1731,11 +1731,11 @@ const categories: Category[] = [
                                     </div>
                                     <span className="text-[10px] font-mono text-zinc-600">ENCRYPTION: AES-256</span>
                                 </div>
-                            </NeuralBentoCard>
-                        </NeuralBentoGrid>
+                            </AivexBentoCard>
+                        </AivexBentoGrid>
                     </div>
                 ),
-                code: `<NeuralBentoGrid>\n  <NeuralBentoCard title="Core" icon={<Cpu />}>\n    {/* Content */}\n  </NeuralBentoCard>\n</NeuralBentoGrid>`
+                code: `<AivexBentoGrid>\n  <AivexBentoCard title="Core" icon={<Cpu />}>\n    {/* Content */}\n  </AivexBentoCard>\n</AivexBentoGrid>`
             },
             {
                 id: "price-metric",
@@ -1780,11 +1780,11 @@ const categories: Category[] = [
             },
             {
                 id: "carousel",
-                title: "Neural Carousel",
+                title: "Aivex Carousel",
                 description: "High-performance slider with Draggable support and spotlight effects.",
                 addedAt: "2026-02-27",
                 component: (
-                    <NeuralCarousel
+                    <AivexCarousel
                         className="w-full max-w-lg"
                         items={[
                             <div key="1" className="p-8 text-center space-y-4">
@@ -1798,7 +1798,7 @@ const categories: Category[] = [
                         ]}
                     />
                 ),
-                code: `<NeuralCarousel items={[<Item1 />, <Item2 />]} />`
+                code: `<AivexCarousel items={[<Item1 />, <Item2 />]} />`
             }
         ]
     },
@@ -1879,7 +1879,7 @@ const categories: Category[] = [
             {
                 id: "model-params",
                 title: "Model Parameters",
-                description: "Technical configuration interfaces for neural model orchestration.",
+                description: "Technical configuration interfaces for Aivex model orchestration.",
                 addedAt: "2026-02-11",
                 component: (
                     <div className="w-full max-w-sm">
@@ -1926,7 +1926,7 @@ const DocsNavbar = ({ toggleSidebar }: { toggleSidebar?: () => void }) => {
                             <Layers size={14} className="text-emerald-500" />
                         </div>
                         <span className="text-sm font-bold tracking-tight text-zinc-100 font-sans">
-                            Neural<span className="text-zinc-500">Docs</span>
+                            Aivex<span className="text-zinc-500">Docs</span>
                         </span>
                     </Link>
                     <div className="hidden md:flex h-4 w-[1px] bg-zinc-800" />
@@ -2082,8 +2082,8 @@ const StoryCanvas = ({
             <div className="px-8 py-6 border-b border-zinc-900 bg-zinc-950/50">
                 <div className="max-w-5xl mx-auto">
                     <div className="flex items-center gap-3 mb-2">
-                        <NeuralBadge status="success" dot className="text-[10px] h-5 px-1.5 font-mono">STABLE</NeuralBadge>
-                        <span className="text-zinc-500 text-[11px] font-mono">@neural-ui/core/{component.id}</span>
+                        <AivexBadge status="success" dot className="text-[10px] h-5 px-1.5 font-mono">STABLE</AivexBadge>
+                        <span className="text-zinc-500 text-[11px] font-mono">@Aivex-ui/core/{component.id}</span>
                     </div>
                     <h1 className="text-3xl font-bold text-white font-sans mb-2 tracking-tight">{component.title}</h1>
                     <p className="text-base text-zinc-400 font-sans max-w-2xl leading-relaxed">{component.description}</p>
@@ -2289,7 +2289,7 @@ export default function DocsPage() {
 
     return (
         <div className="flex flex-col h-screen bg-zinc-950 text-zinc-100 font-sans selection:bg-zinc-800 selection:text-zinc-50 overflow-hidden" style={{ fontFamily: 'var(--font-sans), sans-serif' }}>
-            <NeuralCommandBar />
+            <AivexCommandBar />
             <DocsNavbar toggleSidebar={() => setSidebarOpen(!isSidebarOpen)} />
 
             <div className="flex flex-1 pt-14 h-full overflow-hidden relative">

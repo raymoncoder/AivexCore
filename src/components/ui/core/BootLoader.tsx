@@ -74,7 +74,7 @@ export const BootLoader = ({ onComplete }: { onComplete: () => void }) => {
 
             {/* Simple build version info */}
             <div className="absolute bottom-12 text-[9px] font-mono text-zinc-600 tracking-[0.3em] uppercase font-bold opacity-50">
-                NeuralUI // System v1.0
+                AivexCore // System v1.0
             </div>
         </motion.div>
     );

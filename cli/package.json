@@ -1,14 +1,14 @@
 {
-    "name": "neuralui",
+    "name": "aivexcore",
     "version": "0.1.0",
-    "description": "CLI for adding NeuralUI components — the UI library for Agentic AI and Crypto applications",
-    "homepage": "https://neuralui.vercel.app",
+    "description": "CLI for adding AivexCore components — the UI library for Agentic AI and Crypto applications",
+    "homepage": "https://aivexcore.vercel.app",
     "repository": {
         "type": "git",
-        "url": "https://github.com/yourusername/neuralui"
+        "url": "https://github.com/raymoncoder/AivexCore"
     },
     "bugs": {
-        "url": "https://github.com/yourusername/neuralui/issues"
+        "url": "https://github.com/raymoncoder/AivexCore/issues"
     },
     "keywords": [
         "ui",
@@ -26,7 +26,7 @@
     ],
     "license": "MIT",
     "bin": {
-        "neuralui": "./bin/index.js"
+        "aivexcore": "./bin/index.js"
     },
     "scripts": {
         "start": "node bin/index.js"

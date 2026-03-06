@@ -11,7 +11,7 @@ import { execSync } from "child_process";
 const program = new Command();
 
 // Production URL — points to the deployed registry on Vercel
-const BASE_URL = process.env.NEURALUI_REGISTRY_URL || "https://neuralui.vercel.app";
+const BASE_URL = process.env.AIVEXCORE_REGISTRY_URL || "https://aivexcore.vercel.app";
 
 // Detect package manager
 function detectPackageManager() {
@@ -21,24 +21,24 @@ function detectPackageManager() {
     return "npm";
 }
 
-// Print NeuralUI banner
+// Print aivexcore banner
 function printBanner() {
-    console.log(chalk.bold.green("\n  ⚡ NeuralUI CLI\n"));
+    console.log(chalk.bold.green("\n  ⚡ AivexCore CLI\n"));
 }
 
 program
-    .name("neuralui")
-    .description("Add Neural UI components to your Next.js project")
+    .name("aivexcore")
+    .description("Add AivexCore UI components to your Next.js project")
     .version("0.1.0");
 
 // ─── INIT command ────────────────────────────────────────────────────────────
 program
     .command("init")
-    .description("Initialize NeuralUI in your project (adds utils and installs dependencies)")
+    .description("Initialize aivexcore in your project (adds utils and installs dependencies)")
     .action(async () => {
         printBanner();
         const pm = detectPackageManager();
-        const spinner = ora("Initializing NeuralUI...").start();
+        const spinner = ora("Initializing aivexcore...").start();
 
         try {
             // 1. Create src/lib/utils.ts if it doesn't exist
@@ -75,9 +75,9 @@ program
 
             execSync(installCmd, { stdio: "pipe" });
 
-            spinner.succeed(chalk.green("NeuralUI initialized successfully!"));
+            spinner.succeed(chalk.green("AivexCore initialized successfully!"));
             console.log(chalk.dim("\n  Next step: add your first component"));
-            console.log(chalk.white("  npx neuralui@latest add neural-button\n"));
+            console.log(chalk.white("  npx aivexcore@latest add AivexButton\n"));
 
         } catch (error) {
             spinner.fail(chalk.red(`Initialization failed: ${error.message}`));
@@ -116,7 +116,7 @@ program
                     console.log();
                 }
             } catch {
-                spinner.fail(chalk.red("Could not fetch registry. Is https://neuralui.vercel.app reachable?"));
+                spinner.fail(chalk.red("Could not fetch registry. Is https://aivexcore.vercel.app reachable?"));
             }
             return;
         }
@@ -131,7 +131,7 @@ program
                 const response = await fetch(`${BASE_URL}/registry/${componentName}.json`);
 
                 if (!response.ok) {
-                    throw new Error(`Component '${componentName}' not found in registry.\n  Run ${chalk.white("npx neuralui@latest add")} to see all available components.`);
+                    throw new Error(`Component '${componentName}' not found in registry.\n  Run ${chalk.white("npx aivexcore@latest add")} to see all available components.`);
                 }
 
                 const componentData = await response.json();
@@ -143,7 +143,8 @@ program
 
                 await fs.ensureDir(baseDir);
 
-                const filePath = path.join(baseDir, `${componentData.name}.tsx`);
+                const fileName = componentData.files[0].path.split('/').pop() || `${componentData.name}.tsx`;
+                const filePath = path.join(baseDir, fileName);
 
                 // 3. Check if file exists
                 if (fs.existsSync(filePath) && !options.overwrite) {

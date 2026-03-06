@@ -1,0 +1,16 @@
+{
+  "name": "AivexOTPInput",
+  "type": "components:ui",
+  "dependencies": [
+    "react",
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "core/AivexOTPInput.tsx",
+      "content": "\"use client\";\r\n\r\nimport React, { useRef, useState, useEffect } from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\nimport { motion } from \"framer-motion\";\r\n\r\ninterface AivexOTPInputProps {\r\n    length?: number;\r\n    onComplete?: (code: string) => void;\r\n    className?: string;\r\n}\r\n\r\nexport function AivexOTPInput({ length = 6, onComplete, className }: AivexOTPInputProps) {\r\n    const [otp, setOtp] = useState<string[]>(new Array(length).fill(\"\"));\r\n    const [activeIdx, setActiveIdx] = useState(0);\r\n    const inputsRef = useRef<(HTMLInputElement | null)[]>([]);\r\n\r\n    useEffect(() => {\r\n        inputsRef.current[0]?.focus();\r\n    }, []);\r\n\r\n    const handleChange = (val: string, index: number) => {\r\n        const newOtp = [...otp];\r\n        newOtp[index] = val.slice(-1);\r\n        setOtp(newOtp);\r\n\r\n        if (val && index < length - 1) {\r\n            inputsRef.current[index + 1]?.focus();\r\n            setActiveIdx(index + 1);\r\n        }\r\n\r\n        if (newOtp.every(digit => digit !== \"\") && newOtp.length === length) {\r\n            onComplete?.(newOtp.join(\"\"));\r\n        }\r\n    };\r\n\r\n    const handleKeyDown = (e: React.KeyboardEvent, index: number) => {\r\n        if (e.key === \"Backspace\" && !otp[index] && index > 0) {\r\n            inputsRef.current[index - 1]?.focus();\r\n            setActiveIdx(index - 1);\r\n        }\r\n    };\r\n\r\n    return (\r\n        <div className={cn(\"flex gap-3\", className)}>\r\n            {otp.map((digit, idx) => (\r\n                <div key={idx} className=\"relative group\">\r\n                    <input\r\n                        ref={el => { inputsRef.current[idx] = el; }}\r\n                        type=\"text\"\r\n                        inputMode=\"numeric\"\r\n                        value={digit}\r\n                        onChange={e => handleChange(e.target.value, idx)}\r\n                        onKeyDown={e => handleKeyDown(e, idx)}\r\n                        onFocus={() => setActiveIdx(idx)}\r\n                        className={cn(\r\n                            \"w-12 h-14 bg-zinc-900/50 border border-zinc-800 rounded-xl text-center text-xl font-mono text-zinc-100 focus:outline-none transition-all duration-300\",\r\n                            activeIdx === idx ? \"border-emerald-500/50 ring-4 ring-emerald-500/10 bg-zinc-950/80\" : \"group-hover:border-zinc-700\"\r\n                        )}\r\n                    />\r\n                    {activeIdx === idx && (\r\n                        <motion.div\r\n                            layoutId=\"otp-cursor\"\r\n                            className=\"absolute bottom-2 left-3 right-3 h-0.5 bg-emerald-500\"\r\n                            transition={{ type: \"spring\", bounce: 0.2, duration: 0.6 }}\r\n                        />\r\n                    )}\r\n                </div>\r\n            ))}\r\n        </div>\r\n    );\r\n}\r\n"
+    }
+  ],
+  "category": "core"
+}

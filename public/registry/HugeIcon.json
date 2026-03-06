@@ -1,0 +1,15 @@
+{
+  "name": "HugeIcon",
+  "type": "components:ui",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "core/HugeIcon.tsx",
+      "content": "\"use client\";\r\n\r\nimport React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface HugeIconProps {\r\n    name: string;\r\n    variant?: \"stroke\" | \"solid\" | \"duotone\" | \"outline\"; // Note: Free CDN usually only supports stroke\r\n    size?: number;\r\n    className?: string;\r\n}\r\n\r\n/**\r\n * HugeIcon component that uses the CDN-loaded icon font.\r\n * Requires the Hugeicons CSS to be loaded in the layout (e.g., hgi-stroke-rounded.css).\r\n */\r\nexport const HugeIcon = ({\r\n    name,\r\n    variant = \"stroke\",\r\n    size = 24,\r\n    className\r\n}: HugeIconProps) => {\r\n    return (\r\n        <i\r\n            className={cn(\r\n                `hgi-${variant}`,\r\n                `hgi-${name}`,\r\n                className\r\n            )}\r\n            style={{ fontSize: `${size}px` }}\r\n        />\r\n    );\r\n};\r\n"
+    }
+  ],
+  "category": "core"
+}

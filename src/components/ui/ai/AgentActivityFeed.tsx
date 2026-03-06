@@ -65,8 +65,8 @@ export const AgentActivityFeed = ({
             {/* Feed Content */}
             <div
                 ref={scrollRef}
-                className="overflow-y-auto p-5 space-y-4 scrollbar-hide"
-                style={{ maxHeight }}
+                className="overflow-y-auto p-5 space-y-4 scrollbar-hide flex-1 min-h-0"
+                style={{ maxHeight: maxHeight !== "100%" ? maxHeight : undefined }}
             >
                 <AnimatePresence initial={false}>
                     {activities.map((activity) => {

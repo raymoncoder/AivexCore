@@ -1,0 +1,16 @@
+{
+  "name": "AivexSkeleton",
+  "type": "components:ui",
+  "dependencies": [
+    "react",
+    "framer-motion"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "core/AivexSkeleton.tsx",
+      "content": "\"use client\";\r\n\r\nimport React from \"react\";\r\nimport { cn } from \"@/lib/utils\";\r\nimport { motion } from \"framer-motion\";\r\n\r\ninterface AivexSkeletonProps {\r\n    className?: string;\r\n    variant?: \"default\" | \"pulse\";\r\n    style?: React.CSSProperties;\r\n}\r\n\r\n/**\r\n * AivexSkeleton - A refined, minimalistic placeholder component.\r\n * Supports a subtle shimmer (default) and a soft pulse animation.\r\n */\r\nexport const AivexSkeleton = ({ className, variant = \"default\", style }: AivexSkeletonProps) => {\r\n    return (\r\n        <div\r\n            className={cn(\r\n                \"rounded-lg overflow-hidden relative shadow-[inset_0_1px_4px_rgba(255,255,255,0.02)]\",\r\n                variant === \"pulse\" ? \"animate-pulse bg-zinc-900/60\" : \"bg-zinc-900/40\",\r\n                className\r\n            )}\r\n            style={style}\r\n        >\r\n            {variant === \"default\" && (\r\n                <motion.div\r\n                    initial={{ x: \"-100%\" }}\r\n                    animate={{ x: \"100%\" }}\r\n                    transition={{\r\n                        repeat: Infinity,\r\n                        duration: 1.8,\r\n                        ease: \"circOut\"\r\n                    }}\r\n                    className=\"absolute inset-0 bg-gradient-to-r from-transparent via-zinc-800/40 to-transparent shadow-[0_0_20px_rgba(0,0,0,0.2)]\"\r\n                />\r\n            )}\r\n\r\n            {/* Subtle inner glass-like overlay */}\r\n            <div className=\"absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none\" />\r\n        </div>\r\n    );\r\n};\r\n"
+    }
+  ],
+  "category": "core"
+}
