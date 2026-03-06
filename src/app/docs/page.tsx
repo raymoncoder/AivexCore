@@ -357,7 +357,7 @@ const InstallationSection = () => (
         <div className="space-y-4">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight font-sans">Installation</h1>
             <p className="text-xl text-zinc-400 font-light font-sans leading-relaxed">
-                Seamlessly integrate Aivex UI into your Next.js application.
+                The fastest way to get started with Aivex UI is via our CLI.
             </p>
         </div>
 
@@ -378,13 +378,7 @@ const InstallationSection = () => (
                         <div className="p-2 bg-blue-500/10 rounded-lg border border-blue-500/20">
                             <Code size={18} className="text-blue-500" />
                         </div>
-                        <span className="text-zinc-300 font-mono text-sm">React 18+</span>
-                    </div>
-                    <div className="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800 flex items-center gap-3 hover:border-zinc-700 transition-colors">
-                        <div className="p-2 bg-purple-500/10 rounded-lg border border-purple-500/20">
-                            <Layout size={18} className="text-purple-500" />
-                        </div>
-                        <span className="text-zinc-300 font-mono text-sm">Tailwind CSS 3+</span>
+                        <span className="text-zinc-300 font-mono text-sm">Next.js 14+</span>
                     </div>
                 </div>
             </div>
@@ -393,13 +387,13 @@ const InstallationSection = () => (
                 <div className="flex items-center gap-4">
                     <div className="w-8 h-8 rounded-lg bg-zinc-800 flex items-center justify-center text-zinc-400 font-bold border border-zinc-700 font-mono">2</div>
                     <div>
-                        <h3 className="text-xl font-bold font-sans text-zinc-100">Install Dependencies</h3>
-                        <p className="text-sm text-zinc-500 font-sans mt-1">Aivex UI is built on top of robust foundations.</p>
+                        <h3 className="text-xl font-bold font-sans text-zinc-100">Initialize Project</h3>
+                        <p className="text-sm text-zinc-500 font-sans mt-1">Set up your workspace and core dependencies automatically.</p>
                     </div>
                 </div>
                 <div className="ml-12">
                     <AivexCodeEditor
-                        initialCode="npm install framer-motion lucide-react clsx tailwind-merge date-fns"
+                        initialCode="npx aivexcore@latest init"
                         language="bash"
                         title="Terminal"
                         readOnly
@@ -411,44 +405,15 @@ const InstallationSection = () => (
                 <div className="flex items-center gap-4">
                     <div className="w-8 h-8 rounded-lg bg-zinc-800 flex items-center justify-center text-zinc-400 font-bold border border-zinc-700 font-mono">3</div>
                     <div>
-                        <h3 className="text-xl font-bold font-sans text-zinc-100">Configure Tailwind</h3>
-                        <p className="text-sm text-zinc-500 font-sans mt-1">Extend your theme in <code className="text-emerald-500 bg-emerald-500/10 px-1 rounded">tailwind.config.ts</code>.</p>
+                        <h3 className="text-xl font-bold font-sans text-zinc-100">Add Components</h3>
+                        <p className="text-sm text-zinc-500 font-sans mt-1">Download and install components directly into your UI folder.</p>
                     </div>
                 </div>
                 <div className="ml-12">
                     <AivexCodeEditor
-                        initialCode={`import type { Config } from "tailwindcss";
-
-const config: Config = {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-    extend: {
-      colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-      },
-       fontFamily: {
-        sans: ["var(--font-inter)"],
-        mono: ["var(--font-jetbrains-mono)"],
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
-    },
-  },
-  plugins: [],
-};
-export default config;`}
-                        language="typescript"
-                        title="tailwind.config.ts"
+                        initialCode="npx aivexcore@latest add AivexButton"
+                        language="bash"
+                        title="Terminal"
                         readOnly
                     />
                 </div>
@@ -458,27 +423,19 @@ export default config;`}
                 <div className="flex items-center gap-4">
                     <div className="w-8 h-8 rounded-lg bg-zinc-800 flex items-center justify-center text-zinc-400 font-bold border border-zinc-700 font-mono">4</div>
                     <div>
-                        <h3 className="text-xl font-bold font-sans text-zinc-100">Usage</h3>
-                        <p className="text-sm text-zinc-500 font-sans mt-1">Import components and start building.</p>
+                        <h3 className="text-xl font-bold font-sans text-zinc-100">Manual Usage</h3>
+                        <p className="text-sm text-zinc-500 font-sans mt-1">Import and use your new component.</p>
                     </div>
                 </div>
                 <div className="ml-12">
                     <AivexCodeEditor
                         initialCode={`import { AivexButton } from "@/components/ui/core/AivexButton";
 
-export default function Home() {
+export default function Page() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-zinc-950 gap-4">
-      <h1 className="text-2xl font-bold text-white">Welcome to Aivex UI</h1>
-      
-      <AivexButton variant="neon" size="lg">
-        Initialize Core
-      </AivexButton>
-      
-      <AivexButton variant="ghost">
-        View Documentation
-      </AivexButton>
-    </div>
+    <AivexButton variant="neon" size="lg">
+      Initialize Neural Node
+    </AivexButton>
   );
 }`}
                         language="tsx"

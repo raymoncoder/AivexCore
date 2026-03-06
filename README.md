@@ -3,9 +3,9 @@
   <h1>AivexCore</h1>
   <p><strong>The UI library for Agentic AI and Crypto applications.</strong></p>
   <p>
-    <a href="https://npmjs.org/package/AivexCore"><img src="https://img.shields.io/npm/v/AivexCore?style=flat-square&color=10b981" alt="npm version" /></a>
-    <a href="https://npmjs.org/package/AivexCore"><img src="https://img.shields.io/npm/dm/AivexCore?style=flat-square&color=10b981" alt="downloads" /></a>
-    <a href="LICENSE"><img src="https://img.shields.io/github/license/yourusername/AivexCore?style=flat-square&color=10b981" alt="license" /></a>
+    <a href="https://npmjs.org/package/aivexcore"><img src="https://img.shields.io/npm/v/aivexcore?style=flat-square&color=10b981" alt="npm version" /></a>
+    <a href="https://npmjs.org/package/aivexcore"><img src="https://img.shields.io/npm/dm/aivexcore?style=flat-square&color=10b981" alt="downloads" /></a>
+    <a href="LICENSE"><img src="https://img.shields.io/github/license/raymoncoder/AivexCore?style=flat-square&color=10b981" alt="license" /></a>
     <img src="https://img.shields.io/badge/React-19-blue?style=flat-square" alt="React 19" />
     <img src="https://img.shields.io/badge/Next.js-15-black?style=flat-square" alt="Next.js" />
     <img src="https://img.shields.io/badge/Tailwind-v4-38bdf8?style=flat-square" alt="Tailwind v4" />
@@ -32,11 +32,15 @@ Unlike general-purpose libraries (shadcn, Material UI), AivexCore is purpose-bui
 AivexCore uses a **copy-paste model** (like shadcn/ui) — components are added directly to your codebase, giving you full ownership.
 
 ```bash
-# Add a component to your project
-npx AivexCore@latest add Aivex-button
+# Initialize AivexCore in your project
+# (adds utils and installs core dependencies)
+npx aivexcore@latest init
+
+# Add a component
+npx aivexcore@latest add AivexButton
 
 # Add multiple components at once
-npx AivexCore@latest add Aivex-input Aivex-badge Aivex-card
+npx aivexcore@latest add AivexInput AivexBadge AivexCard
 ```
 
 ## 📦 Installation
@@ -45,16 +49,27 @@ npx AivexCore@latest add Aivex-input Aivex-badge Aivex-card
 
 - Node.js 18+
 - Next.js 14+ (App Router)
-- React 18+
-- Tailwind CSS 3+
+- Tailwind CSS 4+
 
-### 1. Install peer dependencies
+### 1. Automatic Hybrid Setup (Recommended)
+
+Run the init command to automatically install dependencies and set up the `cn` utility:
+
+```bash
+npx aivexcore@latest init
+```
+
+### 2. Manual Setup (Alternative)
+
+If you prefer manual setup, follow these steps:
+
+#### A. Install peer dependencies
 
 ```bash
 npm install framer-motion lucide-react clsx tailwind-merge @radix-ui/react-dialog @radix-ui/react-switch @radix-ui/react-checkbox
 ```
 
-### 2. Add the `cn` utility
+#### B. Add the `cn` utility
 
 Create `src/lib/utils.ts`:
 
@@ -70,7 +85,7 @@ export function cn(...inputs: ClassValue[]) {
 ### 3. Add a component
 
 ```bash
-npx AivexCore@latest add Aivex-button
+npx aivexcore@latest add AivexButton
 ```
 
 ### 4. Use it
