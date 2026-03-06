@@ -10,9 +10,6 @@
     <img src="https://img.shields.io/badge/Next.js-15-black?style=flat-square" alt="Next.js" />
     <img src="https://img.shields.io/badge/Tailwind-v4-38bdf8?style=flat-square" alt="Tailwind v4" />
   </p>
-  <p>
-    <a href="https://neuralui.dev">Documentation</a> ·
-    <a href="https://neuralui.dev/docs">Components</a> ·
     <a href="CHANGELOG.md">Changelog</a>
   </p>
 </div>
@@ -134,17 +131,6 @@ NeuralUI is built on a consistent design language:
 
 All numerical values, currency, and timestamps automatically use `font-mono` with `tabular-nums`.
 
-## 🤝 Contributing
-
-Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) first.
-
-```bash
-git clone https://github.com/yourusername/neuralui
-cd neuralui
-npm install
-npm run dev
-```
-
 ## 📄 License
 
 MIT © [Neural Inc.](LICENSE)
@@ -153,5 +139,4 @@ MIT © [Neural Inc.](LICENSE)
 
 <div align="center">
   <p>Built for the future of AI. ⚡</p>
-  <a href="https://neuralui.dev">neuralui.dev</a>
 </div>
